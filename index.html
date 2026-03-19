@@ -88,32 +88,55 @@
     padding: 2rem;
   }
 
-  /* Dappled light */
+  /* Dappled light — substantial, moving patches */
   .hero-dapple {
     position: absolute;
     border-radius: 50%;
-    filter: blur(50px);
+    filter: blur(35px);
     pointer-events: none;
-    opacity: 0;
   }
-  .hd-1 { width: 300px; height: 400px; background: rgba(212,168,64,0.18); top: 15%; left: 18%; animation: hd-in 4s ease-out 0.3s forwards, hd-live 16s ease-in-out 4.3s infinite; }
-  .hd-2 { width: 250px; height: 350px; background: rgba(138,160,72,0.14); top: 40%; left: 65%; animation: hd-in 4.5s ease-out 0.8s forwards, hd-live2 18s ease-in-out 5.3s infinite; }
-  .hd-3 { width: 350px; height: 280px; background: rgba(212,180,104,0.10); top: 60%; left: 35%; animation: hd-in 5s ease-out 1.2s forwards, hd-live 20s ease-in-out 6.2s infinite; }
-  .hd-4 { width: 200px; height: 300px; background: rgba(192,112,90,0.07); top: 25%; left: 78%; animation: hd-in 5.5s ease-out 1.8s forwards, hd-live2 14s ease-in-out 7.3s infinite; }
+  .hd-1 { width: 400px; height: 500px; background: rgba(212,168,64,0.30); top: 10%; left: 5%; animation: dap-a 18s ease-in-out infinite; }
+  .hd-2 { width: 350px; height: 450px; background: rgba(138,160,72,0.25); top: 30%; left: 55%; animation: dap-b 22s ease-in-out infinite; animation-delay: -6s; }
+  .hd-3 { width: 450px; height: 380px; background: rgba(212,180,104,0.22); top: 50%; left: 25%; animation: dap-c 20s ease-in-out infinite; animation-delay: -10s; }
+  .hd-4 { width: 300px; height: 420px; background: rgba(192,112,90,0.12); top: 15%; left: 70%; animation: dap-d 16s ease-in-out infinite; animation-delay: -3s; }
+  .hd-5 { width: 380px; height: 300px; background: rgba(212,168,64,0.18); top: 60%; left: 60%; animation: dap-e 24s ease-in-out infinite; animation-delay: -14s; }
+  .hd-6 { width: 320px; height: 400px; background: rgba(138,160,72,0.15); top: 5%; left: 40%; animation: dap-f 19s ease-in-out infinite; animation-delay: -8s; }
 
-  @keyframes hd-in {
-    0% { opacity: 0; transform: scale(0.6); }
-    100% { opacity: 0.7; transform: scale(1); }
+  @keyframes dap-a {
+    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
+    20% { opacity: 0.6; transform: translate(80px, -30px) scale(1.15); }
+    45% { opacity: 0.3; transform: translate(120px, 20px) scale(0.9); }
+    65% { opacity: 0.7; transform: translate(50px, -50px) scale(1.1); }
+    85% { opacity: 0.2; transform: translate(-20px, -20px) scale(0.95); }
   }
-  @keyframes hd-live {
-    0%, 100% { transform: translate(0,0) scale(1); opacity: 0.5; }
-    30% { transform: translate(20px,-12px) scale(1.1); opacity: 0.8; }
-    60% { transform: translate(-10px,8px) scale(0.95); opacity: 0.4; }
+  @keyframes dap-b {
+    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
+    25% { opacity: 0.55; transform: translate(-70px, 25px) scale(1.2); }
+    50% { opacity: 0.2; transform: translate(-120px, -15px) scale(0.85); }
+    75% { opacity: 0.65; transform: translate(-40px, 40px) scale(1.1); }
   }
-  @keyframes hd-live2 {
-    0%, 100% { transform: translate(0,0) scale(1); opacity: 0.4; }
-    35% { transform: translate(-18px,10px) scale(1.12); opacity: 0.7; }
-    65% { transform: translate(8px,-6px) scale(0.92); opacity: 0.3; }
+  @keyframes dap-c {
+    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
+    30% { opacity: 0.5; transform: translate(60px, 30px) scale(1.1); }
+    55% { opacity: 0.7; transform: translate(-40px, 50px) scale(1.15); }
+    80% { opacity: 0.25; transform: translate(20px, -10px) scale(0.9); }
+  }
+  @keyframes dap-d {
+    0%, 100% { opacity: 0.08; transform: translate(0, 0) scale(1); }
+    35% { opacity: 0.45; transform: translate(-50px, -35px) scale(1.2); }
+    70% { opacity: 0.15; transform: translate(-80px, 20px) scale(0.9); }
+  }
+  @keyframes dap-e {
+    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
+    20% { opacity: 0.4; transform: translate(-60px, -25px) scale(1.1); }
+    45% { opacity: 0.6; transform: translate(-100px, 15px) scale(1.15); }
+    70% { opacity: 0.2; transform: translate(-30px, -40px) scale(0.9); }
+  }
+  @keyframes dap-f {
+    0%, 100% { opacity: 0.08; transform: translate(0, 0) scale(1); }
+    30% { opacity: 0.5; transform: translate(50px, 30px) scale(1.15); }
+    60% { opacity: 0.15; transform: translate(90px, -10px) scale(0.9); }
+    80% { opacity: 0.45; transform: translate(30px, 50px) scale(1.1); }
   }
 
   /* Fireflies */
@@ -507,6 +530,8 @@
   <div class="hero-dapple hd-2"></div>
   <div class="hero-dapple hd-3"></div>
   <div class="hero-dapple hd-4"></div>
+  <div class="hero-dapple hd-5"></div>
+  <div class="hero-dapple hd-6"></div>
   <div class="firefly ff1"></div>
   <div class="firefly ff2"></div>
   <div class="firefly ff3"></div>
