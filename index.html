@@ -75,17 +75,27 @@
      HERO
      ═══════════════════════════════════════ */
 
+  /* The scroll-capture wrapper — taller than the viewport.
+     Scrolling through this extra height drives the hero animation.
+     The hero stays pinned until the animation completes. */
+  .hero-wrapper {
+    height: 250vh; /* scroll runway for the animation */
+    position: relative;
+  }
+
   .hero {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: sticky;
+    top: 0;
     overflow: hidden;
     background: var(--deep-canopy);
     text-align: center;
     padding: 2rem;
+    will-change: transform;
   }
 
   /* Dappled light — substantial, moving patches */
@@ -499,7 +509,8 @@
 </head>
 <body>
 
-<!-- HERO -->
+<!-- HERO — scroll-jacked: stays pinned while scroll drives the animation -->
+<div class="hero-wrapper">
 <section class="hero">
   <div class="hero-dapple hd-1"></div>
   <div class="hero-dapple hd-2"></div>
@@ -517,6 +528,7 @@
     <p class="hero-llc">Seth Wylie Services LLC</p>
   </div>
 </section>
+</div><!-- /hero-wrapper -->
 
 <!-- ABOUT -->
 <section class="about reveal">
@@ -612,7 +624,10 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Scroll-driven hero: zoom into dappling, text fades, hero brightens
+// Scroll-jacked hero: hero stays pinned while scroll drives the transformation.
+// The hero-wrapper is 250vh tall — the hero sticks at the top while you scroll
+// through the extra 150vh of runway. That runway drives the zoom/fade/brighten.
+const heroWrapper = document.querySelector('.hero-wrapper');
 const hero = document.querySelector('.hero');
 const heroContent = document.querySelector('.hero-content');
 const heroDapples = document.querySelectorAll('.hero-dapple');
@@ -622,31 +637,37 @@ let ticking = false;
 window.addEventListener('scroll', () => {
   if (!ticking) {
     requestAnimationFrame(() => {
-      const scrollY = window.scrollY;
-      const heroH = hero.offsetHeight;
-      const progress = Math.min(scrollY / (heroH * 0.7), 1); // 0 at top, 1 at 70% scroll
+      const wrapperTop = heroWrapper.offsetTop;
+      const wrapperH = heroWrapper.offsetHeight;
+      const viewH = window.innerHeight;
+      const runway = wrapperH - viewH; // scrollable distance within wrapper
+      const scrollInWrapper = Math.max(0, window.scrollY - wrapperTop);
+      const progress = Math.min(scrollInWrapper / runway, 1); // 0 at start, 1 at end
 
-      // Text fades out and scales up slightly (zooming past)
-      heroContent.style.opacity = 1 - progress * 1.5; // fades fully by ~67% scroll
-      heroContent.style.transform = `scale(${1 + progress * 0.4}) translateY(${-progress * 30}px)`;
+      // Phase 1 (0–0.4): Text fades out, scales up — zooming past it
+      const textFade = Math.max(0, 1 - progress * 2.5);
+      heroContent.style.opacity = textFade;
+      heroContent.style.transform = `scale(${1 + progress * 0.8})`;
 
-      // Dapples scale up (zoom into them) and brighten
-      heroDapples.forEach(d => {
-        const baseScale = 1 + progress * 0.6;
-        d.style.filter = `blur(${35 - progress * 15}px)`; // sharper as you zoom in
-        d.style.setProperty('--scroll-scale', baseScale);
-      });
-
-      // Hero background brightens — overlay fading from dark to lighter
-      hero.style.background = `linear-gradient(180deg,
-        rgba(14,26,10,${1 - progress * 0.7}) 0%,
-        rgba(14,26,10,${1 - progress * 0.85}) 50%,
-        rgba(14,26,10,${1 - progress * 0.95}) 100%)`;
-
-      // Fireflies fade with the text
+      // Phase 1 (0–0.3): Fireflies fade out fast
       heroFireflies.forEach(f => {
-        f.style.opacity = 1 - progress * 2; // fade faster than text
+        f.style.opacity = Math.max(0, 1 - progress * 3.5);
       });
+
+      // Phase 2 (0.2–0.8): Dapples zoom in — get bigger, sharper, brighter
+      const dappleProgress = Math.max(0, Math.min((progress - 0.15) / 0.6, 1));
+      heroDapples.forEach(d => {
+        const s = 1 + dappleProgress * 1.2;
+        d.style.transform = d.style.transform.replace(/scale\([^)]*\)/, '') ;
+        d.style.filter = `blur(${35 - dappleProgress * 20}px)`;
+        // Apply zoom scale on top of the animation's own transform
+        d.style.scale = s;
+      });
+
+      // Phase 3 (0.5–1.0): Background brightens — the clearing emerges
+      const brightenProgress = Math.max(0, Math.min((progress - 0.5) / 0.5, 1));
+      const darkness = 1 - brightenProgress * 0.85;
+      hero.style.boxShadow = `inset 0 0 0 100vmax rgba(14,26,10,${darkness})`;
 
       ticking = false;
     });
