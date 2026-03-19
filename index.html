@@ -108,20 +108,73 @@
   /* Dappled light — Shepard tone. Each patch drifts from right to left,
      fading in as it arrives and out as it departs. Staggered so new light
      is always emerging as old light fades. Perpetual, one-directional flow. */
-  .hd-1 { width: 450px; height: 550px; background: rgba(212,168,64,0.45); top: 8%;  left: 90%; animation: dap-flow 8s linear infinite; animation-delay: 0s; }
-  .hd-2 { width: 400px; height: 500px; background: rgba(138,160,72,0.38); top: 35%; left: 90%; animation: dap-flow 9s linear infinite; animation-delay: -1.5s; }
-  .hd-3 { width: 500px; height: 420px; background: rgba(212,180,104,0.35); top: 55%; left: 90%; animation: dap-flow 7.5s linear infinite; animation-delay: -3s; }
-  .hd-4 { width: 380px; height: 480px; background: rgba(192,112,90,0.20); top: 15%; left: 90%; animation: dap-flow 10s linear infinite; animation-delay: -5s; }
-  .hd-5 { width: 420px; height: 380px; background: rgba(212,168,64,0.32); top: 50%; left: 90%; animation: dap-flow 8.5s linear infinite; animation-delay: -6.5s; }
-  .hd-6 { width: 360px; height: 460px; background: rgba(138,160,72,0.28); top: 0%;  left: 90%; animation: dap-flow 9.5s linear infinite; animation-delay: -8s; }
+  /* Each dapple has its own flow animation — different speeds, different easing,
+     and non-uniform pacing within each one (lingering, then quickening). */
+  .hd-1 { width: 450px; height: 550px; background: rgba(212,168,64,0.45); top: 8%;  left: 90%; animation: dap-flow-1 9s ease-in-out infinite; }
+  .hd-2 { width: 400px; height: 500px; background: rgba(138,160,72,0.38); top: 35%; left: 90%; animation: dap-flow-2 13s ease-in-out infinite; animation-delay: -2s; }
+  .hd-3 { width: 500px; height: 420px; background: rgba(212,180,104,0.35); top: 55%; left: 90%; animation: dap-flow-3 7s ease-in infinite; animation-delay: -4.5s; }
+  .hd-4 { width: 380px; height: 480px; background: rgba(192,112,90,0.20); top: 15%; left: 90%; animation: dap-flow-4 11s ease-out infinite; animation-delay: -7s; }
+  .hd-5 { width: 420px; height: 380px; background: rgba(212,168,64,0.32); top: 50%; left: 90%; animation: dap-flow-5 8s ease-in-out infinite; animation-delay: -1s; }
+  .hd-6 { width: 360px; height: 460px; background: rgba(138,160,72,0.28); top: 0%;  left: 90%; animation: dap-flow-6 15s ease-in-out infinite; animation-delay: -9s; }
 
-  @keyframes dap-flow {
+  /* Fast start, lingers in the middle, accelerates out */
+  @keyframes dap-flow-1 {
     0%   { opacity: 0;    transform: translate(0, 0) scale(0.9); }
-    15%  { opacity: 0.7;  transform: translate(-20vw, 8px) scale(1.05); }
-    40%  { opacity: 0.85; transform: translate(-45vw, 15px) scale(1.1); }
-    65%  { opacity: 0.7;  transform: translate(-70vw, 10px) scale(1.05); }
-    85%  { opacity: 0.2;  transform: translate(-90vw, 5px) scale(0.95); }
+    10%  { opacity: 0.6;  transform: translate(-15vw, 5px) scale(1.0); }
+    35%  { opacity: 0.85; transform: translate(-35vw, 12px) scale(1.1); }
+    55%  { opacity: 0.8;  transform: translate(-48vw, 15px) scale(1.08); }
+    80%  { opacity: 0.3;  transform: translate(-80vw, 8px) scale(0.95); }
+    100% { opacity: 0;    transform: translate(-105vw, 0) scale(0.9); }
+  }
+  /* Slow and stately — the big lazy one */
+  @keyframes dap-flow-2 {
+    0%   { opacity: 0;    transform: translate(0, 0) scale(0.95); }
+    12%  { opacity: 0.5;  transform: translate(-10vw, 10px) scale(1.02); }
+    30%  { opacity: 0.75; transform: translate(-25vw, 18px) scale(1.08); }
+    50%  { opacity: 0.8;  transform: translate(-42vw, 20px) scale(1.1); }
+    70%  { opacity: 0.6;  transform: translate(-62vw, 15px) scale(1.05); }
+    88%  { opacity: 0.15; transform: translate(-88vw, 8px) scale(0.95); }
     100% { opacity: 0;    transform: translate(-100vw, 0) scale(0.9); }
+  }
+  /* Quick — darts across */
+  @keyframes dap-flow-3 {
+    0%   { opacity: 0;    transform: translate(0, 0) scale(0.85); }
+    8%   { opacity: 0.7;  transform: translate(-18vw, 4px) scale(1.05); }
+    25%  { opacity: 0.85; transform: translate(-45vw, 10px) scale(1.12); }
+    50%  { opacity: 0.6;  transform: translate(-70vw, 8px) scale(1.0); }
+    75%  { opacity: 0.15; transform: translate(-92vw, 3px) scale(0.9); }
+    100% { opacity: 0;    transform: translate(-110vw, 0) scale(0.85); }
+  }
+  /* Hesitant — slow start, rushes at the end */
+  @keyframes dap-flow-4 {
+    0%   { opacity: 0;    transform: translate(0, 0) scale(0.9); }
+    20%  { opacity: 0.5;  transform: translate(-8vw, 8px) scale(1.0); }
+    40%  { opacity: 0.7;  transform: translate(-18vw, 14px) scale(1.06); }
+    55%  { opacity: 0.75; transform: translate(-30vw, 18px) scale(1.1); }
+    70%  { opacity: 0.5;  transform: translate(-55vw, 12px) scale(1.0); }
+    85%  { opacity: 0.2;  transform: translate(-82vw, 5px) scale(0.92); }
+    100% { opacity: 0;    transform: translate(-105vw, 0) scale(0.88); }
+  }
+  /* Surging — speeds up in the middle, slows at edges */
+  @keyframes dap-flow-5 {
+    0%   { opacity: 0;    transform: translate(0, 0) scale(0.9); }
+    15%  { opacity: 0.6;  transform: translate(-10vw, 6px) scale(1.0); }
+    30%  { opacity: 0.85; transform: translate(-38vw, 14px) scale(1.12); }
+    45%  { opacity: 0.8;  transform: translate(-60vw, 16px) scale(1.08); }
+    65%  { opacity: 0.5;  transform: translate(-78vw, 10px) scale(1.0); }
+    85%  { opacity: 0.12; transform: translate(-95vw, 4px) scale(0.92); }
+    100% { opacity: 0;    transform: translate(-108vw, 0) scale(0.88); }
+  }
+  /* The wanderer — very slow, barely moving, longest duration */
+  @keyframes dap-flow-6 {
+    0%   { opacity: 0;    transform: translate(0, 0) scale(0.95); }
+    10%  { opacity: 0.4;  transform: translate(-6vw, 12px) scale(1.0); }
+    25%  { opacity: 0.6;  transform: translate(-15vw, 20px) scale(1.05); }
+    45%  { opacity: 0.7;  transform: translate(-30vw, 22px) scale(1.08); }
+    60%  { opacity: 0.65; transform: translate(-45vw, 18px) scale(1.06); }
+    75%  { opacity: 0.4;  transform: translate(-60vw, 12px) scale(1.0); }
+    90%  { opacity: 0.1;  transform: translate(-80vw, 5px) scale(0.95); }
+    100% { opacity: 0;    transform: translate(-95vw, 0) scale(0.92); }
   }
 
   /* Fireflies */
