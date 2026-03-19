@@ -72,14 +72,11 @@
   a:hover { text-decoration: underline; }
 
   /* ═══════════════════════════════════════
-     HERO
+     HERO — scroll-jacked with canvas dappling
      ═══════════════════════════════════════ */
 
-  /* The scroll-capture wrapper — taller than the viewport.
-     Scrolling through this extra height drives the hero animation.
-     The hero stays pinned until the animation completes. */
   .hero-wrapper {
-    height: 250vh; /* scroll runway for the animation */
+    height: 250vh;
     position: relative;
   }
 
@@ -98,83 +95,11 @@
     will-change: transform;
   }
 
-  /* Dappled light — substantial, moving patches */
-  .hero-dapple {
+  .dapple-canvas {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(35px);
+    inset: 0;
     pointer-events: none;
-  }
-  /* Dappled light — Shepard tone. Each patch drifts from right to left,
-     fading in as it arrives and out as it departs. Staggered so new light
-     is always emerging as old light fades. Perpetual, one-directional flow. */
-  /* Each dapple has its own flow animation — different speeds, different easing,
-     and non-uniform pacing within each one (lingering, then quickening). */
-  .hd-1 { width: 450px; height: 550px; background: rgba(212,168,64,0.45); top: 8%;  left: 90%; animation: dap-flow-1 9s ease-in-out infinite; }
-  .hd-2 { width: 400px; height: 500px; background: rgba(138,160,72,0.38); top: 35%; left: 90%; animation: dap-flow-2 13s ease-in-out infinite; animation-delay: -2s; }
-  .hd-3 { width: 500px; height: 420px; background: rgba(212,180,104,0.35); top: 55%; left: 90%; animation: dap-flow-3 7s ease-in infinite; animation-delay: -4.5s; }
-  .hd-4 { width: 380px; height: 480px; background: rgba(192,112,90,0.20); top: 15%; left: 90%; animation: dap-flow-4 11s ease-out infinite; animation-delay: -7s; }
-  .hd-5 { width: 420px; height: 380px; background: rgba(212,168,64,0.32); top: 50%; left: 90%; animation: dap-flow-5 8s ease-in-out infinite; animation-delay: -1s; }
-  .hd-6 { width: 360px; height: 460px; background: rgba(138,160,72,0.28); top: 0%;  left: 90%; animation: dap-flow-6 15s ease-in-out infinite; animation-delay: -9s; }
-
-  /* Fast start, lingers in the middle, accelerates out */
-  @keyframes dap-flow-1 {
-    0%   { opacity: 0;    transform: translate(0, 0) scale(0.9); }
-    10%  { opacity: 0.6;  transform: translate(-15vw, 5px) scale(1.0); }
-    35%  { opacity: 0.85; transform: translate(-35vw, 12px) scale(1.1); }
-    55%  { opacity: 0.8;  transform: translate(-48vw, 15px) scale(1.08); }
-    80%  { opacity: 0.3;  transform: translate(-80vw, 8px) scale(0.95); }
-    100% { opacity: 0;    transform: translate(-105vw, 0) scale(0.9); }
-  }
-  /* Slow and stately — the big lazy one */
-  @keyframes dap-flow-2 {
-    0%   { opacity: 0;    transform: translate(0, 0) scale(0.95); }
-    12%  { opacity: 0.5;  transform: translate(-10vw, 10px) scale(1.02); }
-    30%  { opacity: 0.75; transform: translate(-25vw, 18px) scale(1.08); }
-    50%  { opacity: 0.8;  transform: translate(-42vw, 20px) scale(1.1); }
-    70%  { opacity: 0.6;  transform: translate(-62vw, 15px) scale(1.05); }
-    88%  { opacity: 0.15; transform: translate(-88vw, 8px) scale(0.95); }
-    100% { opacity: 0;    transform: translate(-100vw, 0) scale(0.9); }
-  }
-  /* Quick — darts across */
-  @keyframes dap-flow-3 {
-    0%   { opacity: 0;    transform: translate(0, 0) scale(0.85); }
-    8%   { opacity: 0.7;  transform: translate(-18vw, 4px) scale(1.05); }
-    25%  { opacity: 0.85; transform: translate(-45vw, 10px) scale(1.12); }
-    50%  { opacity: 0.6;  transform: translate(-70vw, 8px) scale(1.0); }
-    75%  { opacity: 0.15; transform: translate(-92vw, 3px) scale(0.9); }
-    100% { opacity: 0;    transform: translate(-110vw, 0) scale(0.85); }
-  }
-  /* Hesitant — slow start, rushes at the end */
-  @keyframes dap-flow-4 {
-    0%   { opacity: 0;    transform: translate(0, 0) scale(0.9); }
-    20%  { opacity: 0.5;  transform: translate(-8vw, 8px) scale(1.0); }
-    40%  { opacity: 0.7;  transform: translate(-18vw, 14px) scale(1.06); }
-    55%  { opacity: 0.75; transform: translate(-30vw, 18px) scale(1.1); }
-    70%  { opacity: 0.5;  transform: translate(-55vw, 12px) scale(1.0); }
-    85%  { opacity: 0.2;  transform: translate(-82vw, 5px) scale(0.92); }
-    100% { opacity: 0;    transform: translate(-105vw, 0) scale(0.88); }
-  }
-  /* Surging — speeds up in the middle, slows at edges */
-  @keyframes dap-flow-5 {
-    0%   { opacity: 0;    transform: translate(0, 0) scale(0.9); }
-    15%  { opacity: 0.6;  transform: translate(-10vw, 6px) scale(1.0); }
-    30%  { opacity: 0.85; transform: translate(-38vw, 14px) scale(1.12); }
-    45%  { opacity: 0.8;  transform: translate(-60vw, 16px) scale(1.08); }
-    65%  { opacity: 0.5;  transform: translate(-78vw, 10px) scale(1.0); }
-    85%  { opacity: 0.12; transform: translate(-95vw, 4px) scale(0.92); }
-    100% { opacity: 0;    transform: translate(-108vw, 0) scale(0.88); }
-  }
-  /* The wanderer — very slow, barely moving, longest duration */
-  @keyframes dap-flow-6 {
-    0%   { opacity: 0;    transform: translate(0, 0) scale(0.95); }
-    10%  { opacity: 0.4;  transform: translate(-6vw, 12px) scale(1.0); }
-    25%  { opacity: 0.6;  transform: translate(-15vw, 20px) scale(1.05); }
-    45%  { opacity: 0.7;  transform: translate(-30vw, 22px) scale(1.08); }
-    60%  { opacity: 0.65; transform: translate(-45vw, 18px) scale(1.06); }
-    75%  { opacity: 0.4;  transform: translate(-60vw, 12px) scale(1.0); }
-    90%  { opacity: 0.1;  transform: translate(-80vw, 5px) scale(0.95); }
-    100% { opacity: 0;    transform: translate(-95vw, 0) scale(0.92); }
+    z-index: 1;
   }
 
   /* Fireflies */
@@ -295,111 +220,16 @@
   }
 
   /* ═══════════════════════════════════════
-     SERVICES
+     SERVICES TRANSITION
      ═══════════════════════════════════════ */
 
   .services-transition {
     height: 30vh;
     background: linear-gradient(180deg, #141E0E 0%, #1E2818 20%, #2A3820 35%, #4A5838 50%, #7A8860 62%, #A8B088 72%, #C8C8B0 82%, #DCD8C8 90%, var(--clearing) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Dappled light in the transition */
-  .trans-dapple {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(40px);
-    pointer-events: none;
-  }
-  .td-1 { width: 200px; height: 250px; background: rgba(212,168,64,0.20); top: 20%; left: 20%; animation: hd-live 14s ease-in-out infinite; }
-  .td-2 { width: 160px; height: 220px; background: rgba(138,160,72,0.16); top: 40%; left: 60%; animation: hd-live2 17s ease-in-out infinite; animation-delay: -5s; }
-  .td-3 { width: 220px; height: 180px; background: rgba(212,180,104,0.14); top: 55%; left: 38%; animation: hd-live 20s ease-in-out infinite; animation-delay: -9s; }
-
-  .services {
-    padding: 4rem 2rem 5rem;
-    background: var(--clearing);
-    color: var(--deep-canopy);
-  }
-
-  .services-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .services-header h2 {
-    font-family: 'Newsreader', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 400;
-    color: var(--deep-canopy);
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .service-card {
-    background: #FAFAF4;
-    border-radius: 6px;
-    padding: 2.2rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    opacity: 0.5;
-  }
-  .service-card:nth-child(1)::before { background: var(--golden-glow); }
-  .service-card:nth-child(2)::before { background: var(--leaf-gold); }
-  .service-card:nth-child(3)::before { background: var(--coral); }
-  .service-card:nth-child(4)::before { background: var(--moss); }
-  .service-card:nth-child(5)::before { background: var(--honey); }
-
-  .service-card h3 {
-    font-family: 'Newsreader', serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--deep-canopy);
-    margin-bottom: 0.6rem;
-  }
-
-  .service-card p {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    line-height: 1.65;
-    color: #3A3828;
-  }
-
-  .contact-card {
-    background: var(--deep-canopy);
-    color: var(--breath);
-  }
-  .contact-card h3 { color: var(--breath); }
-  .contact-card p { color: var(--mist); }
-  .contact-card::before { background: var(--golden-glow) !important; opacity: 0.4 !important; }
-
-  .service-tag {
-    display: inline-block;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--moss);
-    margin-top: 1rem;
   }
 
   /* ═══════════════════════════════════════
-     AI CLUB — featured
+     SERVICES + CLUB
      ═══════════════════════════════════════ */
 
   .club-section {
@@ -429,46 +259,11 @@
     opacity: 0.6;
   }
 
-  .club-card h3 {
-    font-family: 'Newsreader', serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--deep-canopy);
-    margin-bottom: 0.5rem;
-  }
-
-  .club-schedule {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--moss);
-    letter-spacing: 0.03em;
-    margin-bottom: 1.2rem;
-  }
-
-  .club-card p {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.7;
-    color: #3A3828;
-    margin-bottom: 1.5rem;
-  }
-
-  .club-price {
-    font-family: 'Newsreader', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--deep-canopy);
-    margin-bottom: 0.3rem;
-  }
-
-  .club-price span {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: #5A5840;
-  }
+  .club-card h3 { font-family: 'Newsreader', serif; font-size: 1.5rem; font-weight: 500; color: var(--deep-canopy); margin-bottom: 0.5rem; }
+  .club-schedule { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--moss); letter-spacing: 0.03em; margin-bottom: 1.2rem; }
+  .club-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: #3A3828; margin-bottom: 1.5rem; }
+  .club-price { font-family: 'Newsreader', serif; font-size: 1.8rem; font-weight: 400; color: var(--deep-canopy); margin-bottom: 0.3rem; }
+  .club-price span { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 300; color: #5A5840; }
 
   .club-cta {
     display: inline-block;
@@ -485,75 +280,63 @@
     text-decoration: none;
     transition: background 0.3s ease;
   }
+  .club-cta:hover { background: var(--canopy); text-decoration: none; }
 
-  .club-cta:hover {
-    background: var(--canopy);
-    text-decoration: none;
+  .services {
+    padding: 4rem 2rem 5rem;
+    background: var(--clearing);
+    color: var(--deep-canopy);
   }
+
+  .services-header { text-align: center; margin-bottom: 3rem; }
+  .services-header h2 { font-family: 'Newsreader', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; color: var(--deep-canopy); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: #FAFAF4;
+    border-radius: 6px;
+    padding: 2.2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0.5; }
+  .service-card:nth-child(1)::before { background: var(--golden-glow); }
+  .service-card:nth-child(2)::before { background: var(--leaf-gold); }
+  .service-card:nth-child(3)::before { background: var(--coral); }
+  .service-card:nth-child(4)::before { background: var(--moss); }
+  .service-card:nth-child(5)::before { background: var(--honey); }
+
+  .service-card h3 { font-family: 'Newsreader', serif; font-size: 1.15rem; font-weight: 500; color: var(--deep-canopy); margin-bottom: 0.6rem; }
+  .service-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; font-weight: 300; line-height: 1.65; color: #3A3828; }
+  .service-tag { display: inline-block; font-family: 'Source Sans 3', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--moss); margin-top: 1rem; }
+
+  .contact-card { background: var(--deep-canopy); color: var(--breath); }
+  .contact-card h3 { color: var(--breath); }
+  .contact-card p { color: var(--mist); }
+  .contact-card::before { background: var(--golden-glow) !important; opacity: 0.4 !important; }
 
   /* ═══════════════════════════════════════
-     CONTACT / FOOTER
+     FOOTER
      ═══════════════════════════════════════ */
 
-  .footer-transition {
-    height: 12vh;
-    background: linear-gradient(180deg, var(--clearing), var(--deep-canopy));
-  }
+  .footer-transition { height: 12vh; background: linear-gradient(180deg, var(--clearing), var(--deep-canopy)); }
 
-  footer {
-    padding: 4rem 2rem 3rem;
-    background: var(--deep-canopy);
-    text-align: center;
-  }
-
-  .footer-brand {
-    font-family: 'Newsreader', serif;
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--breath);
-    letter-spacing: 0.06em;
-    margin-bottom: 0.8rem;
-  }
-
-  .footer-llc {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: var(--mist);
-    letter-spacing: 0.06em;
-    margin-bottom: 2rem;
-  }
-
-  .footer-contact {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--mist);
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-links {
-    margin-top: 2rem;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: var(--mist);
-    opacity: 0.5;
-  }
-
-  .footer-links a {
-    color: var(--mist);
-    margin: 0 0.8rem;
-  }
-
-  /* ═══════════════════════════════════════
-     RESPONSIVE
-     ═══════════════════════════════════════ */
+  footer { padding: 4rem 2rem 3rem; background: var(--deep-canopy); text-align: center; }
+  .footer-brand { font-family: 'Newsreader', serif; font-size: 1.3rem; font-weight: 400; color: var(--breath); letter-spacing: 0.06em; margin-bottom: 0.8rem; }
+  .footer-llc { font-family: 'Source Sans 3', sans-serif; font-size: 0.8rem; font-weight: 300; color: var(--mist); letter-spacing: 0.06em; margin-bottom: 2rem; }
+  .footer-contact { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--mist); margin-bottom: 0.5rem; }
+  .footer-links { margin-top: 2rem; font-family: 'Source Sans 3', sans-serif; font-size: 0.8rem; font-weight: 300; color: var(--mist); opacity: 0.5; }
+  .footer-links a { color: var(--mist); margin: 0 0.8rem; }
 
   @media (max-width: 600px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
+    .services-grid { grid-template-columns: 1fr; }
     .hero { padding: 2rem 1.5rem; }
     .service-card { padding: 1.8rem 1.5rem; }
     .club-card { padding: 2.5rem 1.8rem; }
@@ -562,15 +345,10 @@
 </head>
 <body>
 
-<!-- HERO — scroll-jacked: stays pinned while scroll drives the animation -->
+<!-- HERO -->
 <div class="hero-wrapper">
 <section class="hero">
-  <div class="hero-dapple hd-1"></div>
-  <div class="hero-dapple hd-2"></div>
-  <div class="hero-dapple hd-3"></div>
-  <div class="hero-dapple hd-4"></div>
-  <div class="hero-dapple hd-5"></div>
-  <div class="hero-dapple hd-6"></div>
+  <canvas class="dapple-canvas" id="dappleCanvas"></canvas>
   <div class="firefly ff1"></div>
   <div class="firefly ff2"></div>
   <div class="firefly ff3"></div>
@@ -581,7 +359,7 @@
     <p class="hero-llc">Seth Wylie Services LLC</p>
   </div>
 </section>
-</div><!-- /hero-wrapper -->
+</div>
 
 <!-- ABOUT -->
 <section class="about reveal">
@@ -593,13 +371,9 @@
 </section>
 
 <!-- TRANSITION -->
-<div class="services-transition">
-  <div class="trans-dapple td-1"></div>
-  <div class="trans-dapple td-2"></div>
-  <div class="trans-dapple td-3"></div>
-</div>
+<div class="services-transition"></div>
 
-<!-- AI CLUB — featured, above services -->
+<!-- AI CLUB -->
 <section class="club-section reveal">
   <div class="club-card">
     <h3>AI Club</h3>
@@ -616,38 +390,32 @@
   <div class="services-header">
     <h2>Services</h2>
   </div>
-
   <div class="services-grid">
     <div class="service-card">
       <h3>Executive AI Coaching</h3>
       <p>Build the system that helps you make decisions. Not traditional executive coaching with AI bolted on — the hybrid that doesn't exist yet. Strategy, blind spots, how you feel about things, and how to build your thinking infrastructure.</p>
       <span class="service-tag">1-on-1</span>
     </div>
-
     <div class="service-card">
       <h3>Individual AI Coaching</h3>
       <p>Set up your own Claude Code environment — a personal thinking system that knows how you work, what you're working on, and how to think alongside you. Your setup becomes a reflection of your mind. First session free.</p>
       <span class="service-tag">1-on-1</span>
     </div>
-
     <div class="service-card">
       <h3>AI Product Advisory</h3>
       <p>For founders who know they want to build an AI product but don't know AI. Starts as product strategy. Becomes a conversation about what kind of thinking you want to encode — and whose.</p>
       <span class="service-tag">Retainer</span>
     </div>
-
     <div class="service-card">
       <h3>Cognitive Architecture for Teams</h3>
       <p>Your team has expertise it can't fully articulate. We map what your people know at their best, identify where that knowledge lives and where it's missing, then build an AI system that holds it, extends it, and thinks alongside your team.</p>
       <span class="service-tag">Teams &amp; Organizations</span>
     </div>
-
     <div class="service-card">
       <h3>Hosted AI Learning Groups</h3>
       <p>Bring me into a group that already exists — a friend group, a team, a professional circle. I create the space where people discover things together they wouldn't discover alone. Permission, not a push.</p>
       <span class="service-tag">Groups &amp; Teams</span>
     </div>
-
     <div class="service-card contact-card">
       <h3>Get in Touch</h3>
       <p>Interested in coaching, advisory, or a learning group? Reach out and let's talk about what you need.</p>
@@ -658,7 +426,6 @@
 
 <!-- FOOTER -->
 <div class="footer-transition"></div>
-
 <footer>
   <p class="footer-brand">The Wild Edge</p>
   <p class="footer-llc">Seth Wylie Services LLC</p>
@@ -669,21 +436,128 @@
 </footer>
 
 <script>
-// Reveal observer for sections below the hero
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ═══════════════════════════════════════════════════════
+// DAPPLED LIGHT — Canvas particle system
+//
+// Model: sunlight through gaps in a canopy.
+// - Many small-to-medium patches (the gaps between leaves)
+// - All sway together in the same direction (wind moves branches)
+// - Per-patch variation in phase, amplitude, and size (different branch heights)
+// - Brightness pulses with position (gap widens = brighter, narrows = dimmer)
+// - Soft edges (radial gradient per patch)
+// ═══════════════════════════════════════════════════════
 
-// Scroll-jacked hero: hero stays pinned while scroll drives the transformation.
-// The hero-wrapper is 250vh tall — the hero sticks at the top while you scroll
-// through the extra 150vh of runway. That runway drives the zoom/fade/brighten.
+const canvas = document.getElementById('dappleCanvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+  canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Color palette for patches — golden hour through canopy
+const colors = [
+  { r: 212, g: 168, b: 64 },   // golden
+  { r: 212, g: 180, b: 104 },  // honey
+  { r: 138, g: 160, b: 72 },   // leaf-gold
+  { r: 180, g: 158, b: 68 },   // amber-green
+  { r: 192, g: 140, b: 70 },   // warm amber
+];
+
+// Generate patches — a field of light spots
+const PATCH_COUNT = 40;
+const patches = [];
+
+for (let i = 0; i < PATCH_COUNT; i++) {
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  patches.push({
+    // Home position (where the patch lives when there's no wind)
+    homeX: Math.random() * canvas.offsetWidth,
+    homeY: Math.random() * canvas.offsetHeight,
+    // Size — mix of small and medium (gap sizes vary)
+    radius: 30 + Math.random() * 80,
+    // Per-patch sway variation
+    swayPhase: Math.random() * Math.PI * 2,       // where in the sway cycle it starts
+    swaySpeed: 0.3 + Math.random() * 0.4,          // how fast it sways (all similar, slight variation)
+    swayAmplitude: 15 + Math.random() * 25,         // how far it travels (branch height variation)
+    // Brightness variation
+    baseAlpha: 0.06 + Math.random() * 0.12,         // base opacity
+    alphaPulse: 0.04 + Math.random() * 0.08,        // how much opacity varies with sway
+    // Color
+    r: color.r, g: color.g, b: color.b,
+    // Slight vertical sway (branches don't just go horizontal)
+    verticalRatio: 0.15 + Math.random() * 0.2,
+  });
+}
+
+// Global wind direction — all patches sway along this axis
+// Angle in radians: 0 = right, PI/2 = down. We want roughly left-to-right sway.
+const windAngle = 0.15; // nearly horizontal, slight downward component
+const windCos = Math.cos(windAngle);
+const windSin = Math.sin(windAngle);
+
+// The wind itself has slow variation — gusts and lulls
+let windStrength = 1;
+let windTarget = 1;
+let windChangeTimer = 0;
+
+function animate(time) {
+  const t = time * 0.001; // seconds
+  const w = canvas.offsetWidth;
+  const h = canvas.offsetHeight;
+
+  ctx.clearRect(0, 0, w, h);
+
+  // Wind gusts — slowly varying global multiplier
+  windChangeTimer -= 0.016;
+  if (windChangeTimer <= 0) {
+    windTarget = 0.5 + Math.random() * 1.0;
+    windChangeTimer = 2 + Math.random() * 4; // change every 2-6 seconds
+  }
+  windStrength += (windTarget - windStrength) * 0.01;
+
+  for (const p of patches) {
+    // Each patch sways sinusoidally along the wind direction
+    // The sway is: sin(time * speed + phase) * amplitude * windStrength
+    const sway = Math.sin(t * p.swaySpeed + p.swayPhase) * p.swayAmplitude * windStrength;
+
+    const dx = sway * windCos;
+    const dy = sway * windSin * p.verticalRatio;
+
+    const x = p.homeX + dx;
+    const y = p.homeY + dy;
+
+    // Brightness pulses with sway position — brighter at one extreme (gap opens)
+    const swayNorm = (Math.sin(t * p.swaySpeed + p.swayPhase) + 1) / 2; // 0 to 1
+    const alpha = p.baseAlpha + p.alphaPulse * swayNorm;
+
+    // Draw as soft radial gradient circle
+    const grad = ctx.createRadialGradient(x, y, 0, x, y, p.radius);
+    grad.addColorStop(0, `rgba(${p.r},${p.g},${p.b},${alpha})`);
+    grad.addColorStop(0.5, `rgba(${p.r},${p.g},${p.b},${alpha * 0.5})`);
+    grad.addColorStop(1, `rgba(${p.r},${p.g},${p.b},0)`);
+
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(x, y, p.radius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+
+// ═══════════════════════════════════════════════════════
+// SCROLL-JACKED HERO
+// ═══════════════════════════════════════════════════════
+
 const heroWrapper = document.querySelector('.hero-wrapper');
 const hero = document.querySelector('.hero');
 const heroContent = document.querySelector('.hero-content');
-const heroDapples = document.querySelectorAll('.hero-dapple');
 const heroFireflies = document.querySelectorAll('.firefly');
 
 let ticking = false;
@@ -693,31 +567,26 @@ window.addEventListener('scroll', () => {
       const wrapperTop = heroWrapper.offsetTop;
       const wrapperH = heroWrapper.offsetHeight;
       const viewH = window.innerHeight;
-      const runway = wrapperH - viewH; // scrollable distance within wrapper
+      const runway = wrapperH - viewH;
       const scrollInWrapper = Math.max(0, window.scrollY - wrapperTop);
-      const progress = Math.min(scrollInWrapper / runway, 1); // 0 at start, 1 at end
+      const progress = Math.min(scrollInWrapper / runway, 1);
 
-      // Phase 1 (0–0.4): Text fades out, scales up — zooming past it
+      // Text fades and scales (zooming past)
       const textFade = Math.max(0, 1 - progress * 2.5);
       heroContent.style.opacity = textFade;
       heroContent.style.transform = `scale(${1 + progress * 0.8})`;
 
-      // Phase 1 (0–0.3): Fireflies fade out fast
+      // Fireflies fade fast
       heroFireflies.forEach(f => {
         f.style.opacity = Math.max(0, 1 - progress * 3.5);
       });
 
-      // Phase 2 (0.2–0.8): Dapples zoom in — get bigger, sharper, brighter
-      const dappleProgress = Math.max(0, Math.min((progress - 0.15) / 0.6, 1));
-      heroDapples.forEach(d => {
-        const s = 1 + dappleProgress * 1.2;
-        d.style.transform = d.style.transform.replace(/scale\([^)]*\)/, '') ;
-        d.style.filter = `blur(${35 - dappleProgress * 20}px)`;
-        // Apply zoom scale on top of the animation's own transform
-        d.style.scale = s;
-      });
+      // Canvas brightens and zooms — scale the canvas up
+      const canvasScale = 1 + progress * 0.8;
+      canvas.style.transform = `scale(${canvasScale})`;
+      canvas.style.filter = `brightness(${1 + progress * 1.5})`;
 
-      // Phase 3 (0.5–1.0): Background brightens — the clearing emerges
+      // Background lightens
       const brightenProgress = Math.max(0, Math.min((progress - 0.5) / 0.5, 1));
       const darkness = 1 - brightenProgress * 0.85;
       hero.style.boxShadow = `inset 0 0 0 100vmax rgba(14,26,10,${darkness})`;
@@ -727,6 +596,17 @@ window.addEventListener('scroll', () => {
     ticking = true;
   }
 });
+
+// ═══════════════════════════════════════════════════════
+// REVEAL OBSERVER
+// ═══════════════════════════════════════════════════════
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
