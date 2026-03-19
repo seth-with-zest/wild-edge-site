@@ -95,48 +95,49 @@
     filter: blur(35px);
     pointer-events: none;
   }
-  .hd-1 { width: 400px; height: 500px; background: rgba(212,168,64,0.30); top: 10%; left: 5%; animation: dap-a 18s ease-in-out infinite; }
-  .hd-2 { width: 350px; height: 450px; background: rgba(138,160,72,0.25); top: 30%; left: 55%; animation: dap-b 22s ease-in-out infinite; animation-delay: -6s; }
-  .hd-3 { width: 450px; height: 380px; background: rgba(212,180,104,0.22); top: 50%; left: 25%; animation: dap-c 20s ease-in-out infinite; animation-delay: -10s; }
-  .hd-4 { width: 300px; height: 420px; background: rgba(192,112,90,0.12); top: 15%; left: 70%; animation: dap-d 16s ease-in-out infinite; animation-delay: -3s; }
-  .hd-5 { width: 380px; height: 300px; background: rgba(212,168,64,0.18); top: 60%; left: 60%; animation: dap-e 24s ease-in-out infinite; animation-delay: -14s; }
-  .hd-6 { width: 320px; height: 400px; background: rgba(138,160,72,0.15); top: 5%; left: 40%; animation: dap-f 19s ease-in-out infinite; animation-delay: -8s; }
+  /* Faster, more evident dappling — immediately wondrous */
+  .hd-1 { width: 450px; height: 550px; background: rgba(212,168,64,0.40); top: 10%; left: 5%; animation: dap-a 8s ease-in-out infinite; }
+  .hd-2 { width: 400px; height: 500px; background: rgba(138,160,72,0.35); top: 25%; left: 50%; animation: dap-b 10s ease-in-out infinite; animation-delay: -3s; }
+  .hd-3 { width: 500px; height: 420px; background: rgba(212,180,104,0.32); top: 45%; left: 20%; animation: dap-c 9s ease-in-out infinite; animation-delay: -5s; }
+  .hd-4 { width: 350px; height: 460px; background: rgba(192,112,90,0.18); top: 12%; left: 68%; animation: dap-d 7s ease-in-out infinite; animation-delay: -1.5s; }
+  .hd-5 { width: 420px; height: 350px; background: rgba(212,168,64,0.28); top: 55%; left: 55%; animation: dap-e 11s ease-in-out infinite; animation-delay: -7s; }
+  .hd-6 { width: 380px; height: 450px; background: rgba(138,160,72,0.22); top: 0%; left: 35%; animation: dap-f 8.5s ease-in-out infinite; animation-delay: -4s; }
 
   @keyframes dap-a {
-    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
-    20% { opacity: 0.6; transform: translate(80px, -30px) scale(1.15); }
-    45% { opacity: 0.3; transform: translate(120px, 20px) scale(0.9); }
-    65% { opacity: 0.7; transform: translate(50px, -50px) scale(1.1); }
-    85% { opacity: 0.2; transform: translate(-20px, -20px) scale(0.95); }
+    0%, 100% { opacity: 0.15; transform: translate(0, 0) scale(1); }
+    20% { opacity: 0.8; transform: translate(90px, -35px) scale(1.2); }
+    45% { opacity: 0.35; transform: translate(140px, 25px) scale(0.85); }
+    65% { opacity: 0.85; transform: translate(55px, -55px) scale(1.15); }
+    85% { opacity: 0.25; transform: translate(-25px, -20px) scale(0.9); }
   }
   @keyframes dap-b {
-    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
-    25% { opacity: 0.55; transform: translate(-70px, 25px) scale(1.2); }
-    50% { opacity: 0.2; transform: translate(-120px, -15px) scale(0.85); }
-    75% { opacity: 0.65; transform: translate(-40px, 40px) scale(1.1); }
+    0%, 100% { opacity: 0.12; transform: translate(0, 0) scale(1); }
+    25% { opacity: 0.7; transform: translate(-80px, 30px) scale(1.25); }
+    50% { opacity: 0.25; transform: translate(-140px, -18px) scale(0.8); }
+    75% { opacity: 0.8; transform: translate(-45px, 45px) scale(1.15); }
   }
   @keyframes dap-c {
-    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
-    30% { opacity: 0.5; transform: translate(60px, 30px) scale(1.1); }
-    55% { opacity: 0.7; transform: translate(-40px, 50px) scale(1.15); }
-    80% { opacity: 0.25; transform: translate(20px, -10px) scale(0.9); }
+    0%, 100% { opacity: 0.12; transform: translate(0, 0) scale(1); }
+    30% { opacity: 0.65; transform: translate(70px, 35px) scale(1.15); }
+    55% { opacity: 0.85; transform: translate(-45px, 55px) scale(1.2); }
+    80% { opacity: 0.3; transform: translate(25px, -12px) scale(0.85); }
   }
   @keyframes dap-d {
-    0%, 100% { opacity: 0.08; transform: translate(0, 0) scale(1); }
-    35% { opacity: 0.45; transform: translate(-50px, -35px) scale(1.2); }
-    70% { opacity: 0.15; transform: translate(-80px, 20px) scale(0.9); }
+    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
+    35% { opacity: 0.6; transform: translate(-55px, -40px) scale(1.25); }
+    70% { opacity: 0.2; transform: translate(-90px, 25px) scale(0.85); }
   }
   @keyframes dap-e {
-    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
-    20% { opacity: 0.4; transform: translate(-60px, -25px) scale(1.1); }
-    45% { opacity: 0.6; transform: translate(-100px, 15px) scale(1.15); }
-    70% { opacity: 0.2; transform: translate(-30px, -40px) scale(0.9); }
+    0%, 100% { opacity: 0.12; transform: translate(0, 0) scale(1); }
+    20% { opacity: 0.55; transform: translate(-70px, -30px) scale(1.15); }
+    45% { opacity: 0.75; transform: translate(-110px, 18px) scale(1.2); }
+    70% { opacity: 0.25; transform: translate(-35px, -45px) scale(0.85); }
   }
   @keyframes dap-f {
-    0%, 100% { opacity: 0.08; transform: translate(0, 0) scale(1); }
-    30% { opacity: 0.5; transform: translate(50px, 30px) scale(1.15); }
-    60% { opacity: 0.15; transform: translate(90px, -10px) scale(0.9); }
-    80% { opacity: 0.45; transform: translate(30px, 50px) scale(1.1); }
+    0%, 100% { opacity: 0.1; transform: translate(0, 0) scale(1); }
+    30% { opacity: 0.65; transform: translate(55px, 35px) scale(1.2); }
+    60% { opacity: 0.2; transform: translate(100px, -12px) scale(0.85); }
+    80% { opacity: 0.6; transform: translate(35px, 55px) scale(1.15); }
   }
 
   /* Fireflies */
@@ -629,12 +630,55 @@
 </footer>
 
 <script>
+// Reveal observer for sections below the hero
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Scroll-driven hero: zoom into dappling, text fades, hero brightens
+const hero = document.querySelector('.hero');
+const heroContent = document.querySelector('.hero-content');
+const heroDapples = document.querySelectorAll('.hero-dapple');
+const heroFireflies = document.querySelectorAll('.firefly');
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      const heroH = hero.offsetHeight;
+      const progress = Math.min(scrollY / (heroH * 0.7), 1); // 0 at top, 1 at 70% scroll
+
+      // Text fades out and scales up slightly (zooming past)
+      heroContent.style.opacity = 1 - progress * 1.5; // fades fully by ~67% scroll
+      heroContent.style.transform = `scale(${1 + progress * 0.4}) translateY(${-progress * 30}px)`;
+
+      // Dapples scale up (zoom into them) and brighten
+      heroDapples.forEach(d => {
+        const baseScale = 1 + progress * 0.6;
+        d.style.filter = `blur(${35 - progress * 15}px)`; // sharper as you zoom in
+        d.style.setProperty('--scroll-scale', baseScale);
+      });
+
+      // Hero background brightens — overlay fading from dark to lighter
+      hero.style.background = `linear-gradient(180deg,
+        rgba(14,26,10,${1 - progress * 0.7}) 0%,
+        rgba(14,26,10,${1 - progress * 0.85}) 50%,
+        rgba(14,26,10,${1 - progress * 0.95}) 100%)`;
+
+      // Fireflies fade with the text
+      heroFireflies.forEach(f => {
+        f.style.opacity = 1 - progress * 2; // fade faster than text
+      });
+
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
 </script>
 </body>
 </html>
