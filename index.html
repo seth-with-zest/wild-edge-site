@@ -206,9 +206,22 @@
      ═══════════════════════════════════════ */
 
   .services-transition {
-    height: 15vh;
-    background: linear-gradient(180deg, #141E0E, var(--clearing));
+    height: 30vh;
+    background: linear-gradient(180deg, #141E0E 0%, #1E2818 20%, #2A3820 35%, #4A5838 50%, #7A8860 62%, #A8B088 72%, #C8C8B0 82%, #DCD8C8 90%, var(--clearing) 100%);
+    position: relative;
+    overflow: hidden;
   }
+
+  /* Dappled light in the transition */
+  .trans-dapple {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .td-1 { width: 200px; height: 250px; background: rgba(212,168,64,0.20); top: 20%; left: 20%; animation: hd-live 14s ease-in-out infinite; }
+  .td-2 { width: 160px; height: 220px; background: rgba(138,160,72,0.16); top: 40%; left: 60%; animation: hd-live2 17s ease-in-out infinite; animation-delay: -5s; }
+  .td-3 { width: 220px; height: 180px; background: rgba(212,180,104,0.14); top: 55%; left: 38%; animation: hd-live 20s ease-in-out infinite; animation-delay: -9s; }
 
   .services {
     padding: 4rem 2rem 5rem;
@@ -226,16 +239,6 @@
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 400;
     color: var(--deep-canopy);
-    margin-bottom: 0.5rem;
-  }
-
-  .services-header p {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: #5A5840;
-    max-width: 500px;
-    margin: 0 auto;
   }
 
   .services-grid {
@@ -265,8 +268,7 @@
   .service-card:nth-child(2)::before { background: var(--leaf-gold); }
   .service-card:nth-child(3)::before { background: var(--coral); }
   .service-card:nth-child(4)::before { background: var(--moss); }
-  .service-card:nth-child(5)::before { background: var(--dusk-rose); }
-  .service-card:nth-child(6)::before { background: var(--honey); }
+  .service-card:nth-child(5)::before { background: var(--honey); }
 
   .service-card h3 {
     font-family: 'Newsreader', serif;
@@ -300,8 +302,8 @@
      ═══════════════════════════════════════ */
 
   .club-section {
-    padding: 4rem 2rem;
-    background: var(--sage-cream);
+    padding: 4rem 2rem 5rem;
+    background: var(--clearing);
     text-align: center;
     color: var(--deep-canopy);
   }
@@ -394,7 +396,7 @@
 
   .footer-transition {
     height: 12vh;
-    background: linear-gradient(180deg, var(--sage-cream), var(--deep-canopy));
+    background: linear-gradient(180deg, var(--clearing), var(--deep-canopy));
   }
 
   footer {
@@ -485,13 +487,28 @@
   </p>
 </section>
 
-<!-- SERVICES -->
-<div class="services-transition"></div>
+<!-- TRANSITION -->
+<div class="services-transition">
+  <div class="trans-dapple td-1"></div>
+  <div class="trans-dapple td-2"></div>
+  <div class="trans-dapple td-3"></div>
+</div>
 
+<!-- AI CLUB — featured, above services -->
+<section class="club-section reveal">
+  <div class="club-card">
+    <h3>AI Club</h3>
+    <p class="club-schedule">Every Wednesday at Noon ET</p>
+    <p>A weekly gathering for people who want to explore AI with curiosity instead of urgency. Not a tutorial. Not a masterclass. A space where people who take AI seriously can think together, share what they're discovering, and leave feeling less alone in their questions.</p>
+    <div class="club-price">$9.99 <span>/ month</span></div>
+    <a href="https://buy.stripe.com/14AfZhdRK9Uc6J1dsL5ZC00" class="club-cta">Join AI Club</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
 <section class="services reveal">
   <div class="services-header">
     <h2>Services</h2>
-    <p>Different entry points, one practice. People arrive wanting architecture and discover articulation underneath.</p>
   </div>
 
   <div class="services-grid">
@@ -503,8 +520,8 @@
 
     <div class="service-card">
       <h3>Individual AI Coaching</h3>
-      <p>Set up your own thinking infrastructure. Your AI setup is a reflection of your cognitive architecture — you can't organize the system without examining yourself. First session free.</p>
-      <span class="service-tag">1-on-1 &middot; $200/hr</span>
+      <p>Set up your own Claude Code environment — a personal thinking system that knows how you work, what you're working on, and how to think alongside you. Your setup becomes a reflection of your mind. First session free.</p>
+      <span class="service-tag">1-on-1</span>
     </div>
 
     <div class="service-card">
@@ -514,33 +531,16 @@
     </div>
 
     <div class="service-card">
-      <h3>Cognitive Architecture</h3>
-      <p>For teams and organizations. We help you build an AI system to think like you at your best. Map what your team knows, discover the gaps, architect the system, build it.</p>
-      <span class="service-tag">Via Cognitive Architects</span>
+      <h3>Cognitive Architecture for Teams</h3>
+      <p>Your team has expertise it can't fully articulate. We map what your people know at their best, identify where that knowledge lives and where it's missing, then build an AI system that holds it, extends it, and thinks alongside your team.</p>
+      <span class="service-tag">Teams &amp; Organizations</span>
     </div>
 
     <div class="service-card">
-      <h3>Purpose Project Cohorts</h3>
-      <p>Five-week cohorts using AI to operationalize your sense of purpose. Not a course — a space where you discover what matters to you in the presence of others doing the same.</p>
-      <span class="service-tag">Cohort &middot; Monthly</span>
-    </div>
-
-    <div class="service-card">
-      <h3>Facilitated AI Conversations</h3>
-      <p>Bring me into a group that already exists. I catalyze conversations where people discover things together they wouldn't discover alone. Permission, not a push.</p>
+      <h3>Hosted AI Learning Groups</h3>
+      <p>Bring me into a group that already exists — a friend group, a team, a professional circle. I create the space where people discover things together they wouldn't discover alone. Permission, not a push.</p>
       <span class="service-tag">Groups &amp; Teams</span>
     </div>
-  </div>
-</section>
-
-<!-- AI CLUB -->
-<section class="club-section reveal">
-  <div class="club-card">
-    <h3>AI Club</h3>
-    <p class="club-schedule">Every Wednesday at Noon ET</p>
-    <p>A weekly gathering for people who want to explore AI with curiosity instead of urgency. Not a tutorial. Not a masterclass. A space where people who take AI seriously can think together, share what they're discovering, and leave feeling less alone in their questions.</p>
-    <div class="club-price">$9.99 <span>/ month</span></div>
-    <a href="#" class="club-cta">Join AI Club</a>
   </div>
 </section>
 
