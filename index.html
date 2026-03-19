@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wild Edge — Seth Wylie Services LLC</title>
+<meta name="description" content="AI advisory, executive coaching, and community practice. Helping people discover what they know — and build systems that know it with them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-canopy: #0E1A0A;
+    --canopy: #1A2E14;
+    --understory: #2A4020;
+    --moss: #3D6A2E;
+    --leaf-gold: #8AA048;
+    --golden-glow: #D4A840;
+    --honey: #D4B468;
+    --amber: #A88430;
+    --coral: #C0705A;
+    --dusk-rose: #A86868;
+    --breath: #E8E0CC;
+    --mist: #C8C0A8;
+    --clearing: #F0ECE0;
+    --sage-cream: #E4E2D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    background: var(--deep-canopy);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--breath);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grain */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    width: 200%; height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+    animation: grain 0.5s steps(1) infinite;
+  }
+  @keyframes grain {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(-2%,-3%); }
+    50% { transform: translate(3%,1%); }
+    75% { transform: translate(-1%,3%); }
+    100% { transform: translate(0,0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  a { color: var(--golden-glow); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ═══════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════ */
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--deep-canopy);
+    text-align: center;
+    padding: 2rem;
+  }
+
+  /* Dappled light */
+  .hero-dapple {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    pointer-events: none;
+    opacity: 0;
+  }
+  .hd-1 { width: 300px; height: 400px; background: rgba(212,168,64,0.18); top: 15%; left: 18%; animation: hd-in 4s ease-out 0.3s forwards, hd-live 16s ease-in-out 4.3s infinite; }
+  .hd-2 { width: 250px; height: 350px; background: rgba(138,160,72,0.14); top: 40%; left: 65%; animation: hd-in 4.5s ease-out 0.8s forwards, hd-live2 18s ease-in-out 5.3s infinite; }
+  .hd-3 { width: 350px; height: 280px; background: rgba(212,180,104,0.10); top: 60%; left: 35%; animation: hd-in 5s ease-out 1.2s forwards, hd-live 20s ease-in-out 6.2s infinite; }
+  .hd-4 { width: 200px; height: 300px; background: rgba(192,112,90,0.07); top: 25%; left: 78%; animation: hd-in 5.5s ease-out 1.8s forwards, hd-live2 14s ease-in-out 7.3s infinite; }
+
+  @keyframes hd-in {
+    0% { opacity: 0; transform: scale(0.6); }
+    100% { opacity: 0.7; transform: scale(1); }
+  }
+  @keyframes hd-live {
+    0%, 100% { transform: translate(0,0) scale(1); opacity: 0.5; }
+    30% { transform: translate(20px,-12px) scale(1.1); opacity: 0.8; }
+    60% { transform: translate(-10px,8px) scale(0.95); opacity: 0.4; }
+  }
+  @keyframes hd-live2 {
+    0%, 100% { transform: translate(0,0) scale(1); opacity: 0.4; }
+    35% { transform: translate(-18px,10px) scale(1.12); opacity: 0.7; }
+    65% { transform: translate(8px,-6px) scale(0.92); opacity: 0.3; }
+  }
+
+  /* Fireflies */
+  .firefly { position: absolute; border-radius: 50%; z-index: 2; }
+  .ff1 { width: 3px; height: 3px; top: 30%; left: 20%; background: var(--golden-glow); box-shadow: 0 0 8px 3px rgba(212,168,64,0.5), 0 0 18px 6px rgba(212,168,64,0.15); animation: ff 5s ease-in-out 2s infinite; }
+  .ff2 { width: 4px; height: 4px; top: 55%; left: 75%; background: var(--honey); box-shadow: 0 0 10px 4px rgba(212,180,104,0.5), 0 0 22px 8px rgba(212,180,104,0.15); animation: ff 6s ease-in-out 4s infinite; }
+  .ff3 { width: 3px; height: 3px; top: 70%; left: 45%; background: var(--leaf-gold); box-shadow: 0 0 8px 3px rgba(138,160,72,0.45), 0 0 18px 6px rgba(138,160,72,0.12); animation: ff 5.5s ease-in-out 6s infinite; }
+  .ff4 { width: 3px; height: 3px; top: 40%; left: 55%; background: var(--coral); box-shadow: 0 0 8px 3px rgba(192,112,90,0.4), 0 0 18px 6px rgba(192,112,90,0.1); animation: ff 7s ease-in-out 3s infinite; }
+
+  @keyframes ff {
+    0%, 100% { opacity: 0; transform: scale(0.3) translateY(0); }
+    12% { opacity: 0.8; transform: scale(1.1) translateY(-5px); }
+    25% { opacity: 1; transform: scale(1.2) translateY(-8px); }
+    40% { opacity: 0.5; transform: scale(0.9) translateY(-4px); }
+    55% { opacity: 0.9; transform: scale(1.1) translateY(-10px); }
+    70% { opacity: 0; transform: scale(0.3) translateY(-14px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 4;
+  }
+
+  .hero-title {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--breath);
+    opacity: 0;
+    animation: emerge 2.5s ease-out 1.5s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-top: 1rem;
+    opacity: 0;
+    animation: emerge 2s ease-out 2.5s forwards;
+  }
+
+  .hero-llc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--mist);
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: emerge 2s ease-out 3s forwards;
+  }
+
+  @keyframes emerge {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: none; }
+  }
+
+  /* ═══════════════════════════════════════
+     ABOUT
+     ═══════════════════════════════════════ */
+
+  .about {
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg, var(--deep-canopy), #141E0E);
+    text-align: center;
+  }
+
+  .about-text {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--breath);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .about-text .ember {
+    color: var(--golden-glow);
+    text-shadow: 0 0 18px rgba(212,168,64,0.25);
+    font-weight: 400;
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICES
+     ═══════════════════════════════════════ */
+
+  .services-transition {
+    height: 15vh;
+    background: linear-gradient(180deg, #141E0E, var(--clearing));
+  }
+
+  .services {
+    padding: 4rem 2rem 5rem;
+    background: var(--clearing);
+    color: var(--deep-canopy);
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .services-header h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--deep-canopy);
+    margin-bottom: 0.5rem;
+  }
+
+  .services-header p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #5A5840;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: #FAFAF4;
+    border-radius: 6px;
+    padding: 2.2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    opacity: 0.5;
+  }
+  .service-card:nth-child(1)::before { background: var(--golden-glow); }
+  .service-card:nth-child(2)::before { background: var(--leaf-gold); }
+  .service-card:nth-child(3)::before { background: var(--coral); }
+  .service-card:nth-child(4)::before { background: var(--moss); }
+  .service-card:nth-child(5)::before { background: var(--dusk-rose); }
+  .service-card:nth-child(6)::before { background: var(--honey); }
+
+  .service-card h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--deep-canopy);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: #3A3828;
+  }
+
+  .service-tag {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-top: 1rem;
+  }
+
+  /* ═══════════════════════════════════════
+     AI CLUB — featured
+     ═══════════════════════════════════════ */
+
+  .club-section {
+    padding: 4rem 2rem;
+    background: var(--sage-cream);
+    text-align: center;
+    color: var(--deep-canopy);
+  }
+
+  .club-card {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #FAFAF4;
+    border-radius: 8px;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(14,26,10,0.06);
+  }
+
+  .club-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--golden-glow), var(--leaf-gold), var(--coral));
+    opacity: 0.6;
+  }
+
+  .club-card h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--deep-canopy);
+    margin-bottom: 0.5rem;
+  }
+
+  .club-schedule {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--moss);
+    letter-spacing: 0.03em;
+    margin-bottom: 1.2rem;
+  }
+
+  .club-card p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #3A3828;
+    margin-bottom: 1.5rem;
+  }
+
+  .club-price {
+    font-family: 'Newsreader', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--deep-canopy);
+    margin-bottom: 0.3rem;
+  }
+
+  .club-price span {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #5A5840;
+  }
+
+  .club-cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 2.5rem;
+    background: var(--deep-canopy);
+    color: var(--breath);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .club-cta:hover {
+    background: var(--canopy);
+    text-decoration: none;
+  }
+
+  /* ═══════════════════════════════════════
+     CONTACT / FOOTER
+     ═══════════════════════════════════════ */
+
+  .footer-transition {
+    height: 12vh;
+    background: linear-gradient(180deg, var(--sage-cream), var(--deep-canopy));
+  }
+
+  footer {
+    padding: 4rem 2rem 3rem;
+    background: var(--deep-canopy);
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Newsreader', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--breath);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-llc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--mist);
+    letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+  }
+
+  .footer-contact {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--mist);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links {
+    margin-top: 2rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--mist);
+    opacity: 0.5;
+  }
+
+  .footer-links a {
+    color: var(--mist);
+    margin: 0 0.8rem;
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero { padding: 2rem 1.5rem; }
+    .service-card { padding: 1.8rem 1.5rem; }
+    .club-card { padding: 2.5rem 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dapple hd-1"></div>
+  <div class="hero-dapple hd-2"></div>
+  <div class="hero-dapple hd-3"></div>
+  <div class="hero-dapple hd-4"></div>
+  <div class="firefly ff1"></div>
+  <div class="firefly ff2"></div>
+  <div class="firefly ff3"></div>
+  <div class="firefly ff4"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">The Wild Edge</h1>
+    <p class="hero-subtitle">Where what you know meets what you don't</p>
+    <p class="hero-llc">Seth Wylie Services LLC</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal">
+  <p class="about-text">
+    I help people <span class="ember">discover what they know</span> — and build systems that know it with them.<br><br>
+    AI advisory. Executive coaching. Community practice.<br>
+    The work is always the same: helping you <span class="ember">externalize the best version of your thinking</span> into a system that can think with you.
+  </p>
+</section>
+
+<!-- SERVICES -->
+<div class="services-transition"></div>
+
+<section class="services reveal">
+  <div class="services-header">
+    <h2>Services</h2>
+    <p>Different entry points, one practice. People arrive wanting architecture and discover articulation underneath.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Executive AI Coaching</h3>
+      <p>Build the system that helps you make decisions. Not traditional executive coaching with AI bolted on — the hybrid that doesn't exist yet. Strategy, blind spots, how you feel about things, and how to build your thinking infrastructure.</p>
+      <span class="service-tag">1-on-1</span>
+    </div>
+
+    <div class="service-card">
+      <h3>Individual AI Coaching</h3>
+      <p>Set up your own thinking infrastructure. Your AI setup is a reflection of your cognitive architecture — you can't organize the system without examining yourself. First session free.</p>
+      <span class="service-tag">1-on-1 &middot; $200/hr</span>
+    </div>
+
+    <div class="service-card">
+      <h3>AI Product Advisory</h3>
+      <p>For founders who know they want to build an AI product but don't know AI. Starts as product strategy. Becomes a conversation about what kind of thinking you want to encode — and whose.</p>
+      <span class="service-tag">Retainer</span>
+    </div>
+
+    <div class="service-card">
+      <h3>Cognitive Architecture</h3>
+      <p>For teams and organizations. We help you build an AI system to think like you at your best. Map what your team knows, discover the gaps, architect the system, build it.</p>
+      <span class="service-tag">Via Cognitive Architects</span>
+    </div>
+
+    <div class="service-card">
+      <h3>Purpose Project Cohorts</h3>
+      <p>Five-week cohorts using AI to operationalize your sense of purpose. Not a course — a space where you discover what matters to you in the presence of others doing the same.</p>
+      <span class="service-tag">Cohort &middot; Monthly</span>
+    </div>
+
+    <div class="service-card">
+      <h3>Facilitated AI Conversations</h3>
+      <p>Bring me into a group that already exists. I catalyze conversations where people discover things together they wouldn't discover alone. Permission, not a push.</p>
+      <span class="service-tag">Groups &amp; Teams</span>
+    </div>
+  </div>
+</section>
+
+<!-- AI CLUB -->
+<section class="club-section reveal">
+  <div class="club-card">
+    <h3>AI Club</h3>
+    <p class="club-schedule">Every Wednesday at Noon ET</p>
+    <p>A weekly gathering for people who want to explore AI with curiosity instead of urgency. Not a tutorial. Not a masterclass. A space where people who take AI seriously can think together, share what they're discovering, and leave feeling less alone in their questions.</p>
+    <div class="club-price">$9.99 <span>/ month</span></div>
+    <a href="#" class="club-cta">Join AI Club</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-transition"></div>
+
+<footer>
+  <p class="footer-brand">The Wild Edge</p>
+  <p class="footer-llc">Seth Wylie Services LLC</p>
+  <p class="footer-contact"><a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a></p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/sethwylie/">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
