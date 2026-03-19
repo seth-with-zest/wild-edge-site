@@ -451,12 +451,23 @@ const canvas = document.getElementById('dappleCanvas');
 const ctx = canvas.getContext('2d');
 
 function resize() {
-  canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-  canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  const hero = document.querySelector('.hero');
+  const w = hero.clientWidth;
+  const h = hero.clientHeight;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.width = w * window.devicePixelRatio;
+  canvas.height = h * window.devicePixelRatio;
+  ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+  // Reposition patches for new size
+  for (const p of patches) {
+    p.homeX = p.normX * w;
+    p.homeY = p.normY * h;
+  }
 }
-resize();
-window.addEventListener('resize', resize);
+
+// Defer initial resize until patches exist
+let resizeQueued = true;
 
 // Color palette for patches — golden hour through canopy
 const colors = [
@@ -474,9 +485,11 @@ const patches = [];
 for (let i = 0; i < PATCH_COUNT; i++) {
   const color = colors[Math.floor(Math.random() * colors.length)];
   patches.push({
-    // Home position (where the patch lives when there's no wind)
-    homeX: Math.random() * canvas.offsetWidth,
-    homeY: Math.random() * canvas.offsetHeight,
+    // Normalized home position (0-1, mapped to actual size on resize)
+    normX: Math.random(),
+    normY: Math.random(),
+    homeX: 0,
+    homeY: 0,
     // Size — mix of small and medium (gap sizes vary)
     radius: 30 + Math.random() * 80,
     // Per-patch sway variation
@@ -504,10 +517,15 @@ let windStrength = 1;
 let windTarget = 1;
 let windChangeTimer = 0;
 
+// Now that patches exist, do initial resize
+resize();
+window.addEventListener('resize', resize);
+
 function animate(time) {
   const t = time * 0.001; // seconds
-  const w = canvas.offsetWidth;
-  const h = canvas.offsetHeight;
+  const hero = document.querySelector('.hero');
+  const w = hero.clientWidth;
+  const h = hero.clientHeight;
 
   ctx.clearRect(0, 0, w, h);
 
