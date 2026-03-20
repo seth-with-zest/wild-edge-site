@@ -102,6 +102,23 @@
     z-index: 1;
   }
 
+  /* Dark veil over the top of the hero — foreboding canopy overhead,
+     dappled light emerges below */
+  .hero-veil {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background: linear-gradient(
+      180deg,
+      rgba(6, 10, 4, 0.85) 0%,
+      rgba(10, 16, 6, 0.6) 18%,
+      rgba(14, 26, 10, 0.3) 35%,
+      rgba(14, 26, 10, 0.08) 55%,
+      transparent 70%
+    );
+  }
+
   /* Fireflies */
   .firefly { position: absolute; border-radius: 50%; z-index: 2; }
   .ff1 { width: 3px; height: 3px; top: 45%; left: 20%; background: var(--golden-glow); box-shadow: 0 0 8px 3px rgba(212,168,64,0.5), 0 0 18px 6px rgba(212,168,64,0.15); animation: ff1-fly 8s ease-in-out 2s infinite; }
@@ -199,6 +216,7 @@
 
   .about {
     padding: 6rem 2rem;
+    margin-top: -1px;
     background: linear-gradient(180deg, var(--deep-canopy), #141E0E);
     text-align: center;
   }
@@ -225,6 +243,7 @@
 
   .services-transition {
     height: 30vh;
+    margin-top: -1px;
     background: linear-gradient(180deg, #141E0E 0%, #1E2818 20%, #2A3820 35%, #4A5838 50%, #7A8860 62%, #A8B088 72%, #C8C8B0 82%, #DCD8C8 90%, var(--clearing) 100%);
   }
 
@@ -234,6 +253,7 @@
 
   .club-section {
     padding: 4rem 2rem 5rem;
+    margin-top: -1px;
     background: var(--clearing);
     text-align: center;
     color: var(--deep-canopy);
@@ -284,6 +304,7 @@
 
   .services {
     padding: 4rem 2rem 5rem;
+    margin-top: -1px;
     background: var(--clearing);
     color: var(--deep-canopy);
   }
@@ -326,9 +347,9 @@
      FOOTER
      ═══════════════════════════════════════ */
 
-  .footer-transition { height: 12vh; background: linear-gradient(180deg, var(--clearing), var(--deep-canopy)); }
+  .footer-transition { height: 12vh; margin-top: -1px; background: linear-gradient(180deg, var(--clearing), var(--deep-canopy)); }
 
-  footer { padding: 4rem 2rem 3rem; background: var(--deep-canopy); text-align: center; }
+  footer { padding: 4rem 2rem 3rem; margin-top: -1px; background: var(--deep-canopy); text-align: center; }
   .footer-brand { font-family: 'Newsreader', serif; font-size: 1.3rem; font-weight: 400; color: var(--breath); letter-spacing: 0.06em; margin-bottom: 0.8rem; }
   .footer-llc { font-family: 'Source Sans 3', sans-serif; font-size: 0.8rem; font-weight: 300; color: var(--mist); letter-spacing: 0.06em; margin-bottom: 2rem; }
   .footer-contact { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--mist); margin-bottom: 0.5rem; }
@@ -349,21 +370,21 @@
 <div class="hero-wrapper">
 <section class="hero">
   <canvas class="dapple-canvas" id="dappleCanvas"></canvas>
+  <div class="hero-veil"></div>
   <div class="firefly ff1"></div>
   <div class="firefly ff2"></div>
   <div class="firefly ff3"></div>
   <div class="firefly ff4"></div>
   <div class="hero-content">
     <h1 class="hero-title">The Wild Edge</h1>
-    <p class="hero-subtitle">AI that thinks like you at your best</p>
-    <p class="hero-llc">Seth Wylie Services LLC</p>
+    <p class="hero-subtitle">Crafting AI that thinks like you at your best</p>
   </div>
 </section>
 </div>
 
 <!-- ABOUT -->
-<section class="about reveal">
-  <p class="about-text">
+<section class="about">
+  <p class="about-text reveal">
     I help people <span class="ember">discover what they know</span> — and build AI systems that know it with them.<br><br>
     AI advisory. AI coaching. Community practice.<br>
     The work is always the same: helping you externalize the best version of your thinking into <span class="ember">an AI that can think with you.</span>
@@ -374,23 +395,22 @@
 <div class="services-transition"></div>
 
 <!-- AI CLUB -->
-<section class="club-section reveal">
-  <div class="club-card">
+<section class="club-section">
+  <div class="club-card reveal">
     <h3>AI Club</h3>
-    <p class="club-schedule">Every Wednesday at Noon ET</p>
-    <p>A weekly gathering for people who want to explore AI with curiosity instead of urgency. Not a tutorial. Not a masterclass. A space where people who take AI seriously can think together, share what they're discovering, and leave feeling less alone in their questions.</p>
-    <p style="font-weight: 400; color: var(--moss); font-size: 0.9rem;">Two weeks free to see if it's for you.</p>
-    <div class="club-price">$9.99 <span>/ month</span></div>
-    <a href="https://buy.stripe.com/14AfZhdRK9Uc6J1dsL5ZC00" class="club-cta">Join AI Club</a>
+    <p class="club-schedule">1st &amp; 3rd Wednesdays at Noon Eastern</p>
+    <p>A twice-monthly gathering for people who want to explore AI with curiosity instead of urgency. Not a tutorial. Not a masterclass. A space where people who take AI seriously can think together, share what they're discovering, and leave feeling less alone in their questions.</p>
+    <div class="club-price">$14 <span>/ month</span></div>
+    <a href="https://buy.stripe.com/eVq00j7tm2rK4AT9cv5ZC01" class="club-cta">Join AI Club</a>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="services reveal">
-  <div class="services-header">
+<section class="services">
+  <div class="services-header reveal">
     <h2>Services</h2>
   </div>
-  <div class="services-grid">
+  <div class="services-grid reveal">
     <div class="service-card">
       <h3>Executive AI Coaching</h3>
       <p>Build the system that helps you make decisions. Not traditional executive coaching with AI bolted on — the hybrid that doesn't exist yet. Strategy, blind spots, how you feel about things, and how to build your thinking infrastructure.</p>
