@@ -76,7 +76,7 @@
      ═══════════════════════════════════════ */
 
   .hero-wrapper {
-    height: 250vh;
+    height: 300vh;
     position: relative;
   }
 
@@ -168,8 +168,49 @@
   }
 
   .hero-content {
-    position: relative;
+    position: absolute;
+    inset: 0;
     z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .hero-hook {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    opacity: 0;
+  }
+
+  .hero-hook p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.7vw, 1.2rem);
+    color: var(--breath);
+    letter-spacing: 0.02em;
+  }
+
+  .hero-hook .hook-normals {
+    margin: 1.5rem 0;
+  }
+
+  .hero-hook .hook-normals p {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .hero-hook .ember {
+    color: var(--golden-glow);
+    text-shadow: 0 0 18px rgba(212,168,64,0.25);
   }
 
   .hero-title {
@@ -223,18 +264,39 @@
 
   .about-text {
     font-family: 'Newsreader', serif;
-    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    font-size: clamp(1rem, 1.7vw, 1.2rem);
     font-weight: 300;
     line-height: 1.9;
     color: var(--breath);
-    max-width: 600px;
+    max-width: 540px;
     margin: 0 auto;
+  }
+
+  .about-text p {
+    margin-bottom: 1.2rem;
   }
 
   .about-text .ember {
     color: var(--golden-glow);
     text-shadow: 0 0 18px rgba(212,168,64,0.25);
-    font-weight: 400;
+  }
+
+  .hook-top {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .hook-normals {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin: 2rem 0;
+  }
+
+  .hook-normals p {
+    margin-bottom: 0;
+    line-height: 1.4;
   }
 
   /* ═══════════════════════════════════════
@@ -251,8 +313,35 @@
      SERVICES + CLUB
      ═══════════════════════════════════════ */
 
+  .offerings-intro {
+    padding: 5rem 2rem 3rem;
+    margin-top: -1px;
+    background: var(--clearing);
+    text-align: center;
+    color: var(--deep-canopy);
+  }
+
+  .offerings-intro-text {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.9;
+    max-width: 560px;
+    margin: 0 auto;
+    color: var(--deep-canopy);
+  }
+
+  .offerings-intro-text p {
+    margin-bottom: 1.2rem;
+  }
+
+  .ember-dark {
+    color: var(--amber);
+    font-weight: 400;
+  }
+
   .club-section {
-    padding: 4rem 2rem 5rem;
+    padding: 2rem 2rem 5rem;
     margin-top: -1px;
     background: var(--clearing);
     text-align: center;
@@ -377,18 +466,33 @@
   <div class="firefly ff4"></div>
   <div class="hero-content">
     <h1 class="hero-title">The Wild Edge</h1>
-    <p class="hero-subtitle">AI that makes you wonder what you've been holding back</p>
+    <p class="hero-subtitle">Making sense of what AI makes possible, together</p>
+  </div>
+  <div class="hero-hook">
+    <p>The AI prompt box is blank.</p>
+    <div class="hook-normals">
+      <p>Overwhelm is normal.</p>
+      <p>FOMO is normal.</p>
+      <p>Uncertainty is normal.</p>
+      <p>Amazement is normal.</p>
+      <p>Fascination is normal.</p>
+      <p>Empowerment is normal.</p>
+      <p>Not knowing where to start is normal.</p>
+    </div>
+    <p><span class="ember">This is how a frontier feels.</span></p>
   </div>
 </section>
 </div>
 
-<!-- ABOUT -->
+<!-- HOOK -->
 <section class="about">
-  <p class="about-text reveal">
-    I help people <span class="ember">discover what they know</span> — and build AI systems that know it with them.<br><br>
-    AI advisory. AI coaching. Community practice.<br>
-    The work is always the same: helping you externalize the best version of your thinking into <span class="ember">an AI that can think with you.</span>
-  </p>
+  <div class="about-text reveal">
+    <p>AI is shaking everything loose. It gives us the chance to reimagine and rebuild who we get to be, and how life and work get to feel. <em>hallelujah</em></p>
+    <p>We get to do it according to our <em>most human</em> cares, if only we can put words to them. And with AI's help, we're more able than ever to do it, if only we can figure out how to put AI to use.</p>
+    <p>But those two wild edges — yourself, and AI — are impossibly hard to reckon with alone.</p>
+    <p>Come be safe with eager, fascinated, collaborative fellow travelers at that frontier. Let's play there, and see what we find.</p>
+    <p>Then, when AI changes again a week later, let's do it again.</p>
+  </div>
 </section>
 
 <!-- TRANSITION -->
@@ -596,6 +700,7 @@ requestAnimationFrame(animate);
 const heroWrapper = document.querySelector('.hero-wrapper');
 const hero = document.querySelector('.hero');
 const heroContent = document.querySelector('.hero-content');
+const heroHook = document.querySelector('.hero-hook');
 const heroFireflies = document.querySelectorAll('.firefly');
 
 let ticking = false;
@@ -609,23 +714,35 @@ window.addEventListener('scroll', () => {
       const scrollInWrapper = Math.max(0, window.scrollY - wrapperTop);
       const progress = Math.min(scrollInWrapper / runway, 1);
 
-      // Text fades and scales (zooming past)
-      const textFade = Math.max(0, 1 - progress * 2.5);
-      heroContent.style.opacity = textFade;
-      heroContent.style.transform = `scale(${1 + progress * 0.8})`;
+      // Phase 1: Title holds (0–0.12), fades out (0.12–0.28)
+      const titleOpacity = progress < 0.12 ? 1
+        : progress > 0.28 ? 0
+        : 1 - (progress - 0.12) / 0.16;
+      heroContent.style.opacity = titleOpacity;
+      heroContent.style.transform = `scale(${1 + progress * 0.3})`;
 
-      // Fireflies fade fast
-      heroFireflies.forEach(f => {
-        f.style.opacity = Math.max(0, 1 - progress * 3.5);
-      });
+      // Phase 2: Hook fades in (0.22–0.38), holds (0.38–0.55), fades out (0.55–0.68)
+      const hookIn = progress < 0.22 ? 0
+        : progress > 0.38 ? 1
+        : (progress - 0.22) / 0.16;
+      const hookOut = progress < 0.55 ? 1
+        : progress > 0.68 ? 0
+        : 1 - (progress - 0.55) / 0.13;
+      heroHook.style.opacity = Math.min(hookIn, hookOut);
 
-      // Canvas brightens and zooms — scale the canvas up
-      const canvasScale = 1 + progress * 0.8;
+      // Fireflies: visible through hook phase, fade during jack
+      const fireflyOpacity = progress < 0.55 ? 1
+        : progress > 0.72 ? 0
+        : 1 - (progress - 0.55) / 0.17;
+      heroFireflies.forEach(f => { f.style.opacity = fireflyOpacity; });
+
+      // Phase 3: Scroll-jack (0.65–1.0)
+      const jackProgress = progress < 0.65 ? 0 : (progress - 0.65) / 0.35;
+      const canvasScale = 1 + jackProgress * 0.8;
       canvas.style.transform = `scale(${canvasScale})`;
-      canvas.style.filter = `brightness(${1 + progress * 1.5})`;
+      canvas.style.filter = `brightness(${1 + jackProgress * 1.5})`;
 
-      // Background lightens
-      const brightenProgress = Math.max(0, Math.min((progress - 0.5) / 0.5, 1));
+      const brightenProgress = Math.max(0, (jackProgress - 0.4) / 0.6);
       const darkness = 1 - brightenProgress * 0.85;
       hero.style.boxShadow = `inset 0 0 0 100vmax rgba(14,26,10,${darkness})`;
 
