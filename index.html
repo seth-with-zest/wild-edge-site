@@ -340,6 +340,142 @@
     font-weight: 400;
   }
 
+  /* ═══════════════════════════════════════
+     OFFERINGS GRID
+     ═══════════════════════════════════════ */
+
+  .offerings {
+    padding: 5rem 2rem;
+    margin-top: -1px;
+    background: var(--clearing);
+    color: var(--deep-canopy);
+  }
+
+  .offerings-category {
+    max-width: 880px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .offerings-category:last-child {
+    margin-bottom: 0;
+  }
+
+  .category-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .category-header h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 400;
+    color: var(--deep-canopy);
+    letter-spacing: 0.02em;
+  }
+
+  .category-meta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--moss);
+    letter-spacing: 0.05em;
+    margin-top: 0.3rem;
+  }
+
+  .offerings-pair {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .offering-card {
+    background: #FAFAF4;
+    border-radius: 8px;
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(14,26,10,0.04);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .offering-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(14,26,10,0.07);
+  }
+
+  .offering-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    opacity: 0.5;
+  }
+
+  .offerings-category:first-child .offering-card:first-child::before { background: var(--golden-glow); }
+  .offerings-category:first-child .offering-card:last-child::before { background: var(--coral); }
+  .offerings-category:last-child .offering-card:first-child::before { background: var(--leaf-gold); }
+  .offerings-category:last-child .offering-card:last-child::before { background: var(--moss); }
+
+  .offering-card h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--deep-canopy);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .offering-line {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--deep-canopy);
+    margin-bottom: 1rem;
+  }
+
+  .offering-room {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #4A4838;
+    flex: 1;
+  }
+
+  .offering-cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.7rem 2rem;
+    background: var(--deep-canopy);
+    color: var(--breath);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .offering-cta:hover {
+    background: var(--canopy);
+    text-decoration: none;
+  }
+
+  .offerings-divider {
+    width: 60px;
+    height: 1px;
+    margin: 0 auto 3.5rem;
+    background: linear-gradient(90deg, transparent, rgba(14,26,10,0.15), transparent);
+  }
+
   .club-section {
     padding: 2rem 2rem 5rem;
     margin-top: -1px;
@@ -446,6 +582,8 @@
   .footer-links a { color: var(--mist); margin: 0 0.8rem; }
 
   @media (max-width: 600px) {
+    .offerings-pair { grid-template-columns: 1fr; }
+    .offering-card { padding: 2rem 1.5rem 1.5rem; }
     .services-grid { grid-template-columns: 1fr; }
     .hero { padding: 2rem 1.5rem; }
     .service-card { padding: 1.8rem 1.5rem; }
@@ -488,7 +626,7 @@
 <section class="about">
   <div class="about-text reveal">
     <p>AI is shaking everything loose. It gives us the chance to reimagine and rebuild who we get to be, and how life and work get to feel. <em>hallelujah</em></p>
-    <p>We get to do it according to our <em>most human</em> cares, if only we can put words to them. And with AI's help, we're more able than ever to do it, if only we can figure out how to put AI to use.</p>
+    <p>We get to do it according to our <em>most</em> human motivations and needs, if only we can put words to them. And with AI's help, we're more able than ever to do it, if only we can figure out how to put AI to use.</p>
     <p>But those two wild edges — yourself, and AI — are impossibly hard to reckon with alone.</p>
     <p>Come be safe with eager, fascinated, collaborative fellow travelers at that frontier. Let's play there, and see what we find.</p>
     <p>Then, when AI changes again a week later, let's do it again.</p>
@@ -498,14 +636,50 @@
 <!-- TRANSITION -->
 <div class="services-transition"></div>
 
-<!-- AI CLUB -->
-<section class="club-section">
-  <div class="club-card reveal">
-    <h3>AI Club</h3>
-    <p class="club-schedule">1st &amp; 3rd Wednesdays at Noon Eastern</p>
-    <p>A twice-monthly gathering for people who want to explore AI with curiosity instead of urgency. Not a tutorial. Not a masterclass. A space where people who take AI seriously can think together, share what they're discovering, and leave feeling less alone in their questions.</p>
-    <div class="club-price">$14 <span>/ month</span></div>
-    <a href="https://buy.stripe.com/eVq00j7tm2rK4AT9cv5ZC01" class="club-cta">Join AI Club</a>
+<!-- OFFERINGS -->
+<section class="offerings">
+  <div class="offerings-category reveal">
+    <div class="category-header">
+      <h2>Conversations</h2>
+      <p class="category-meta">Twice a month · $24/mo · First two free</p>
+    </div>
+    <div class="offerings-pair">
+      <div class="offering-card">
+        <h3>AI Club</h3>
+        <p class="offering-line">For people who keep reading about AI and can't figure out what to do with it.</p>
+        <p class="offering-room">Facilitated but unstructured conversation. No presentations. The place that's neither work nor home where you get to say, "Is this stupid?" and someone says, "No wait, show me."</p>
+        <a href="#" class="offering-cta">Try it free</a>
+      </div>
+      <div class="offering-card">
+        <h3>Career Reinventors</h3>
+        <p class="offering-line">For people who left a career, lost a career, or are rethinking theirs. We are people in the same chapter, figuring it out together.</p>
+        <p class="offering-room">People in the middle of figuring it out sit together. No elevator pitches. No networking. Just honest conversation about what it's actually like.</p>
+        <a href="#" class="offering-cta">Try it free</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="offerings-divider"></div>
+
+  <div class="offerings-category reveal">
+    <div class="category-header">
+      <h2>Build Sessions</h2>
+      <p class="category-meta">Weekly · $49/mo · First two free</p>
+    </div>
+    <div class="offerings-pair">
+      <div class="offering-card">
+        <h3>Teach AI How to Think Like You</h3>
+        <p class="offering-line">You use AI tools. You don't have a system that thinks like you at your best. Let's build it.</p>
+        <p class="offering-room">Everyone's building their own AI setup. Not a course — you bring your real work, get unstuck, see what others are building.</p>
+        <a href="#" class="offering-cta">Try it free</a>
+      </div>
+      <div class="offering-card">
+        <h3>Teach AI What Matters to You</h3>
+        <p class="offering-line">Your AI doesn't know you yet. That's what we fix.</p>
+        <p class="offering-room">Half the sessions you teach AI about yourself — how you think, what you care about, what you notice. Half the sessions you explore what surfaced. You leave with an AI that actually <em>gets</em> you.</p>
+        <a href="#" class="offering-cta">Try it free</a>
+      </div>
+    </div>
   </div>
 </section>
 
