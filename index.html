@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
 <style>
   :root {
     --deep-canopy: #0E1A0A;
@@ -24,6 +25,10 @@
     --mist: #C8C0A8;
     --clearing: #F0ECE0;
     --sage-cream: #E4E2D6;
+    --sunpool: #FAFAF4;
+    --ink-deep: #3A3828;
+    --ink: #4A4838;
+    --ink-soft: #5A5840;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,7 +46,7 @@
     overflow-x: hidden;
   }
 
-  /* Grain */
+  /* Grain — sits above all page content (stacking context reserved above z-index: 4) */
   body::after {
     content: '';
     position: fixed;
@@ -49,7 +54,7 @@
     width: 200%; height: 200%;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none;
-    z-index: 9999;
+    z-index: 10;
     opacity: 0.3;
     animation: grain 0.5s steps(1) infinite;
   }
@@ -71,12 +76,47 @@
   a { color: var(--golden-glow); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  /* Focus styles — visible against both dark and light backgrounds */
+  a:focus-visible,
+  button:focus-visible,
+  .offering-cta:focus-visible,
+  .club-cta:focus-visible {
+    outline: 2px solid var(--golden-glow);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Skip link — hidden until focused by keyboard */
+  .skip-link {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--deep-canopy);
+    color: var(--breath);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 20;
+  }
+  .skip-link:focus {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    text-decoration: none;
+  }
+
   /* ═══════════════════════════════════════
      HERO — scroll-jacked with canvas dappling
      ═══════════════════════════════════════ */
 
   .hero-wrapper {
-    height: 300vh;
+    height: 200vh;
     position: relative;
   }
 
@@ -200,8 +240,11 @@
 
   .hero-hook .hook-normals {
     margin: 1.5rem 0;
+    list-style: none;
+    padding: 0;
   }
 
+  .hero-hook .hook-normals li,
   .hero-hook .hook-normals p {
     font-size: clamp(0.95rem, 1.5vw, 1.1rem);
     line-height: 1.4;
@@ -389,7 +432,7 @@
   }
 
   .offering-card {
-    background: #FAFAF4;
+    background: var(--sunpool);
     border-radius: 8px;
     padding: 2.5rem 2rem 2rem;
     position: relative;
@@ -411,14 +454,14 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    opacity: 0.5;
+    height: 7px;
+    opacity: 1;
   }
 
-  .offerings-category:first-child .offering-card:first-child::before { background: var(--golden-glow); }
-  .offerings-category:first-child .offering-card:last-child::before { background: var(--coral); }
-  .offerings-category:last-child .offering-card:first-child::before { background: var(--leaf-gold); }
-  .offerings-category:last-child .offering-card:last-child::before { background: var(--moss); }
+  .offerings-category--conversations .offering-card:first-child::before { background: var(--leaf-gold); }
+  .offerings-category--conversations .offering-card:last-child::before { background: var(--moss); }
+  .offerings-category--build .offering-card:first-child::before { background: var(--golden-glow); }
+  .offerings-category--build .offering-card:last-child::before { background: var(--coral); }
 
   .offering-card h3 {
     font-family: 'Newsreader', serif;
@@ -443,13 +486,43 @@
     font-size: 0.88rem;
     font-weight: 300;
     line-height: 1.7;
-    color: #4A4838;
+    color: var(--ink);
     flex: 1;
+  }
+
+  .offering-schedule {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--moss);
+    letter-spacing: 0.02em;
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(14,26,10,0.08);
+  }
+
+  .offering-price {
+    font-family: 'Newsreader', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--deep-canopy);
+    margin-top: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .offering-price span {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    margin-top: 0.15rem;
+    letter-spacing: 0.02em;
   }
 
   .offering-cta {
     display: inline-block;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding: 0.7rem 2rem;
     background: var(--deep-canopy);
     color: var(--breath);
@@ -476,6 +549,118 @@
     background: linear-gradient(90deg, transparent, rgba(14,26,10,0.15), transparent);
   }
 
+  .offerings-calendar {
+    max-width: 880px;
+    margin: 4.5rem auto 0;
+    padding-top: 3.5rem;
+    border-top: 1px solid rgba(14,26,10,0.1);
+  }
+
+  .calendar-header {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--deep-canopy);
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .calendar-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.5rem;
+  }
+
+  .calendar-table thead th {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--moss);
+    padding: 0.4rem 0.5rem;
+    text-align: center;
+  }
+
+  .calendar-table tbody th {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    text-align: right;
+    padding-right: 0.8rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .calendar-table tbody td {
+    background-color: var(--sunpool);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 100% 7px;
+    color: var(--deep-canopy);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    line-height: 1.35;
+    padding: 1.2rem 0.6rem 0.9rem;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(14,26,10,0.03);
+  }
+
+  .calendar-table tbody td.cal-ai-camp {
+    background-image: linear-gradient(var(--leaf-gold), var(--leaf-gold));
+  }
+  .calendar-table tbody td.cal-reinventors {
+    background-image: linear-gradient(var(--moss), var(--moss));
+  }
+  .calendar-table tbody td.cal-think-like-you {
+    background-image: linear-gradient(var(--golden-glow), var(--golden-glow));
+  }
+  .calendar-table tbody td.cal-what-matters {
+    background-image: linear-gradient(var(--coral), var(--coral));
+  }
+
+  /* Calendar hover highlight — deep fade of non-matching cells */
+  .calendar-table tbody td {
+    transition: opacity 260ms ease-out;
+  }
+
+  .offerings[data-highlight] .calendar-table tbody td {
+    opacity: 0.15;
+  }
+
+  .offerings[data-highlight="ai-camp"] .calendar-table tbody td.cal-ai-camp,
+  .offerings[data-highlight="reinventors"] .calendar-table tbody td.cal-reinventors,
+  .offerings[data-highlight="think-like-you"] .calendar-table tbody td.cal-think-like-you,
+  .offerings[data-highlight="what-matters"] .calendar-table tbody td.cal-what-matters {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    .offerings[data-highlight] .calendar-table tbody td {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .calendar-table tbody td { transition: none; }
+    /* Still the flicker of the grain, firefly flight, hero emerge, and reveal transitions */
+    body::after { animation: none; }
+    .firefly { animation: none; opacity: 0; }
+    .hero-title,
+    .hero-subtitle,
+    .hero-llc { animation: none; opacity: 1; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    /* Collapse the scroll-jacked hero into a normal-height section. */
+    .hero-wrapper { height: auto; }
+    .hero { position: relative; }
+  }
+
   .club-section {
     padding: 2rem 2rem 5rem;
     margin-top: -1px;
@@ -487,7 +672,7 @@
   .club-card {
     max-width: 520px;
     margin: 0 auto;
-    background: #FAFAF4;
+    background: var(--sunpool);
     border-radius: 8px;
     padding: 3rem 2.5rem;
     position: relative;
@@ -506,9 +691,9 @@
 
   .club-card h3 { font-family: 'Newsreader', serif; font-size: 1.5rem; font-weight: 500; color: var(--deep-canopy); margin-bottom: 0.5rem; }
   .club-schedule { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--moss); letter-spacing: 0.03em; margin-bottom: 1.2rem; }
-  .club-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: #3A3828; margin-bottom: 1.5rem; }
+  .club-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: var(--ink-deep); margin-bottom: 1.5rem; }
   .club-price { font-family: 'Newsreader', serif; font-size: 1.8rem; font-weight: 400; color: var(--deep-canopy); margin-bottom: 0.3rem; }
-  .club-price span { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 300; color: #5A5840; }
+  .club-price span { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--ink-soft); }
 
   .club-cta {
     display: inline-block;
@@ -546,7 +731,7 @@
   }
 
   .service-card {
-    background: #FAFAF4;
+    background: var(--sunpool);
     border-radius: 6px;
     padding: 2.2rem 2rem;
     position: relative;
@@ -560,13 +745,21 @@
   .service-card:nth-child(5)::before { background: var(--honey); }
 
   .service-card h3 { font-family: 'Newsreader', serif; font-size: 1.15rem; font-weight: 500; color: var(--deep-canopy); margin-bottom: 0.6rem; }
-  .service-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; font-weight: 300; line-height: 1.65; color: #3A3828; }
+  .service-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; font-weight: 300; line-height: 1.65; color: var(--ink-deep); }
   .service-tag { display: inline-block; font-family: 'Source Sans 3', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--moss); margin-top: 1rem; }
 
   .contact-card { background: var(--deep-canopy); color: var(--breath); }
   .contact-card h3 { color: var(--breath); }
   .contact-card p { color: var(--mist); }
   .contact-card::before { background: var(--golden-glow) !important; opacity: 0.4 !important; }
+  .contact-email {
+    color: var(--clearing);
+    text-decoration: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
 
   /* ═══════════════════════════════════════
      FOOTER
@@ -588,10 +781,16 @@
     .hero { padding: 2rem 1.5rem; }
     .service-card { padding: 1.8rem 1.5rem; }
     .club-card { padding: 2.5rem 1.8rem; }
+    .calendar-table { border-spacing: 0.25rem; }
+    .calendar-table thead th { font-size: 0.65rem; padding: 0.3rem 0.2rem; }
+    .calendar-table tbody th { font-size: 0.7rem; padding-right: 0.4rem; }
+    .calendar-table tbody td { font-size: 0.7rem; padding: 0.6rem 0.3rem; line-height: 1.3; }
   }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- HERO -->
 <div class="hero-wrapper">
@@ -608,19 +807,21 @@
   </div>
   <div class="hero-hook">
     <p>The AI prompt box is always blank.</p>
-    <div class="hook-normals">
-      <p>FOMO is normal.</p>
-      <p>Overwhelm is normal.</p>
-      <p>Uncertainty is normal.</p>
-      <p>Amazement is normal.</p>
-      <p>Fascination is normal.</p>
-      <p>Empowerment is normal.</p>
-      <p>Not knowing where to start is normal.</p>
-    </div>
+    <ul class="hook-normals">
+      <li>FOMO is normal.</li>
+      <li>Overwhelm is normal.</li>
+      <li>Uncertainty is normal.</li>
+      <li>Amazement is normal.</li>
+      <li>Fascination is normal.</li>
+      <li>Empowerment is normal.</li>
+      <li>Not knowing where to start is normal.</li>
+    </ul>
     <p><span class="ember"><strong>This is just how a frontier feels.</strong></span></p>
   </div>
 </section>
 </div>
+
+<main id="main">
 
 <!-- HOOK -->
 <section class="about">
@@ -638,48 +839,96 @@
 
 <!-- OFFERINGS -->
 <section class="offerings">
-  <div class="offerings-category reveal">
+  <div class="offerings-category offerings-category--conversations reveal">
     <div class="category-header">
       <h2>Conversations That Matter</h2>
-      <p class="category-meta">Twice a month · $24/mo · First month free</p>
+      <p class="category-meta">Twice a month · Virtual meetups</p>
     </div>
     <div class="offerings-pair">
       <div class="offering-card">
         <h3>AI Camp</h3>
-        <p class="offering-line">For people compulsively reading about AI but who still feel adrift about what to best do with it.</p>
-        <p class="offering-room">Facilitated but unstructured conversation. No presentations, but probably plenty of casual demos. The place that's neither work nor home where you get to say, "Is this stupid?" and someone says, "No wait, show me."</p>
-        <a href="#" class="offering-cta">Try it free</a>
+        <p class="offering-line">For people eagerly tinkering with and reading about AI, but who still feel that they're missing out on what to best do with it.</p>
+        <p class="offering-room">Facilitated but unstructured conversation. No presentations, but probably plenty of casual demos. The place that's neither work nor home where you get to wonder, ask, learn, and experiment.</p>
+        <div class="offering-schedule">1st Friday &amp; 3rd Thursday at Noon Eastern</div>
+        <div class="offering-price">$24/mo <span>First month free</span></div>
+        <a href="#" class="offering-cta">Try it out</a>
       </div>
       <div class="offering-card">
         <h3>Career Reinventors</h3>
         <p class="offering-line">For people who left a career, lost a career, or are rethinking theirs.</p>
-        <p class="offering-room">We are people going through the same thing, figuring it out together. No interview prep, resume strategies, or presentations. This is facilitated peer coaching as we find our way.</p>
-        <a href="#" class="offering-cta">Try it free</a>
+        <p class="offering-room">We are people going through the same thing, figuring it out together. No interview prep, resume strategies, or presentations. This is facilitated peer coaching as we work through the stages of discovering and developing our new professional identity.</p>
+        <div class="offering-schedule">2nd Tuesday &amp; 4th Friday at Noon Eastern</div>
+        <div class="offering-price">$24/mo <span>First month free</span></div>
+        <a href="#" class="offering-cta">Try it out</a>
       </div>
     </div>
   </div>
 
   <div class="offerings-divider"></div>
 
-  <div class="offerings-category reveal">
+  <div class="offerings-category offerings-category--build reveal">
     <div class="category-header">
       <h2>Build AI that Amplifies the Best of You</h2>
-      <p class="category-meta">Weekly · $49/mo · First two-week period free</p>
+      <p class="category-meta">Weekly · Virtual meetups</p>
     </div>
     <div class="offerings-pair">
       <div class="offering-card">
         <h3>Teach AI How to Think Like You</h3>
         <p class="offering-line">You want to use Claude Code (but for information-work, not for coding). Let's set it up so it thinks like you at your best, so that it can think <em>with</em> you and <em>for</em> you.</p>
         <p class="offering-room">Each person has to craft an AI setup that suits their mind, so this is not a course, but it <em>does</em> have structure. We'll cover Skills, sub-agents, knowledge structure, context management, and more. You'll get tactical help, advice, and ideas, and see what others are building. </p>
-        <a href="#" class="offering-cta">Try it free</a>
+        <div class="offering-schedule">Weekly · Alternating Tuesdays &amp; Thursdays at Noon Eastern</div>
+        <div class="offering-price">$49/mo <span>First two-week period free</span></div>
+        <a href="#" class="offering-cta">Try it out</a>
       </div>
       <div class="offering-card">
         <h3>Teach AI What Matters to You</h3>
-        <p class="offering-line">Your AI doesn't know you yet. Let's fix that.</p>
-        <p class="offering-room">In half the sessions, you'll teach AI about yourself: what matters to you, what you notice, what gets in your way. In the other half of the sessions, you'll explore what surfaced, and feed that deeper understanding back into your documents. You'll end up developing an AI setup that actually <em>gets</em> you.</p>
-        <a href="#" class="offering-cta">Try it free</a>
+        <p class="offering-line">Your AI doesn't know you yet. You've never had a reason to describe yourself before. Let's put words to you so that AI can serve you best.</p>
+        <p class="offering-room">Each of us will build our own self-knowledge documentation — something for AI to draw on, but that also helps us to understand ourselves. We'll work through dimensions like what matters to you, your cognitive style, things that are hard for you, and much more. Seth has been building his own for years; this is where you build yours.</p>
+        <div class="offering-schedule">1st Thursday · 2nd &amp; 3rd Friday · 4th Tuesday at Noon Eastern</div>
+        <div class="offering-price">$49/mo <span>First two-week period free</span></div>
+        <a href="#" class="offering-cta">Try it out</a>
       </div>
     </div>
+  </div>
+
+  <div class="offerings-calendar reveal">
+    <p class="calendar-header">A typical month</p>
+    <table class="calendar-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Tue</th>
+          <th>Thu</th>
+          <th>Fri</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Week 1</th>
+          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
+          <td class="cal-what-matters">Teach AI What Matters to You</td>
+          <td class="cal-ai-camp">AI Camp</td>
+        </tr>
+        <tr>
+          <th>Week 2</th>
+          <td class="cal-reinventors">Career Reinventors</td>
+          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
+          <td class="cal-what-matters">Teach AI What Matters to You</td>
+        </tr>
+        <tr>
+          <th>Week 3</th>
+          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
+          <td class="cal-ai-camp">AI Camp</td>
+          <td class="cal-what-matters">Teach AI What Matters to You</td>
+        </tr>
+        <tr>
+          <th>Week 4</th>
+          <td class="cal-what-matters">Teach AI What Matters to You</td>
+          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
+          <td class="cal-reinventors">Career Reinventors</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -717,10 +966,11 @@
     <div class="service-card contact-card">
       <h3>Get in Touch</h3>
       <p>Interested in coaching, advisory, or a learning group? Reach out and let's talk about what you need.</p>
-      <a href="mailto:seth@thewildedge.ai" style="color: var(--clearing); text-decoration: none; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.02em;">seth@thewildedge.ai</a>
+      <a href="mailto:seth@thewildedge.ai" class="contact-email">seth@thewildedge.ai</a>
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <div class="footer-transition"></div>
@@ -748,24 +998,43 @@
 const canvas = document.getElementById('dappleCanvas');
 const ctx = canvas.getContext('2d');
 
+// Cached DOM references and layout measurements — avoid per-frame DOM reads.
+const hero = document.querySelector('.hero');
+const heroWrapper = document.querySelector('.hero-wrapper');
+const heroContent = document.querySelector('.hero-content');
+const heroHook = document.querySelector('.hero-hook');
+const heroFireflies = document.querySelectorAll('.firefly');
+const offeringsSection = document.querySelector('.offerings');
+const calendarBody = document.querySelector('.calendar-table tbody');
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let heroW = 0;
+let heroH = 0;
+let wrapperTop = 0;
+let wrapperH = 0;
+let viewH = 0;
+let runway = 0;
+
 function resize() {
-  const hero = document.querySelector('.hero');
-  const w = hero.clientWidth;
-  const h = hero.clientHeight;
-  canvas.style.width = w + 'px';
-  canvas.style.height = h + 'px';
-  canvas.width = w * window.devicePixelRatio;
-  canvas.height = h * window.devicePixelRatio;
+  heroW = hero.clientWidth;
+  heroH = hero.clientHeight;
+  canvas.style.width = heroW + 'px';
+  canvas.style.height = heroH + 'px';
+  canvas.width = heroW * window.devicePixelRatio;
+  canvas.height = heroH * window.devicePixelRatio;
   ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
   // Reposition patches for new size
   for (const p of patches) {
-    p.homeX = p.normX * w;
-    p.homeY = p.normY * h;
+    p.homeX = p.normX * heroW;
+    p.homeY = p.normY * heroH;
   }
+  // Scroll-jack measurements
+  wrapperTop = heroWrapper.offsetTop;
+  wrapperH = heroWrapper.offsetHeight;
+  viewH = window.innerHeight;
+  runway = Math.max(1, wrapperH - viewH);
 }
-
-// Defer initial resize until patches exist
-let resizeQueued = true;
 
 // Color palette for patches — golden hour through canopy
 const colors = [
@@ -821,11 +1090,8 @@ window.addEventListener('resize', resize);
 
 function animate(time) {
   const t = time * 0.001; // seconds
-  const hero = document.querySelector('.hero');
-  const w = hero.clientWidth;
-  const h = hero.clientHeight;
 
-  ctx.clearRect(0, 0, w, h);
+  ctx.clearRect(0, 0, heroW, heroH);
 
   // Wind gusts — slowly varying global multiplier
   windChangeTimer -= 0.016;
@@ -865,77 +1131,92 @@ function animate(time) {
   requestAnimationFrame(animate);
 }
 
-requestAnimationFrame(animate);
+if (!prefersReducedMotion) {
+  requestAnimationFrame(animate);
+}
 
 // ═══════════════════════════════════════════════════════
 // SCROLL-JACKED HERO
 // ═══════════════════════════════════════════════════════
 
-const heroWrapper = document.querySelector('.hero-wrapper');
-const hero = document.querySelector('.hero');
-const heroContent = document.querySelector('.hero-content');
-const heroHook = document.querySelector('.hero-hook');
-const heroFireflies = document.querySelectorAll('.firefly');
-
 let ticking = false;
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const wrapperTop = heroWrapper.offsetTop;
-      const wrapperH = heroWrapper.offsetHeight;
-      const viewH = window.innerHeight;
-      const runway = wrapperH - viewH;
-      const scrollInWrapper = Math.max(0, window.scrollY - wrapperTop);
-      const progress = Math.min(scrollInWrapper / runway, 1);
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const scrollInWrapper = Math.max(0, window.scrollY - wrapperTop);
+    const progress = Math.min(scrollInWrapper / runway, 1);
 
-      // Phase 1: Title holds (0–0.12), fades out (0.12–0.28)
-      const titleOpacity = progress < 0.12 ? 1
-        : progress > 0.28 ? 0
-        : 1 - (progress - 0.12) / 0.16;
-      heroContent.style.opacity = titleOpacity;
-      heroContent.style.transform = `scale(${1 + progress * 0.3})`;
+    // Phase 1: Title holds (0–0.12), fades out (0.12–0.28)
+    const titleOpacity = progress < 0.12 ? 1
+      : progress > 0.28 ? 0
+      : 1 - (progress - 0.12) / 0.16;
+    heroContent.style.opacity = titleOpacity;
+    heroContent.style.transform = `scale(${1 + progress * 0.3})`;
 
-      // Phase 2: Hook fades in (0.22–0.38), holds (0.38–0.55), fades out (0.55–0.68)
-      const hookIn = progress < 0.22 ? 0
-        : progress > 0.38 ? 1
-        : (progress - 0.22) / 0.16;
-      const hookOut = progress < 0.55 ? 1
-        : progress > 0.68 ? 0
-        : 1 - (progress - 0.55) / 0.13;
-      heroHook.style.opacity = Math.min(hookIn, hookOut);
+    // Phase 2: Hook fades in (0.22–0.38), holds (0.38–0.55), fades out (0.55–0.68)
+    const hookIn = progress < 0.22 ? 0
+      : progress > 0.38 ? 1
+      : (progress - 0.22) / 0.16;
+    const hookOut = progress < 0.55 ? 1
+      : progress > 0.68 ? 0
+      : 1 - (progress - 0.55) / 0.13;
+    heroHook.style.opacity = Math.min(hookIn, hookOut);
 
-      // Fireflies: visible through hook phase, fade during jack
-      const fireflyOpacity = progress < 0.55 ? 1
-        : progress > 0.72 ? 0
-        : 1 - (progress - 0.55) / 0.17;
-      heroFireflies.forEach(f => { f.style.opacity = fireflyOpacity; });
+    // Fireflies: visible through hook phase, fade during jack
+    const fireflyOpacity = progress < 0.55 ? 1
+      : progress > 0.72 ? 0
+      : 1 - (progress - 0.55) / 0.17;
+    heroFireflies.forEach(f => { f.style.opacity = fireflyOpacity; });
 
-      // Phase 3: Scroll-jack (0.65–1.0)
-      const jackProgress = progress < 0.65 ? 0 : (progress - 0.65) / 0.35;
-      const canvasScale = 1 + jackProgress * 0.8;
-      canvas.style.transform = `scale(${canvasScale})`;
-      canvas.style.filter = `brightness(${1 + jackProgress * 1.5})`;
+    // Phase 3: Scroll-jack (0.65–1.0) — canvas scales and brightens into a wash
+    const jackProgress = progress < 0.65 ? 0 : (progress - 0.65) / 0.35;
+    const canvasScale = 1 + jackProgress * 0.8;
+    canvas.style.transform = `scale(${canvasScale})`;
+    canvas.style.filter = `brightness(${1 + jackProgress * 1.5})`;
 
-      const brightenProgress = Math.max(0, (jackProgress - 0.4) / 0.6);
-      const darkness = 1 - brightenProgress * 0.85;
-      hero.style.boxShadow = `inset 0 0 0 100vmax rgba(14,26,10,${darkness})`;
+    ticking = false;
+  });
+}
 
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
+if (!prefersReducedMotion) {
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
 
 // ═══════════════════════════════════════════════════════
 // REVEAL OBSERVER
 // ═══════════════════════════════════════════════════════
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+if (prefersReducedMotion) {
+  // Skip observer entirely — make everything visible immediately.
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// ═══════════════════════════════════════════════════════
+// CALENDAR HOVER HIGHLIGHT
+// ═══════════════════════════════════════════════════════
+
+if (offeringsSection && calendarBody) {
+  calendarBody.addEventListener('mouseover', (e) => {
+    const cell = e.target.closest('td');
+    if (!cell) return;
+    const calClass = [...cell.classList].find(c => c.startsWith('cal-'));
+    if (calClass) {
+      offeringsSection.setAttribute('data-highlight', calClass.slice(4));
+    }
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  calendarBody.addEventListener('mouseleave', () => {
+    offeringsSection.removeAttribute('data-highlight');
+  });
+}
 </script>
 </body>
 </html>
