@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Agreement — The Wild Edge</title>
+<meta name="description" content="The terms of 1-on-1 coaching engagements with Seth Wylie Services, LLC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-canopy: #0E1A0A;
+    --canopy: #1A2E14;
+    --moss: #3D6A2E;
+    --leaf-gold: #8AA048;
+    --golden-glow: #D4A840;
+    --honey: #D4B468;
+    --amber: #A88430;
+    --breath: #E8E0CC;
+    --mist: #C8C0A8;
+    --clearing: #F0ECE0;
+    --sage-cream: #E4E2D6;
+    --ink: #2A2418;
+    --ink-soft: #4A4230;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    background: var(--clearing);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--ink);
+    line-height: 1.75;
+    font-weight: 400;
+    background: var(--clearing);
+  }
+
+  /* Subtle grain — same principle as the main site but far quieter */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    width: 200%; height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.18;
+  }
+
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(168,132,48,0.3); transition: border-color 0.2s ease; }
+  a:hover { border-bottom-color: var(--amber); }
+
+  /* ═══════════════════════════════════════
+     HEADER — quiet return link
+     ═══════════════════════════════════════ */
+
+  header {
+    padding: 2rem 2rem 0;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--moss);
+    border-bottom: none;
+  }
+
+  .back-link:hover {
+    color: var(--amber);
+    border-bottom: none;
+  }
+
+  .back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* ═══════════════════════════════════════
+     TITLE BLOCK
+     ═══════════════════════════════════════ */
+
+  .title-block {
+    max-width: 760px;
+    margin: 4rem auto 3rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .overline {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    color: var(--deep-canopy);
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+  }
+
+  .title-rule {
+    width: 64px;
+    height: 1px;
+    margin: 2rem auto 0;
+    background: linear-gradient(90deg, transparent, var(--golden-glow), transparent);
+    position: relative;
+  }
+
+  .title-rule::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    background: var(--golden-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 12px 2px rgba(212,168,64,0.35);
+  }
+
+  /* ═══════════════════════════════════════
+     FRAMING — the warm door
+     ═══════════════════════════════════════ */
+
+  .framing {
+    max-width: 640px;
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .framing p {
+    margin-bottom: 1rem;
+  }
+
+  .framing p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ═══════════════════════════════════════
+     DOCUMENT BODY
+     ═══════════════════════════════════════ */
+
+  .document {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  .document section {
+    margin-bottom: 3rem;
+  }
+
+  .document section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .section-number {
+    font-family: 'Newsreader', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--golden-glow);
+    letter-spacing: 0.1em;
+    min-width: 1.6rem;
+    font-feature-settings: 'tnum' 1;
+    text-shadow: 0 0 10px rgba(212,168,64,0.2);
+  }
+
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 500;
+    color: var(--deep-canopy);
+    line-height: 1.3;
+    letter-spacing: 0.005em;
+  }
+
+  .document p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    padding-left: 2.6rem;
+  }
+
+  .document p:last-child {
+    margin-bottom: 0;
+  }
+
+  .document em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* Section divider — a single quiet dot between sections */
+  .document section + section::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 3px;
+    background: var(--mist);
+    border-radius: 50%;
+    margin: 0 auto 3rem;
+    opacity: 0.8;
+  }
+
+  /* Coda — where "what coaching is NOT" sits, given slight emphasis */
+  .coda {
+    padding-left: 2.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .coda p {
+    padding-left: 0;
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    border-left: 2px solid rgba(168,132,48,0.25);
+    padding-left: 1.2rem;
+    font-style: italic;
+  }
+
+  /* ═══════════════════════════════════════
+     META LINE — versioning
+     ═══════════════════════════════════════ */
+
+  .meta {
+    max-width: 640px;
+    margin: 5rem auto 0;
+    padding: 2.5rem 2rem 0;
+    border-top: 1px solid rgba(14,26,10,0.08);
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--moss);
+    letter-spacing: 0.04em;
+  }
+
+  .meta p {
+    margin-bottom: 0.4rem;
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER — mirrors the main site
+     ═══════════════════════════════════════ */
+
+  .footer-transition {
+    height: 12vh;
+    margin-top: 5rem;
+    background: linear-gradient(180deg, var(--clearing), var(--deep-canopy));
+  }
+
+  footer {
+    padding: 4rem 2rem 3rem;
+    margin-top: -1px;
+    background: var(--deep-canopy);
+    text-align: center;
+    color: var(--breath);
+  }
+
+  .footer-brand {
+    font-family: 'Newsreader', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--breath);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-llc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--mist);
+    letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+  }
+
+  .footer-contact {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--mist);
+    margin-bottom: 0.5rem;
+  }
+
+  footer a {
+    color: var(--mist);
+    border-bottom: 1px solid rgba(200,192,168,0.2);
+  }
+
+  footer a:hover {
+    color: var(--honey);
+    border-bottom-color: var(--honey);
+  }
+
+  /* ═══════════════════════════════════════
+     REVEAL — subtle on-load fade
+     ═══════════════════════════════════════ */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: emerge 1.4s ease-out forwards;
+  }
+
+  .reveal-1 { animation-delay: 0.1s; }
+  .reveal-2 { animation-delay: 0.3s; }
+  .reveal-3 { animation-delay: 0.5s; }
+
+  @keyframes emerge {
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+
+  @media (max-width: 600px) {
+    .title-block { margin: 3rem auto 2.5rem; }
+    .framing { margin-bottom: 3.5rem; }
+    .document p { padding-left: 0; }
+    .coda { padding-left: 0; }
+    .section-head { gap: 0.7rem; }
+    .section-number { min-width: 1.4rem; font-size: 0.88rem; }
+  }
+
+  @media print {
+    body::after { display: none; }
+    header { display: none; }
+    .footer-transition, footer { display: none; }
+    .reveal { opacity: 1; transform: none; animation: none; }
+    .title-block { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="back-link">The Wild Edge</a>
+</header>
+
+<div class="title-block reveal reveal-1">
+  <p class="overline">Seth Wylie Services, LLC</p>
+  <h1>Coaching Agreement</h1>
+  <div class="title-rule"></div>
+</div>
+
+<main class="document reveal reveal-3">
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">01</span>
+      <h2>Who this is between</h2>
+    </div>
+    <p>This agreement is between <strong>Seth Wylie Services, LLC</strong> — a Massachusetts limited liability company with its principal place of business at 21 Hall Ave, Somerville, MA 02144 — and you, the person whose name appears on the payment confirmation when you purchase a coaching session package.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">02</span>
+      <h2>What coaching is</h2>
+    </div>
+    <p>Our work together is AI coaching — thinking together about what matters to you and how AI can support it. Sessions combine practical work (setting up tools, explaining features, working through specific AI questions) with exploratory thinking (clarifying what you're trying to accomplish, noticing how you do cognitive work, finding the question underneath the question). Both belong in the same conversation.</p>
+    <p>Over time, we're building your personal AI thinking infrastructure — a system that comes to know your work, how you think, and what matters to you. The goal is familiarity with AI as an interactive extension of your own thinking, not AI tool proficiency alone.</p>
+    <div class="coda">
+      <p>What coaching is <em>not</em>: therapy, counseling, psychiatric treatment, or medical advice. It's also not legal, financial, or tax advice. If topics surface that would benefit from clinical support or licensed professional guidance, I'll say so and suggest resources — but I'm not the person to provide them.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">03</span>
+      <h2>How sessions work</h2>
+    </div>
+    <p>Sessions are one hour, conducted over video call, on a schedule we arrange together. A session package is purchased up front, and we book individual sessions from it at your pace.</p>
+    <p>Brief messages between sessions (such as scheduling logistics, a quick reflection you want me to see before we meet, or a brief technical question) are welcome and aren't billable. If between-session work becomes substantial enough to feel like another session, we'll agree on how to count it against your purchased sessions.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">04</span>
+      <h2>Payment</h2>
+    </div>
+    <p>The rate is $200 per hour. Session packages are paid in full before we begin.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">05</span>
+      <h2>Cancelling or rescheduling</h2>
+    </div>
+    <p>Life happens! If you need to reschedule, please give me at least 24 hours' notice and we'll find a new time at no cost. Sessions cancelled with less than 24 hours' notice are considered held, except in case of genuine emergency — which I trust you to judge.</p>
+    <p>The same courtesy runs in reverse: if I need to reschedule, you'll hear from me as early as I possibly can, and I'll find a time that works for you.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">06</span>
+      <h2>Confidentiality</h2>
+    </div>
+    <p>What you share with me in sessions stays with me. I don't share, publish, or discuss the content of our conversations with anyone. Two exceptions, standard to coaching work: if I'm legally compelled to disclose information (e.g., subpoena, court order), and if I have genuine reason to believe you or someone else is at imminent risk of serious harm.</p>
+    <p>Anonymized, thematic observations from coaching work may appear in my writing or speaking — never in a way that could identify you or be traced back to our sessions.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">07</span>
+      <h2>Outcomes and responsibility</h2>
+    </div>
+    <p>Coaching is a collaborative endeavor. I bring attentiveness, care, knowledge, skill, and experience; you bring your effort, curiosity, and willingness to engage. I don't guarantee specific outcomes — your results will depend on what you do with the work.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">08</span>
+      <h2>Limitation of liability</h2>
+    </div>
+    <p>I care deeply about doing this work well. I also have to be clear about the legal floor: my total liability to you for anything arising from this agreement is limited to the amount you've paid for the current session package. I'm not liable for consequential, incidental, or indirect losses.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">09</span>
+      <h2>Ending the engagement</h2>
+    </div>
+    <p>Either of us can end our coaching engagement at any time, for any reason, with written notice (email is fine). If you end it before your package is finished, I'll refund any unused sessions at the per-session rate, minus any payment-processor fees that can't be recovered. If I end it, I'll refund unused sessions in full.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">10</span>
+      <h2>Governing law and disputes</h2>
+    </div>
+    <p>This agreement is governed by the laws of the Commonwealth of Massachusetts. If a dispute arises, we'll first try to resolve it through direct conversation. If that doesn't work, we'll bring in a neutral mediator before considering any other step. Any legal proceedings will take place in the state or federal courts of Massachusetts.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">11</span>
+      <h2>How this agreement is accepted</h2>
+    </div>
+    <p>Your purchase of a coaching session package through my payment processor constitutes acceptance of this agreement. The version you accept is the version live on this page at the time of purchase. If these terms are updated for future clients, existing engagements remain bound by the version accepted at the time of purchase.</p>
+  </section>
+
+  <div class="meta">
+    <p>Version 1.0 · Last updated April 9, 2026</p>
+    <p>Questions? <a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a></p>
+  </div>
+
+</main>
+
+<div class="footer-transition"></div>
+<footer>
+  <p class="footer-brand">The Wild Edge</p>
+  <p class="footer-llc">Seth Wylie Services LLC</p>
+  <p class="footer-contact"><a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a></p>
+</footer>
+
+</body>
+</html>
