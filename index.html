@@ -104,8 +104,7 @@
   /* Focus styles — visible against both dark and light backgrounds */
   a:focus-visible,
   button:focus-visible,
-  .offering-cta:focus-visible,
-  .club-cta:focus-visible {
+  .offering-cta:focus-visible {
     outline: 2px solid var(--golden-glow);
     outline-offset: 3px;
     border-radius: 2px;
@@ -506,13 +505,27 @@
     margin-bottom: 1rem;
   }
 
-  .offering-room {
+  .offering-vibe {
+    flex: 1;
+    margin-top: 0.2rem;
+  }
+
+  .offering-vibe-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--moss);
+    margin-bottom: 0.4rem;
+  }
+
+  .offering-vibe-text {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 0.88rem;
     font-weight: 300;
     line-height: 1.7;
     color: var(--ink);
-    flex: 1;
   }
 
   .offering-schedule {
@@ -686,111 +699,134 @@
     .hero { position: relative; }
   }
 
-  .club-section {
-    padding: 2rem 2rem 5rem;
+  /* ═══════════════════════════════════════
+     FOR INDIVIDUALS & TEAMS — warm ground,
+     card grid, continuous with the page body.
+     Golden seam divider, then warm sand substrate.
+     ═══════════════════════════════════════ */
+
+  .individuals-transition {
+    height: 10vh;
     margin-top: -1px;
-    background: var(--clearing);
-    text-align: center;
-    color: var(--deep-canopy);
+    background: linear-gradient(180deg, var(--clearing) 0%, #EAE4D4 35%, #E5DCC8 65%, #E0D8C4 100%);
   }
 
-  .club-card {
-    max-width: 520px;
+  .individuals-teams {
+    position: relative;
+    padding: 5rem 2rem 5rem;
+    margin-top: -1px;
+    background: #E0D8C4;
+    color: var(--deep-canopy);
+    overflow: hidden;
+  }
+
+  .individuals-teams-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
     margin: 0 auto;
+  }
+
+  .individuals-teams-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .individuals-teams-header h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 500;
+    color: var(--deep-canopy);
+    letter-spacing: 0.02em;
+  }
+
+  .individuals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .individual-offering {
     background: var(--sunpool);
     border-radius: 8px;
-    padding: 3rem 2.5rem;
+    padding: 2.2rem 1.8rem 1.8rem;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 24px rgba(14,26,10,0.06);
+    box-shadow: 0 2px 16px rgba(14,26,10,0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    text-align: left;
   }
 
-  .club-card::before {
+  .individual-offering:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(14,26,10,0.08);
+  }
+
+  .individual-offering::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--golden-glow), var(--leaf-gold), var(--coral));
-    opacity: 0.6;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 7px;
   }
 
-  .club-card h3 { font-family: 'Newsreader', serif; font-size: 1.5rem; font-weight: 500; color: var(--deep-canopy); margin-bottom: 0.5rem; }
-  .club-schedule { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--moss); letter-spacing: 0.03em; margin-bottom: 1.2rem; }
-  .club-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: var(--ink-deep); margin-bottom: 1.5rem; }
-  .club-price { font-family: 'Newsreader', serif; font-size: 1.8rem; font-weight: 400; color: var(--deep-canopy); margin-bottom: 0.3rem; }
-  .club-price span { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--ink-soft); }
+  .individual-offering:nth-child(1)::before { background: var(--honey); }
+  .individual-offering:nth-child(2)::before { background: var(--golden-glow); }
+  .individual-offering:nth-child(3)::before { background: var(--amber); }
+  .individual-offering:nth-child(4)::before { background: var(--coral); }
 
-  .club-cta {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.8rem 2.5rem;
-    background: var(--deep-canopy);
-    color: var(--breath);
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.85rem;
+  .individual-offering h3 {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.2rem;
     font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-  .club-cta:hover { background: var(--canopy); text-decoration: none; }
-
-  .services {
-    padding: 4rem 2rem 5rem;
-    margin-top: -1px;
-    background: var(--clearing);
-    color: var(--deep-canopy);
+    color: var(--amber);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
   }
 
-  .services-header { text-align: center; margin-bottom: 3rem; }
-  .services-header h2 { font-family: 'Newsreader', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; color: var(--deep-canopy); }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .service-card {
-    background: var(--sunpool);
-    border-radius: 6px;
-    padding: 2.2rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0.5; }
-  .service-card:nth-child(1)::before { background: var(--golden-glow); }
-  .service-card:nth-child(2)::before { background: var(--leaf-gold); }
-  .service-card:nth-child(3)::before { background: var(--coral); }
-  .service-card:nth-child(4)::before { background: var(--moss); }
-  .service-card:nth-child(5)::before { background: var(--honey); }
-
-  .service-card h3 { font-family: 'Newsreader', serif; font-size: 1.15rem; font-weight: 500; color: var(--deep-canopy); margin-bottom: 0.6rem; }
-  .service-card p { font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; font-weight: 300; line-height: 1.65; color: var(--ink-deep); }
-  .service-tag { display: inline-block; font-family: 'Source Sans 3', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--moss); margin-top: 1rem; }
-
-  .contact-card { background: var(--deep-canopy); color: var(--breath); }
-  .contact-card h3 { color: var(--breath); }
-  .contact-card p { color: var(--mist); }
-  .contact-card::before { background: var(--golden-glow) !important; opacity: 0.4 !important; }
-  .contact-email {
-    color: var(--clearing);
-    text-decoration: none;
-    font-family: 'Source Sans 3', sans-serif;
+  .individual-offering p {
+    font-family: 'Newsreader', serif;
     font-size: 0.95rem;
-    font-weight: 400;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink);
+  }
+
+  .individuals-teams-email {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: 'Newsreader', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-soft);
     letter-spacing: 0.02em;
+  }
+
+  .individuals-teams-email a {
+    color: var(--amber);
+    font-style: normal;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(168, 132, 48, 0.3);
+    transition: border-color 0.3s ease;
+  }
+
+  .individuals-teams-email a:hover {
+    border-bottom-color: var(--amber);
+    text-decoration: none;
+  }
+
+  .footer-transition {
+    height: 20vh;
+    margin-top: -1px;
+    background: linear-gradient(180deg, #E0D8C4 0%, #D0C8AE 15%, #B0A888 30%, #8A8068 45%, #5A5440 60%, #3A3828 78%, var(--deep-canopy) 100%);
   }
 
   /* ═══════════════════════════════════════
      FOOTER
      ═══════════════════════════════════════ */
-
-  .footer-transition { height: 12vh; margin-top: -1px; background: linear-gradient(180deg, var(--clearing), var(--deep-canopy)); }
 
   footer { padding: 4rem 2rem 3rem; margin-top: -1px; background: var(--deep-canopy); text-align: center; }
   .footer-brand { font-family: 'Newsreader', serif; font-size: 1.3rem; font-weight: 400; color: var(--breath); letter-spacing: 0.06em; margin-bottom: 0.8rem; }
@@ -802,14 +838,19 @@
   @media (max-width: 600px) {
     .offerings-pair { grid-template-columns: 1fr; }
     .offering-card { padding: 2rem 1.5rem 1.5rem; }
-    .services-grid { grid-template-columns: 1fr; }
     .hero { padding: 2rem 1.5rem; }
-    .service-card { padding: 1.8rem 1.5rem; }
-    .club-card { padding: 2.5rem 1.8rem; }
     .calendar-table { border-spacing: 0.25rem; }
     .calendar-table thead th { font-size: 0.65rem; padding: 0.3rem 0.2rem; }
     .calendar-table tbody th { font-size: 0.7rem; padding-right: 0.4rem; }
     .calendar-table tbody td { font-size: 0.7rem; padding: 0.6rem 0.3rem; line-height: 1.3; }
+    .individuals-transition { height: 7vh; }
+    .individuals-teams { padding: 3.5rem 1.5rem 3.5rem; }
+    .individuals-teams-header { margin-bottom: 2rem; }
+    .individuals-grid { grid-template-columns: 1fr; }
+    .individual-offering { padding: 1.8rem 1.5rem 1.5rem; }
+    .individual-offering p { font-size: 0.93rem; }
+    .individuals-teams-email { margin-top: 2.5rem; }
+    .footer-transition { height: 14vh; }
   }
 </style>
 </head>
@@ -867,23 +908,28 @@
   <div class="offerings-category offerings-category--conversations reveal">
     <div class="category-header">
       <h2>Conversations That Matter</h2>
-      <p class="category-meta">Twice a month · Virtual meetups</p>
     </div>
     <div class="offerings-pair">
       <div class="offering-card">
         <h3>AI Camp</h3>
-        <p class="offering-line">For people eagerly tinkering with and reading about AI, but who still feel that they're missing out on what to best do with it.</p>
-        <p class="offering-room">Facilitated but unstructured conversation. No presentations, but probably plenty of casual demos. The place that's neither work nor home where you get to wonder, ask, learn, and experiment.</p>
-        <div class="offering-schedule">1st Friday &amp; 3rd Thursday at Noon Eastern</div>
-        <div class="offering-price">$24/mo <span>First month free</span></div>
+        <p class="offering-line">For people eagerly tinkering with and reading about AI, but who still feel like they're missing out on what to best do with it. Bring your experiments and questions, and see what other people have been doing and thinking about. Leave feeling better oriented, more capable, and focused on a few great ideas to try.</p>
+        <div class="offering-vibe">
+          <p class="offering-vibe-label">Format &amp; Vibe</p>
+          <p class="offering-vibe-text">Virtual meetup, 1 hour. Facilitated but unstructured — no agenda, no presentations. Conversation goes where the energy and interest are. Casual demos encouraged. Each session stands on its own.</p>
+        </div>
+        <div class="offering-schedule">Noon Eastern · Twice a month (1st Friday &amp; 3rd Thursday)</div>
+        <div class="offering-price">$24/mo <span>First month free · Cancel anytime</span></div>
         <a href="#" class="offering-cta">Try it out</a>
       </div>
       <div class="offering-card">
         <h3>Career Reinventors</h3>
-        <p class="offering-line">For people who left a career, lost a career, or are rethinking theirs.</p>
-        <p class="offering-room">We are people going through the same thing, figuring it out together. No interview prep, resume strategies, or presentations. This is facilitated peer coaching as we work through the stages of discovering and developing our new professional identity.</p>
-        <div class="offering-schedule">2nd Tuesday &amp; 4th Friday at Noon Eastern</div>
-        <div class="offering-price">$24/mo <span>First month free</span></div>
+        <p class="offering-line">For people who left a career, lost a career, or are rethinking theirs. Facilitated peer coaching for folks going through the same thing, working through the stages of discovering and developing a new professional identity.</p>
+        <div class="offering-vibe">
+          <p class="offering-vibe-label">Format &amp; Vibe</p>
+          <p class="offering-vibe-text">Virtual meetup, 1 hour. Not interview prep, not resume strategies, not presentations. Each session stands on its own.</p>
+        </div>
+        <div class="offering-schedule">Noon Eastern · Twice a month (2nd Tuesday &amp; 4th Friday)</div>
+        <div class="offering-price">$24/mo <span>First month free · Cancel anytime</span></div>
         <a href="#" class="offering-cta">Try it out</a>
       </div>
     </div>
@@ -894,30 +940,35 @@
   <div class="offerings-category offerings-category--build reveal">
     <div class="category-header">
       <h2>Build AI that Amplifies the Best of You</h2>
-      <p class="category-meta">Weekly · Virtual meetups</p>
     </div>
     <div class="offerings-pair">
       <div class="offering-card">
         <h3>Teach AI How to Think Like You</h3>
-        <p class="offering-line">You want to use Claude Code (but for information-work, not for coding). Let's set it up so it thinks like you at your best, so that it can think <em>with</em> you and <em>for</em> you.</p>
-        <p class="offering-room">Each person has to craft an AI setup that suits their mind, so this is not a course, but it <em>does</em> have structure. We'll cover Skills, sub-agents, knowledge structure, context management, and more. You'll get tactical help, advice, and ideas, and see what others are building. </p>
-        <div class="offering-schedule">Weekly · Alternating Tuesdays &amp; Thursdays at Noon Eastern</div>
-        <div class="offering-price">$49/mo <span>First two-week period free</span></div>
+        <p class="offering-line">You want to use Claude Code — but for information work, not coding. Build a personal AI environment set up to think the way you think, about the things you're working on, so it can think <em>with</em> you and <em>for</em> you. We'll cover Skills, sub-agents, knowledge structure, context management, and much more.</p>
+        <div class="offering-vibe">
+          <p class="offering-vibe-label">Format &amp; Vibe</p>
+          <p class="offering-vibe-text">Virtual meetup, 1 hour. Structured but not a course, since each person's setup will differ. Get tactical help and see what others are doing.</p>
+        </div>
+        <div class="offering-schedule">Noon Eastern  · Weekly (alternating Tuesdays &amp; Thursdays)</div>
+        <div class="offering-price">$49/mo <span>First two-week period free · Cancel anytime</span></div>
         <a href="#" class="offering-cta">Try it out</a>
       </div>
       <div class="offering-card">
         <h3>Teach AI What Matters to You</h3>
-        <p class="offering-line">Your AI doesn't know you yet. You've never had a reason to describe yourself before. Let's put words to you so that AI can serve you best.</p>
-        <p class="offering-room">Each of us will build our own self-knowledge documentation — something for AI to draw on, but that also helps us to understand ourselves. We'll work through dimensions like what matters to you, your cognitive style, things that are hard for you, and much more. Seth has been building his own for years; this is where you build yours.</p>
-        <div class="offering-schedule">1st Thursday · 2nd &amp; 3rd Friday · 4th Tuesday at Noon Eastern</div>
-        <div class="offering-price">$49/mo <span>First two-week period free</span></div>
+        <p class="offering-line">Your AI doesn't know you yet. When it does, it can help you so much better, but you've never had a reason to describe yourself before. Seth has been building his own self-knowledge documentation for years, and this is where you'll build yours. We'll work through dimensions like what matters to you, your cognitive style, your strengths, and your hangups. The material will help AI, but it'll probably help you personally, too.</p>
+        <div class="offering-vibe">
+          <p class="offering-vibe-label">Format &amp; Vibe</p>
+          <p class="offering-vibe-text">Virtual meetup, 1 hour. Focused and facilitated, but not a structured workshop, so that we can spend time where it's needed.</p>
+        </div>
+        <div class="offering-schedule">Noon Eastern  · Weekly (1st Thursday · 2nd &amp; 3rd Friday · 4th Tuesday)</div>
+        <div class="offering-price">$49/mo <span>First two-week period free · Cancel anytime</span></div>
         <a href="#" class="offering-cta">Try it out</a>
       </div>
     </div>
   </div>
 
   <div class="offerings-calendar reveal">
-    <p class="calendar-header">A typical month</p>
+    <p class="calendar-header">Each month</p>
     <table class="calendar-table">
       <thead>
         <tr>
@@ -957,48 +1008,48 @@
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services">
-  <div class="services-header reveal">
-    <h2>Services</h2>
-  </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <h3>Executive AI Coaching</h3>
-      <p>Build the system that helps you make decisions. Not traditional executive coaching with AI bolted on — the hybrid that doesn't exist yet. Strategy, blind spots, how you feel about things, and how to build your thinking infrastructure.</p>
-      <span class="service-tag">1-on-1</span>
+<!-- FOR INDIVIDUALS & TEAMS -->
+<div class="individuals-transition"></div>
+<section class="individuals-teams" aria-label="Hands-on with leaders, teams, and individuals">
+  <div class="individuals-teams-inner reveal">
+    <div class="individuals-teams-header">
+      <h2>Hands-On with Leaders, Teams, and You</h2>
     </div>
-    <div class="service-card">
-      <h3>Individual AI Coaching</h3>
-      <p>Set up your own Claude Code environment — a personal thinking system that knows how you work, what you're working on, and how to think alongside you. Your setup becomes a reflection of your mind. First session free.</p>
-      <span class="service-tag">1-on-1</span>
+
+    <div class="individuals-grid">
+      <div class="individual-offering">
+        <h3>1-on-1 AI Coaching</h3>
+        <p>You build your own AI working environment while discovering how your mind actually works. Configuring AI tools well requires articulating your thinking patterns, your priorities, your judgment — so the setup process becomes a self-knowledge practice. You leave each session more capable and more self-aware.</p>
+        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
+      </div>
+
+      <div class="individual-offering">
+        <h3>Exec AI Advisory &amp; Coaching</h3>
+        <p>Strategic and hands-on AI coaching for executives. The full range in one relationship: organizational AI strategy, your own leadership through the transition, and building your personal AI infrastructure — the tools, the workflows, the thinking systems. Both the decisions you need to make and the capabilities you need to develop.</p>
+        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
+      </div>
+
+      <div class="individual-offering">
+        <h3>AI Advisory for Your Team</h3>
+        <p>AI strategy and capability development for a team, in whatever format fits — recurring sessions, intensive sprints, or ongoing embedded advisory. Facilitated group sense-making where collective intelligence surfaces what individuals working alone would miss.</p>
+        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
+      </div>
+
+      <div class="individual-offering">
+        <h3>AI Product Strategy Advisory</h3>
+        <p>Ongoing strategic thought partnership for founders building AI products. Product direction, integration architecture, and identifying what the technology uniquely enables for your users. Retainer format — regular deep sessions with async work between them.</p>
+        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
+      </div>
     </div>
-    <div class="service-card">
-      <h3>AI Product Advisory</h3>
-      <p>For founders who know they want to build an AI product but don't know AI. Starts as product strategy. Becomes a conversation about what kind of thinking you want to encode — and whose.</p>
-      <span class="service-tag">Retainer</span>
-    </div>
-    <div class="service-card">
-      <h3>Cognitive Architecture for Teams</h3>
-      <p>Your team has expertise it can't fully articulate. We map what your people know at their best, identify where that knowledge lives and where it's missing, then build an AI system that holds it, extends it, and thinks alongside your team.</p>
-      <span class="service-tag">Teams &amp; Organizations</span>
-    </div>
-    <div class="service-card">
-      <h3>Hosted AI Learning Groups</h3>
-      <p>Bring me into a group that already exists — a friend group, a team, a professional circle. I create the space where people discover things together they wouldn't discover alone. Permission, not a push.</p>
-      <span class="service-tag">Groups &amp; Teams</span>
-    </div>
-    <div class="service-card contact-card">
-      <h3>Get in Touch</h3>
-      <p>Interested in coaching, advisory, or a learning group? Reach out and let's talk about what you need.</p>
-      <a href="mailto:seth@thewildedge.ai" class="contact-email">seth@thewildedge.ai</a>
-    </div>
+
+    <p class="individuals-teams-email">Write when you're ready — <a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a></p>
   </div>
 </section>
 </main>
 
-<!-- FOOTER -->
 <div class="footer-transition"></div>
+
+<!-- FOOTER -->
 <footer>
   <p class="footer-brand">The Wild Edge</p>
   <p class="footer-llc">Seth Wylie Services LLC</p>
