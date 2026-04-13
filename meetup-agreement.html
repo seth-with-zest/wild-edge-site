@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meetup Agreement — The Wild Edge</title>
+<meta name="description" content="The terms of meetup subscriptions with Seth Wylie Services, LLC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-canopy: #0E1A0A;
+    --canopy: #1A2E14;
+    --moss: #3D6A2E;
+    --leaf-gold: #8AA048;
+    --golden-glow: #D4A840;
+    --honey: #D4B468;
+    --amber: #A88430;
+    --breath: #E8E0CC;
+    --mist: #C8C0A8;
+    --clearing: #F0ECE0;
+    --sage-cream: #E4E2D6;
+    --ink: #2A2418;
+    --ink-soft: #4A4230;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    background: var(--clearing);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--ink);
+    line-height: 1.75;
+    font-weight: 400;
+    background: var(--clearing);
+  }
+
+  /* Subtle grain — same principle as the main site but far quieter */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    width: 200%; height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.18;
+  }
+
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(168,132,48,0.3); transition: border-color 0.2s ease; }
+  a:hover { border-bottom-color: var(--amber); }
+
+  /* ═══════════════════════════════════════
+     HEADER — quiet return link
+     ═══════════════════════════════════════ */
+
+  header {
+    padding: 2rem 2rem 0;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--moss);
+    border-bottom: none;
+  }
+
+  .back-link:hover {
+    color: var(--amber);
+    border-bottom: none;
+  }
+
+  .back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* ═══════════════════════════════════════
+     TITLE BLOCK
+     ═══════════════════════════════════════ */
+
+  .title-block {
+    max-width: 760px;
+    margin: 4rem auto 3rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .overline {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    color: var(--deep-canopy);
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+  }
+
+  .title-rule {
+    width: 64px;
+    height: 1px;
+    margin: 2rem auto 0;
+    background: linear-gradient(90deg, transparent, var(--golden-glow), transparent);
+    position: relative;
+  }
+
+  .title-rule::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    background: var(--golden-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 12px 2px rgba(212,168,64,0.35);
+  }
+
+  /* ═══════════════════════════════════════
+     DOCUMENT BODY
+     ═══════════════════════════════════════ */
+
+  .document {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  .document section {
+    margin-bottom: 3rem;
+  }
+
+  .document section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .section-number {
+    font-family: 'Newsreader', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--golden-glow);
+    letter-spacing: 0.1em;
+    min-width: 1.6rem;
+    font-feature-settings: 'tnum' 1;
+    text-shadow: 0 0 10px rgba(212,168,64,0.2);
+  }
+
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 500;
+    color: var(--deep-canopy);
+    line-height: 1.3;
+    letter-spacing: 0.005em;
+  }
+
+  .document p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    padding-left: 2.6rem;
+  }
+
+  .document p:last-child {
+    margin-bottom: 0;
+  }
+
+  .document em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* Section divider — a single quiet dot between sections */
+  .document section + section::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 3px;
+    background: var(--mist);
+    border-radius: 50%;
+    margin: 0 auto 3rem;
+    opacity: 0.8;
+  }
+
+  /* Coda — where "what this is NOT" sits, given slight emphasis */
+  .coda {
+    padding-left: 2.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .coda p {
+    padding-left: 0;
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    border-left: 2px solid rgba(168,132,48,0.25);
+    padding-left: 1.2rem;
+    font-style: italic;
+  }
+
+  /* ═══════════════════════════════════════
+     META LINE — versioning
+     ═══════════════════════════════════════ */
+
+  .meta {
+    max-width: 640px;
+    margin: 5rem auto 0;
+    padding: 2.5rem 2rem 0;
+    border-top: 1px solid rgba(14,26,10,0.08);
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--moss);
+    letter-spacing: 0.04em;
+  }
+
+  .meta p {
+    margin-bottom: 0.4rem;
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER — mirrors the main site
+     ═══════════════════════════════════════ */
+
+  .footer-transition {
+    height: 12vh;
+    margin-top: 5rem;
+    background: linear-gradient(180deg, var(--clearing), var(--deep-canopy));
+  }
+
+  footer {
+    padding: 4rem 2rem 3rem;
+    margin-top: -1px;
+    background: var(--deep-canopy);
+    text-align: center;
+    color: var(--breath);
+  }
+
+  .footer-brand {
+    font-family: 'Newsreader', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--breath);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-llc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--mist);
+    letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+  }
+
+  .footer-contact {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--mist);
+    margin-bottom: 0.5rem;
+  }
+
+  footer a {
+    color: var(--mist);
+    border-bottom: 1px solid rgba(200,192,168,0.2);
+  }
+
+  footer a:hover {
+    color: var(--honey);
+    border-bottom-color: var(--honey);
+  }
+
+  /* ═══════════════════════════════════════
+     REVEAL — subtle on-load fade
+     ═══════════════════════════════════════ */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: emerge 1.4s ease-out forwards;
+  }
+
+  .reveal-1 { animation-delay: 0.1s; }
+  .reveal-2 { animation-delay: 0.3s; }
+  .reveal-3 { animation-delay: 0.5s; }
+
+  @keyframes emerge {
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+
+  @media (max-width: 600px) {
+    .title-block { margin: 3rem auto 2.5rem; }
+    .framing { margin-bottom: 3.5rem; }
+    .document p { padding-left: 0; }
+    .coda { padding-left: 0; }
+    .section-head { gap: 0.7rem; }
+    .section-number { min-width: 1.4rem; font-size: 0.88rem; }
+  }
+
+  @media print {
+    body::after { display: none; }
+    header { display: none; }
+    .footer-transition, footer { display: none; }
+    .reveal { opacity: 1; transform: none; animation: none; }
+    .title-block { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="back-link">The Wild Edge</a>
+</header>
+
+<div class="title-block reveal reveal-1">
+  <p class="overline">Seth Wylie Services, LLC</p>
+  <h1>Meetup Agreement</h1>
+  <div class="title-rule"></div>
+</div>
+
+<main class="document reveal reveal-3">
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">01</span>
+      <h2>Who this is between</h2>
+    </div>
+    <p>This agreement is between <strong>Seth Wylie Services, LLC</strong>, a Massachusetts limited liability company, and you, the individual participant. You must be 18 or older and able to enter this agreement. If an employer, organization, or anyone else pays for your subscription — whether for you alone or as part of a team — the agreement is still between you and me, and the obligations described here apply to you as the participant. The payer is not a party to it.</p>
+    <p>Throughout this agreement, "I," "me," and "my" refer to Seth Wylie Services, LLC — not to Seth Wylie individually. "You" and "your" refer to you, the participant.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">02</span>
+      <h2>What this is</h2>
+    </div>
+    <p>Each meetup is a recurring group conversation on video call — one hour, facilitated, focused on the theme described on its subscription page. You subscribe; you show up; what happens emerges from the exchange among everyone in the room. My role is to make that exchange possible: preparation, facilitation, and presence. I don't deliver content to you individually.</p>
+    <p>Each subscription is to one specific meetup. If you want to participate in more than one, you subscribe to each separately.</p>
+    <div class="coda">
+      <p>What this isn't: therapy, counseling, psychiatric treatment, or medical advice. Not legal, financial, or tax advice. Not 1-on-1 coaching — my attention is on the group, not on individual participants. If something surfaces that would benefit from clinical support or licensed professional guidance, I'll name what I'm noticing and help you find the right kind of support, but I'm not the person to provide it.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">03</span>
+      <h2>How meetups work</h2>
+    </div>
+    <p>Each meetup runs on a recurring schedule, published on its subscription page. Each session stands on its own — no prep beforehand, no homework after, no continuing threads between sessions.</p>
+    <p>If you miss a session, you miss it; individual sessions don't carry over or get rescheduled for you alone. Your subscription gives you access to the sessions for as long as it is active.</p>
+    <p>Sessions are transcribed using the video platform's built-in transcription, which notifies everyone in the call when it is active. Transcripts help me review and synthesize what happens across meetups. They are confidential under Section 06, and they may inform the anonymized patterns I write about publicly — but they are never published or shared.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">04</span>
+      <h2>Payment and billing</h2>
+    </div>
+    <p>Subscriptions are billed monthly in advance through Stripe and renew automatically each month until you cancel. Each subscription begins with a free period: for $24/month meetups, your first month is free; for $49/month meetups, your first two-week period is free. You provide a payment method at signup. Nothing is charged during the free period.</p>
+    <p>Your first charge happens at the end of the free period — 30 days after signup for $24/month subscriptions, and 14 days after signup for $49/month subscriptions. Immediately after signup, I send you an order confirmation email stating the exact calendar date of your first charge, the amount, and a direct link to cancel. If you cancel before that date, you are not charged.</p>
+    <p>After the first charge, your card is charged on the same day each month. Before every renewal, I email you a reminder stating the upcoming charge amount, the date, and the cancellation link. You can cancel 24/7 through Stripe's customer portal without contacting me.</p>
+    <p>If I issue you a 100% discount coupon — for example, as a key corporate contact or an existing coaching client — your subscription may not require a payment method. If the discount later ends or the subscription would otherwise become paid, I will ask for your separate express consent before any charge.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">05</span>
+      <h2>Cancellation, rescheduling, and refunds</h2>
+    </div>
+    <p><strong>If you cancel.</strong> You may cancel at any time through Stripe's customer portal. Cancellation takes effect at the end of your current billing period; you keep access through the paid period, and no partial-month refund is issued.</p>
+    <p><strong>If I reschedule a session.</strong> If I move a scheduled session to a time you cannot attend, you may email <a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a> within 14 days of the rescheduled session to request a pro-rata refund for that session. The refund is calculated as the monthly fee divided by the number of sessions scheduled that month.</p>
+    <p><strong>If I discontinue the meetup.</strong> I may discontinue a meetup entirely with at least two sessions' worth of notice to all participants. When I do, I issue a pro-rata refund for the unused calendar days remaining in your current billing period.</p>
+    <p><strong>If I end your participation.</strong> See Section 11.</p>
+    <p>Refunds are issued to your original payment method through Stripe and typically appear on your card within 5–10 business days.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">06</span>
+      <h2>Confidentiality</h2>
+    </div>
+    <p>What you share in sessions stays with me. I don't share, publish, or discuss the content of our conversations with anyone. Two exceptions: if I am legally compelled to disclose information (e.g., subpoena or court order), and if I reasonably believe you or someone else is at imminent risk of serious harm, including harm to self. If I ever believe I need to act on the second exception, I will tell you first unless doing so would increase the risk.</p>
+    <p>I may write or speak about patterns I notice across my facilitation work. When I do, I will remove names, identifying details, and anything specific enough that a reader who knows you could recognize you. If I want to quote you directly — in writing, marketing, or a conversation — I will ask your written permission first.</p>
+    <p>Because meetups are group settings, confidentiality toward other participants also depends on everyone else in the room. I ask all participants to follow Chatham House Rules: you may share what was discussed and what you learned, but you may not identify who said what or attribute specific contributions to specific people. This is a community norm I ask of participants. I cannot enforce it against other participants or guarantee that everyone will follow it. What you share in a meetup is shared with everyone in the room.</p>
+    <p>These confidentiality obligations continue after your subscription ends and do not expire.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">07</span>
+      <h2>Conduct in the room</h2>
+    </div>
+    <p>Participating in a meetup means showing up with a basic commitment to the shape of the space:</p>
+    <p><strong>Respectful participation.</strong> Engage with other participants as peers in a shared conversation. Give others room to speak. Disagree substantively when you do; avoid personal attacks.</p>
+    <p><strong>No solicitation.</strong> Meetups are not a place to promote events, products, services, newsletters, or causes — even relevant ones. If something is genuinely useful, share your experience with it, not a link.</p>
+    <p><strong>Stay in the container.</strong> Each meetup has its own scope and focus, described on its subscription page. I may redirect conversation that drifts into territory outside that scope — including therapy, legal advice, or other material the format is not designed to hold.</p>
+    <p><strong>Confidentiality toward other participants.</strong> See Section 06.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">08</span>
+      <h2>Your materials and intellectual property</h2>
+    </div>
+    <p>Anything you bring to a meetup — what you share, the work you describe, the systems you are building — remains yours. Anything you produce during or after a meetup based on the conversation — prompts, configurations, notes, your own self-knowledge documents — also remains yours.</p>
+    <p>I treat your materials with care, and use reasonable measures to keep them confidential. My pre-existing facilitation methods, frameworks, and tools remain my intellectual property. Participating in a meetup does not transfer that methodology to you.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">09</span>
+      <h2>Outcomes and responsibility</h2>
+    </div>
+    <p>Meetups are collaborative. I bring facilitation, preparation, and care; you bring your effort, curiosity, and willingness to engage. I don't guarantee specific outcomes — your results will depend on what you do with the work.</p>
+    <p>AI tools are probabilistic and can produce errors, omissions, or confident-sounding mistakes. Anything we explore or build during a meetup — prompts, configurations, workflows, drafts, code, or scripts — is for your review and judgment before you rely on it. I don't guarantee that any specific AI tool will remain available or keep behaving the way it did in a session.</p>
+    <p>The tools and systems you build during or after a meetup run on your devices and under your control. You are responsible for how you use them, how you keep them secure, and anything that happens as a result of your use. If your use leads to a claim against me by someone else, you will be responsible for the costs I incur defending against that claim and for any damages I end up owing, except where the claim is based on my own fraud, gross negligence, or willful misconduct.</p>
+    <p>Beyond what this agreement specifically says, I make no warranties — express or implied — about the meetups, any materials created during or after a meetup, or the AI tools we use. Nothing in this paragraph limits any protection that Massachusetts law (including chapter 93A) does not allow me to disclaim.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">10</span>
+      <h2>Limitation of liability</h2>
+    </div>
+    <p>My total liability to you for anything arising from this agreement is limited to the amount you have paid in your current monthly billing period. I am not liable for consequential, incidental, or indirect losses. Nothing in this section limits liability for fraud, intentional misrepresentation, gross negligence, willful misconduct, or claims under Massachusetts General Laws chapter 93A.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">11</span>
+      <h2>Ending the engagement</h2>
+    </div>
+    <p>There are three ways this engagement can end.</p>
+    <p><strong>You cancel.</strong> You may cancel at any time through Stripe's customer portal, effective at the end of your current billing period. See Section 05.</p>
+    <p><strong>I discontinue the meetup.</strong> I may discontinue a meetup with at least two sessions' worth of notice to all participants. I issue a pro-rata refund for the unused calendar days remaining in your current billing period. See Section 05.</p>
+    <p><strong>I end your participation.</strong> I may end your participation in any meetup at any time, for any reason. This can take the form of removing you from a single session (for example, using the video platform's host controls during a session) or ending your participation in the meetup entirely. I will tell you in writing when I end your participation in the meetup, and I will issue a pro-rata refund for the unused calendar days remaining in your current billing period.</p>
+    <p>"Written notice" under this agreement means an email — from me, to the email address associated with your subscription; from you, to <a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a>.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">12</span>
+      <h2>Events beyond our control</h2>
+    </div>
+    <p>If circumstances beyond either party's reasonable control — such as serious illness, natural disaster, internet or platform outages, or government action — prevent a session from happening, I will reschedule the session for the group at the next feasible time, or offer an alternative. If the disruption continues for more than sixty days, either of us may end the engagement under Section 11.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">13</span>
+      <h2>Governing law and disputes</h2>
+    </div>
+    <p>This agreement is governed by the laws of the Commonwealth of Massachusetts, without regard to its conflict of laws principles. Before any legal proceedings, both parties agree to first attempt to resolve disputes through direct conversation. If direct conversation does not resolve the dispute within thirty days, both parties agree to attempt non-binding mediation with a mutually agreed mediator before pursuing litigation. Any legal proceedings arising out of or in connection with this agreement shall take place exclusively in the state or federal courts located in Massachusetts, and both parties consent to the exclusive jurisdiction of such courts. While we are in direct conversation or mediation under this section, the statute of limitations on any related claim is paused from the date either of us sends written notice of the dispute until thirty days after mediation ends or until one of us withdraws from mediation in writing, whichever comes first. We will share the mediator's fee equally, unless we agree otherwise at the time.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">14</span>
+      <h2>Severability</h2>
+    </div>
+    <p>If any provision of this agreement is found to be invalid, illegal, or unenforceable, the remaining provisions will continue in full force and effect. Any invalid provision shall be interpreted or reformed to the minimum extent necessary to make it enforceable and to preserve the original intent of the parties. This agreement is binding upon and will benefit the parties and their respective heirs, executors, legal representatives, successors, and assigns.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">15</span>
+      <h2>General provisions</h2>
+    </div>
+    <p>This document is the entire agreement between us about your meetup participation, and it replaces any earlier conversations, emails, or proposals on the same subject. I may update these terms from time to time; the version in effect is always the version posted at this URL. Material changes will be communicated to active subscribers by email at least thirty days before they take effect. You may cancel before any material change takes effect if you disagree with it. Continued participation after a material change takes effect constitutes acceptance.</p>
+    <p>Any notice under this agreement should be sent by email: from me, to the email address associated with your subscription; from you, to <a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a>. Neither of us may assign this agreement to someone else, except that I may assign it to a successor entity that takes over my practice. If I don't enforce a provision in one instance, that doesn't mean I've given up the right to enforce it later. Section headings are for convenience and don't affect interpretation.</p>
+    <p>I am an independent contractor. Nothing in this agreement creates an employment, partnership, joint venture, or agency relationship between us.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">16</span>
+      <h2>How this agreement is accepted</h2>
+    </div>
+    <p>You accept this agreement by subscribing to a meetup and checking the box on the checkout page acknowledging these terms. Updates to these terms are handled as described in Section 15. By subscribing and checking the box, you are signing this agreement electronically; your electronic acceptance has the same legal effect as a handwritten signature under the federal ESIGN Act and the Massachusetts Uniform Electronic Transactions Act.</p>
+  </section>
+
+  <div class="meta">
+    <p>Version 1.0 · Last updated April 13, 2026</p>
+    <p>Questions? <a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a></p>
+  </div>
+
+</main>
+
+<div class="footer-transition"></div>
+<footer>
+  <p class="footer-brand">The Wild Edge</p>
+  <p class="footer-llc">Seth Wylie Services LLC</p>
+  <p class="footer-contact"><a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a></p>
+</footer>
+
+</body>
+</html>
