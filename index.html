@@ -587,105 +587,7 @@
     background: linear-gradient(90deg, transparent, rgba(14,26,10,0.15), transparent);
   }
 
-  .offerings-calendar {
-    max-width: 880px;
-    margin: 4.5rem auto 0;
-    padding-top: 3.5rem;
-    border-top: 1px solid rgba(14,26,10,0.1);
-  }
-
-  .calendar-header {
-    font-family: 'Newsreader', serif;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    font-weight: 400;
-    font-style: italic;
-    color: var(--deep-canopy);
-    text-align: center;
-    margin-bottom: 2rem;
-    letter-spacing: 0.02em;
-  }
-
-  .calendar-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0.5rem;
-  }
-
-  .calendar-table thead th {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--moss);
-    padding: 0.4rem 0.5rem;
-    text-align: center;
-  }
-
-  .calendar-table tbody th {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 400;
-    color: var(--ink-soft);
-    text-align: right;
-    padding-right: 0.8rem;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-  }
-
-  .calendar-table tbody td {
-    background-color: var(--sunpool);
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: 100% 7px;
-    color: var(--deep-canopy);
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 400;
-    line-height: 1.35;
-    padding: 1.2rem 0.6rem 0.9rem;
-    text-align: center;
-    border-radius: 4px;
-    box-shadow: 0 1px 6px rgba(14,26,10,0.03);
-  }
-
-  .calendar-table tbody td.cal-ai-camp {
-    background-image: linear-gradient(var(--leaf-gold), var(--leaf-gold));
-  }
-  .calendar-table tbody td.cal-reinventors {
-    background-image: linear-gradient(var(--moss), var(--moss));
-  }
-  .calendar-table tbody td.cal-think-like-you {
-    background-image: linear-gradient(var(--golden-glow), var(--golden-glow));
-  }
-  .calendar-table tbody td.cal-what-matters {
-    background-image: linear-gradient(var(--coral), var(--coral));
-  }
-
-  /* Calendar hover highlight — deep fade of non-matching cells */
-  .calendar-table tbody td {
-    transition: opacity 260ms ease-out;
-  }
-
-  .offerings[data-highlight] .calendar-table tbody td {
-    opacity: 0.15;
-  }
-
-  .offerings[data-highlight="ai-camp"] .calendar-table tbody td.cal-ai-camp,
-  .offerings[data-highlight="reinventors"] .calendar-table tbody td.cal-reinventors,
-  .offerings[data-highlight="think-like-you"] .calendar-table tbody td.cal-think-like-you,
-  .offerings[data-highlight="what-matters"] .calendar-table tbody td.cal-what-matters {
-    opacity: 1;
-  }
-
-  @media (hover: none) {
-    .offerings[data-highlight] .calendar-table tbody td {
-      opacity: 1;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .calendar-table tbody td { transition: none; }
     /* Still the flicker of the grain, firefly flight, hero emerge, and reveal transitions */
     body::after { animation: none; }
     .firefly { animation: none; opacity: 0; }
@@ -839,10 +741,6 @@
     .offerings-pair { grid-template-columns: 1fr; }
     .offering-card { padding: 2rem 1.5rem 1.5rem; }
     .hero { padding: 2rem 1.5rem; }
-    .calendar-table { border-spacing: 0.25rem; }
-    .calendar-table thead th { font-size: 0.65rem; padding: 0.3rem 0.2rem; }
-    .calendar-table tbody th { font-size: 0.7rem; padding-right: 0.4rem; }
-    .calendar-table tbody td { font-size: 0.7rem; padding: 0.6rem 0.3rem; line-height: 1.3; }
     .individuals-transition { height: 7vh; }
     .individuals-teams { padding: 3.5rem 1.5rem 3.5rem; }
     .individuals-teams-header { margin-bottom: 2rem; }
@@ -911,15 +809,15 @@
     </div>
     <div class="offerings-pair">
       <div class="offering-card">
-        <h3>AI Camp</h3>
+        <h3>AI Club</h3>
         <p class="offering-line">For people eagerly tinkering with and reading about AI, but who still feel like they're missing out on what to best do with it. Bring your experiments and questions, and see what other people have been doing and thinking about. Leave feeling better oriented, more capable, and focused on a few great ideas to try.</p>
         <div class="offering-vibe">
           <p class="offering-vibe-label">Format &amp; Vibe</p>
           <p class="offering-vibe-text">Virtual meetup, 1 hour. Facilitated but unstructured — no agenda, no presentations. Conversation goes where the energy and interest are. Casual demos encouraged. Each session stands on its own.</p>
         </div>
-        <div class="offering-schedule">Noon Eastern · Twice a month (1st Friday &amp; 3rd Thursday)</div>
+        <div class="offering-schedule">Noon Eastern · Twice a month (1st &amp; 3rd Friday)</div>
         <div class="offering-price">$24/mo <span>First month free · Cancel anytime</span></div>
-        <a href="#" class="offering-cta">Try it out</a>
+        <a href="https://buy.stripe.com/00w00jfZS9Uc8R90FZ5ZC03" class="offering-cta" target="_blank" rel="noopener">Try it out</a>
       </div>
       <div class="offering-card">
         <h3>Career Reinventors</h3>
@@ -928,9 +826,9 @@
           <p class="offering-vibe-label">Format &amp; Vibe</p>
           <p class="offering-vibe-text">Virtual meetup, 1 hour. Not interview prep, not resume strategies, not presentations. Each session stands on its own.</p>
         </div>
-        <div class="offering-schedule">Noon Eastern · Twice a month (2nd Tuesday &amp; 4th Friday)</div>
+        <div class="offering-schedule">Noon Eastern · Twice a month (2nd &amp; 4th Friday)</div>
         <div class="offering-price">$24/mo <span>First month free · Cancel anytime</span></div>
-        <a href="#" class="offering-cta">Try it out</a>
+        <a href="https://buy.stripe.com/14A9AT00UaYgd7p74n5ZC04" class="offering-cta" target="_blank" rel="noopener">Try it out</a>
       </div>
     </div>
   </div>
@@ -951,7 +849,7 @@
         </div>
         <div class="offering-schedule">Noon Eastern  · Weekly (alternating Tuesdays &amp; Thursdays)</div>
         <div class="offering-price">$49/mo <span>First two-week period free · Cancel anytime</span></div>
-        <a href="#" class="offering-cta">Try it out</a>
+        <a href="https://buy.stripe.com/4gM6oH6piaYg9Vd1K35ZC05" class="offering-cta" target="_blank" rel="noopener">Try it out</a>
       </div>
       <div class="offering-card">
         <h3>Teach AI What Matters to You</h3>
@@ -960,52 +858,13 @@
           <p class="offering-vibe-label">Format &amp; Vibe</p>
           <p class="offering-vibe-text">Virtual meetup, 1 hour. Focused and facilitated, but not a structured workshop, so that we can spend time where it's needed.</p>
         </div>
-        <div class="offering-schedule">Noon Eastern  · Weekly (1st Thursday · 2nd &amp; 3rd Friday · 4th Tuesday)</div>
+        <div class="offering-schedule">Noon Eastern  · Weekly (alternating Tuesdays &amp; Thursdays)</div>
         <div class="offering-price">$49/mo <span>First two-week period free · Cancel anytime</span></div>
-        <a href="#" class="offering-cta">Try it out</a>
+        <a href="https://buy.stripe.com/8x26oH4hac2kffxcoH5ZC06" class="offering-cta" target="_blank" rel="noopener">Try it out</a>
       </div>
     </div>
   </div>
 
-  <div class="offerings-calendar reveal">
-    <p class="calendar-header">Each month</p>
-    <table class="calendar-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Tue</th>
-          <th>Thu</th>
-          <th>Fri</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Week 1</th>
-          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
-          <td class="cal-what-matters">Teach AI What Matters to You</td>
-          <td class="cal-ai-camp">AI Camp</td>
-        </tr>
-        <tr>
-          <th>Week 2</th>
-          <td class="cal-reinventors">Career Reinventors</td>
-          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
-          <td class="cal-what-matters">Teach AI What Matters to You</td>
-        </tr>
-        <tr>
-          <th>Week 3</th>
-          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
-          <td class="cal-ai-camp">AI Camp</td>
-          <td class="cal-what-matters">Teach AI What Matters to You</td>
-        </tr>
-        <tr>
-          <th>Week 4</th>
-          <td class="cal-what-matters">Teach AI What Matters to You</td>
-          <td class="cal-think-like-you">Teach AI How to Think Like You</td>
-          <td class="cal-reinventors">Career Reinventors</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </section>
 
 <!-- FOR INDIVIDUALS & TEAMS -->
@@ -1080,9 +939,6 @@ const heroWrapper = document.querySelector('.hero-wrapper');
 const heroContent = document.querySelector('.hero-content');
 const heroHook = document.querySelector('.hero-hook');
 const heroFireflies = document.querySelectorAll('.firefly');
-const offeringsSection = document.querySelector('.offerings');
-const calendarBody = document.querySelector('.calendar-table tbody');
-
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let heroW = 0;
@@ -1276,23 +1132,6 @@ if (prefersReducedMotion) {
 }
 
 // ═══════════════════════════════════════════════════════
-// CALENDAR HOVER HIGHLIGHT
-// ═══════════════════════════════════════════════════════
-
-if (offeringsSection && calendarBody) {
-  calendarBody.addEventListener('mouseover', (e) => {
-    const cell = e.target.closest('td');
-    if (!cell) return;
-    const calClass = [...cell.classList].find(c => c.startsWith('cal-'));
-    if (calClass) {
-      offeringsSection.setAttribute('data-highlight', calClass.slice(4));
-    }
-  });
-
-  calendarBody.addEventListener('mouseleave', () => {
-    offeringsSection.removeAttribute('data-highlight');
-  });
-}
 </script>
 </body>
 </html>
