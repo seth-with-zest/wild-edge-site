@@ -140,7 +140,7 @@
      ═══════════════════════════════════════ */
 
   .hero-wrapper {
-    height: 200vh;
+    height: 260vh;
     position: relative;
   }
 
@@ -164,6 +164,22 @@
     inset: 0;
     pointer-events: none;
     z-index: 1;
+  }
+
+  /* Solid-color floor that fades the bottom of the hero into --deep-canopy
+     so the boundary with the next section becomes seamless. Sits above the
+     canvas, fireflies, and veil (all ≤ z-index: 3) but below the text
+     content (z-index: 4) so the hook text stays visible on top. */
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 35%;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 0%, var(--deep-canopy) 75%, var(--deep-canopy) 100%);
   }
 
   /* Dark veil over the top of the hero — foreboding canopy overhead,
@@ -636,8 +652,8 @@
 
   .individuals-teams-header h2 {
     font-family: 'Newsreader', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 500;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 400;
     color: var(--deep-canopy);
     letter-spacing: 0.02em;
   }
@@ -645,6 +661,7 @@
   .individuals-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
     gap: 1.5rem;
   }
 
@@ -657,6 +674,8 @@
     box-shadow: 0 2px 16px rgba(14,26,10,0.05);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     text-align: left;
+    display: flex;
+    flex-direction: column;
   }
 
   .individual-offering:hover {
@@ -680,20 +699,21 @@
 
   .individual-offering h3 {
     font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 1.35rem;
+    font-weight: 500;
     color: var(--amber);
     margin-bottom: 0.75rem;
+    line-height: 1.3;
     letter-spacing: 0.01em;
   }
 
   .individual-offering p {
-    font-family: 'Newsreader', serif;
+    font-family: 'Source Sans 3', sans-serif;
     font-size: 0.95rem;
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.6;
     color: var(--ink);
+    flex: 1;
   }
 
   .individuals-teams-email {
