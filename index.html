@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Wild Edge — Seth Wylie Services LLC</title>
-<meta name="description" content="Support for living at the frontier of AI: advisory, community, coaching, and the craft of building systems that know you.">
+<meta name="description" content="Live community, guidance, hands-on exploration, and self-inquiry for finding your way at the disorienting, overwhelming, tantalizing frontier of AI">
 <link rel="canonical" href="https://thewildedge.ai/">
 
 <!-- Open Graph -->
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="The Wild Edge">
 <meta property="og:url" content="https://thewildedge.ai/">
 <meta property="og:title" content="The Wild Edge">
-<meta property="og:description" content="Support for living at the frontier of AI: advisory, community, coaching, and the craft of building systems that know you.">
+<meta property="og:description" content="Live community, guidance, hands-on exploration, and self-inquiry for finding your way at the disorienting, overwhelming, tantalizing frontier of AI">
 <meta property="og:image" content="https://thewildedge.ai/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://thewildedge.ai/">
 <meta name="twitter:title" content="The Wild Edge">
-<meta name="twitter:description" content="Support for living at the frontier of AI: advisory, community, coaching, and the craft of building systems that know you.">
+<meta name="twitter:description" content="Live community, guidance, hands-on exploration, and self-inquiry for finding your way at the disorienting, overwhelming, tantalizing frontier of AI">
 <meta name="twitter:image" content="https://thewildedge.ai/og-image.jpg">
 
 <!-- Favicon -->
@@ -140,7 +140,7 @@
      ═══════════════════════════════════════ */
 
   .hero-wrapper {
-    height: 260vh;
+    height: 170vh;
     position: relative;
   }
 
@@ -258,44 +258,6 @@
     padding: 2rem;
   }
 
-  .hero-hook {
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    opacity: 0;
-  }
-
-  .hero-hook p {
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 300;
-    font-size: clamp(1rem, 1.7vw, 1.2rem);
-    color: var(--breath);
-    letter-spacing: 0.02em;
-  }
-
-  .hero-hook .hook-normals {
-    margin: 1.5rem 0;
-    list-style: none;
-    padding: 0;
-  }
-
-  .hero-hook .hook-normals li,
-  .hero-hook .hook-normals p {
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    line-height: 1.4;
-    margin-bottom: 0;
-  }
-
-  .hero-hook .ember {
-    color: var(--golden-glow);
-    text-shadow: 0 0 18px rgba(212,168,64,0.25);
-  }
-
   .hero-title {
     font-family: 'Newsreader', serif;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -313,7 +275,9 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--mist);
-    margin-top: 1rem;
+    max-width: 38rem;
+    margin: 1rem auto 0;
+    line-height: 1.55;
     opacity: 0;
     animation: emerge 2s ease-out 2.5s forwards;
   }
@@ -335,17 +299,97 @@
   }
 
   /* ═══════════════════════════════════════
-     ABOUT
+     ABOUT — integrated: who I am + the invitation,
+     both on deep-canopy so the transition to the
+     clearing is reserved for the shift into offerings.
      ═══════════════════════════════════════ */
 
   .about {
-    padding: 6rem 2rem;
+    padding: 6rem 2rem 5rem;
     margin-top: -1px;
-    background: linear-gradient(180deg, var(--deep-canopy), #141E0E);
-    text-align: center;
+    background: var(--deep-canopy);
+    color: var(--breath);
   }
 
-  .about-text {
+  .about-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .about-who {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Organic asymmetric shape — ruled geometry betrays
+     the "organic curvature" principle. Stylized portrait
+     carries its own warm palette so no overlay is needed. */
+  .about-photo {
+    width: 240px;
+    height: 240px;
+    border-radius: 62% 38% 55% 45% / 48% 60% 40% 52%;
+    object-fit: cover;
+    object-position: center 28%;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.4);
+    display: block;
+  }
+
+  .about-who-text {
+    font-family: 'Newsreader', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--breath);
+  }
+
+  .about-who-text h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--golden-glow);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.01em;
+  }
+
+  .about-who-text p {
+    margin-bottom: 1rem;
+  }
+
+  .about-who-text p.career {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.92rem;
+    color: var(--mist);
+    font-style: italic;
+    margin-top: 1.4rem;
+    line-height: 1.6;
+  }
+
+  .about-link {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: var(--golden-glow);
+    border-bottom: 1px solid rgba(212, 168, 64, 0.3);
+    transition: border-color 0.3s ease;
+  }
+
+  .about-link:hover {
+    border-bottom-color: var(--golden-glow);
+    text-decoration: none;
+  }
+
+  .about-divider {
+    width: 60px;
+    height: 1px;
+    margin: 0 auto 3.5rem;
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 64, 0.35), transparent);
+  }
+
+  .about-manifesto {
     font-family: 'Newsreader', serif;
     font-size: clamp(1rem, 1.7vw, 1.2rem);
     font-weight: 300;
@@ -353,33 +397,24 @@
     color: var(--breath);
     max-width: 540px;
     margin: 0 auto;
+    text-align: center;
   }
 
-  .about-text p {
+  .about-manifesto p {
     margin-bottom: 1.2rem;
   }
 
-  .about-text .ember {
+  .about-manifesto .ember {
     color: var(--golden-glow);
-    text-shadow: 0 0 18px rgba(212,168,64,0.25);
+    text-shadow: 0 0 18px rgba(212, 168, 64, 0.25);
   }
 
-  .hook-top {
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-  }
-
-  .hook-normals {
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin: 2rem 0;
-  }
-
-  .hook-normals p {
-    margin-bottom: 0;
-    line-height: 1.4;
+  @media (max-width: 720px) {
+    .about { padding: 4rem 1.5rem 4rem; }
+    .about-who { grid-template-columns: 1fr; gap: 1.75rem; margin-bottom: 2.5rem; }
+    .about-photo { width: 180px; height: 180px; margin: 0 auto; }
+    .about-who-text h2 { text-align: center; }
+    .about-divider { margin-bottom: 2.5rem; }
   }
 
   /* ═══════════════════════════════════════
@@ -389,7 +424,7 @@
   .services-transition {
     height: 30vh;
     margin-top: -1px;
-    background: linear-gradient(180deg, #141E0E 0%, #1E2818 20%, #2A3820 35%, #4A5838 50%, #7A8860 62%, #A8B088 72%, #C8C8B0 82%, #DCD8C8 90%, var(--clearing) 100%);
+    background: linear-gradient(180deg, var(--deep-canopy) 0%, #1E2818 20%, #2A3820 35%, #4A5838 50%, #7A8860 62%, #A8B088 72%, #C8C8B0 82%, #DCD8C8 90%, var(--clearing) 100%);
   }
 
   /* ═══════════════════════════════════════
@@ -740,93 +775,6 @@
     text-decoration: none;
   }
 
-  /* ═══════════════════════════════════════
-     ABOUT SETH
-     ═══════════════════════════════════════ */
-
-  .about-seth {
-    padding: 5rem 2rem 5rem;
-    margin-top: -1px;
-    background: #E0D8C4;
-    color: var(--deep-canopy);
-    border-top: 1px solid rgba(58, 56, 40, 0.08);
-  }
-
-  .about-seth-inner {
-    max-width: 880px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  /* Photo: organic asymmetric shape (no perfect circle — ruled geometry
-     betrays the brand's "organic curvature" principle). The stylized
-     portrait carries its own warm palette and paper background, so no
-     filter or overlay is layered on top. */
-  .about-seth-photo {
-    width: 240px;
-    height: 240px;
-    border-radius: 62% 38% 55% 45% / 48% 60% 40% 52%;
-    object-fit: cover;
-    object-position: center 28%;
-    box-shadow: 0 14px 32px rgba(58, 56, 40, 0.15);
-    display: block;
-  }
-
-  .about-seth-text {
-    font-family: 'Newsreader', serif;
-    font-size: 1.05rem;
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--ink-deep);
-  }
-
-  .about-seth-text h2 {
-    font-family: 'Newsreader', serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--amber);
-    margin-bottom: 1.2rem;
-    letter-spacing: 0.01em;
-  }
-
-  .about-seth-text p {
-    margin-bottom: 1rem;
-  }
-
-  .about-seth-text p.career {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-    font-style: italic;
-    margin-top: 1.4rem;
-    line-height: 1.6;
-  }
-
-  .about-seth-link {
-    display: inline-block;
-    margin-top: 1.4rem;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.95rem;
-    color: var(--amber);
-    border-bottom: 1px solid rgba(168, 132, 48, 0.3);
-    transition: border-color 0.3s ease;
-  }
-
-  .about-seth-link:hover {
-    border-bottom-color: var(--amber);
-    text-decoration: none;
-  }
-
-  @media (max-width: 720px) {
-    .about-seth { padding: 3.5rem 1.5rem; }
-    .about-seth-inner { grid-template-columns: 1fr; gap: 1.75rem; }
-    .about-seth-photo { width: 180px; height: 180px; margin: 0 auto; }
-    .about-seth-text h2 { text-align: center; }
-  }
-
   .footer-transition {
     height: 20vh;
     margin-top: -1px;
@@ -968,34 +916,36 @@
   <div class="firefly ff4"></div>
   <div class="hero-content">
     <h1 class="hero-title">The Wild Edge</h1>
-    <p class="hero-subtitle">Becoming our own inventors of what AI makes possible, together</p>
-  </div>
-  <div class="hero-hook">
-    <p>The AI prompt box is always blank.</p>
-    <ul class="hook-normals">
-      <li>FOMO is normal.</li>
-      <li>Overwhelm is normal.</li>
-      <li>Uncertainty is normal.</li>
-      <li>Amazement is normal.</li>
-      <li>Fascination is normal.</li>
-      <li>Empowerment is normal.</li>
-      <li>Not knowing where to start is normal.</li>
-    </ul>
-    <p><span class="ember"><strong>This is just how a frontier feels.</strong></span></p>
+    <p class="hero-subtitle">Live community, guidance, hands-on exploration, and self-inquiry for finding your way at the disorienting, overwhelming, tantalizing frontier of AI</p>
   </div>
 </section>
 </div>
 
 <main id="main">
 
-<!-- HOOK -->
-<section class="about">
-  <div class="about-text reveal">
-    <p>AI is shaking everything loose. It gives us the chance to reimagine and rebuild who we get to be, and how life and work get to feel. <em>hallelujah.</em></p>
-    <p>We get to do it in-tune with our <em>most</em> human motivations, if we can put words to them. And with AI's help, we're more capable than ever, if we can figure out how AI can help.</p>
-    <p><span class="ember">But those two wild edges — yourself, and AI — are impossibly hard to reckon with alone.</span></p>
-    <p>Come be safe with eager, fascinated, collaborative fellow travelers at that frontier. Let's play there, and see what we find.</p>
-    <p>Then, when AI changes again a week later, let's do it again.</p>
+<!-- ABOUT: who I am + the invitation, integrated on deep canopy -->
+<section class="about" id="about" aria-label="About">
+  <div class="about-inner reveal">
+    <div class="about-who">
+      <img src="seth_stylized.png" alt="Seth Wylie" class="about-photo" width="240" height="240">
+      <div class="about-who-text">
+        <h2>Who's hosting?</h2>
+        <p>I've spent twenty years inside tech companies watching how people actually take up new tools — alongside decades watching my own thinking, and what makes thinking go well. Most people who do this kind of AI work lean either technical or humanistic; I happen to be both. What I tend to notice in conversations is that someone's relationship to a tool is, five minutes in, really a conversation about who they are.</p>
+        <p>What I keep seeing right now is people drowning in the rapid change of all this — and you can't think clearly about the future when you're consumed by keeping your plates spinning in the present.</p>
+        <p class="career">Cultural anthropology at Brown, then twenty years inside tech — most recently leading enterprise AI transformation at Gainsight — and now The Wild Edge independently.</p>
+        <a href="https://www.linkedin.com/in/sethwylie/recent-activity/all/" class="about-link" target="_blank" rel="noopener">More of how I think on LinkedIn →</a>
+      </div>
+    </div>
+
+    <div class="about-divider"></div>
+
+    <div class="about-manifesto">
+      <p>AI is shaking everything loose. It gives us the chance to reimagine and rebuild who we get to be, and how life and work get to feel. <em>hallelujah.</em></p>
+      <p>We get to do it in-tune with our <em>most</em> human motivations, if we can put words to them. And with AI's help, we're more capable than ever, if we can figure out how AI can help.</p>
+      <p><span class="ember">But those two wild edges — yourself, and AI — are impossibly hard to reckon with alone.</span></p>
+      <p>Come be safe with eager, fascinated, collaborative fellow travelers at that frontier. Let's play there, and see what we find.</p>
+      <p>Then, when AI changes again a week later, let's do it again.</p>
+    </div>
   </div>
 </section>
 
@@ -1106,19 +1056,6 @@
   </div>
 </section>
 
-<!-- ABOUT SETH -->
-<section class="about-seth" aria-label="About Seth" id="about-seth">
-  <div class="about-seth-inner reveal">
-    <img src="seth_stylized.png" alt="Seth Wylie" class="about-seth-photo" width="240" height="240">
-    <div class="about-seth-text">
-      <h2>Who's hosting?</h2>
-      <p>I've spent twenty years inside tech companies watching how people actually take up new tools — alongside decades watching my own thinking, and what makes thinking go well. Most people who do this kind of AI work lean either technical or humanistic; I happen to be both. What I tend to notice in conversations is that someone's relationship to a tool is, five minutes in, really a conversation about who they are.</p>
-      <p>What I keep seeing right now is people drowning in the rapid change of all this — and you can't think clearly about the future when you're consumed by keeping your plates spinning in the present. The conversations on this site are the room I built for that: places where people can put performative achievement aside for a moment and earnestly explore what AI unlocks for them, alongside others doing the same.</p>
-      <p class="career">Cultural anthropology at Brown, then twenty years inside tech — most recently leading enterprise AI transformation at Gainsight — and now The Wild Edge independently.</p>
-      <a href="https://www.linkedin.com/in/sethwylie/recent-activity/all/" class="about-seth-link" target="_blank" rel="noopener">More of how I think on LinkedIn →</a>
-    </div>
-  </div>
-</section>
 </main>
 
 <div class="footer-transition"></div>
@@ -1152,7 +1089,6 @@ const ctx = canvas.getContext('2d');
 const hero = document.querySelector('.hero');
 const heroWrapper = document.querySelector('.hero-wrapper');
 const heroContent = document.querySelector('.hero-content');
-const heroHook = document.querySelector('.hero-hook');
 const heroFireflies = document.querySelectorAll('.firefly');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1192,7 +1128,10 @@ const colors = [
   { r: 192, g: 140, b: 70 },   // warm amber
 ];
 
-// Generate patches — a field of light spots
+// Generate patches — irregular blobs that breathe, drift, and morph.
+// Real dappling isn't a field of fixed shapes swaying in place: patches
+// open and close (size pulse), their contours churn (per-vertex morph),
+// and they wander in more than one direction (sway + wobble + drift).
 const PATCH_COUNT = 40;
 const patches = [];
 
@@ -1206,13 +1145,33 @@ for (let i = 0; i < PATCH_COUNT; i++) {
     homeY: 0,
     // Size — mix of small and medium (gap sizes vary)
     radius: 30 + Math.random() * 80,
-    // Per-patch sway variation
-    swayPhase: Math.random() * Math.PI * 2,       // where in the sway cycle it starts
-    swaySpeed: 0.3 + Math.random() * 0.4,          // how fast it sways (all similar, slight variation)
-    swayAmplitude: 15 + Math.random() * 25,         // how far it travels (branch height variation)
-    // Brightness variation
-    baseAlpha: 0.06 + Math.random() * 0.12,         // base opacity
-    alphaPulse: 0.04 + Math.random() * 0.08,        // how much opacity varies with sway
+    // Irregular shape via elliptical deformation that morphs over time.
+    // No polygon, no straight edges — just a rotated/scaled gaussian falloff.
+    ellipseRotation: Math.random() * Math.PI * 2,
+    ellipseRotationSpeed: -0.08 + Math.random() * 0.16,
+    aspectBase: 0.75 + Math.random() * 0.35,        // 0.75–1.10 (flattened to round-ish)
+    aspectMorphAmp: 0.10 + Math.random() * 0.18,
+    aspectMorphSpeed: 0.20 + Math.random() * 0.35,
+    aspectMorphPhase: Math.random() * Math.PI * 2,
+    // Primary sway along wind direction
+    swayPhase: Math.random() * Math.PI * 2,
+    swaySpeed: 0.3 + Math.random() * 0.4,
+    swayAmplitude: 15 + Math.random() * 25,
+    // Faster wobble layered on top of sway — leaf flutter, not just branch drift
+    wobblePhase: Math.random() * Math.PI * 2,
+    wobbleSpeed: 1.1 + Math.random() * 1.0,
+    wobbleAmp: 3 + Math.random() * 5,
+    // Perpendicular drift — patches don't only move along the wind
+    driftPhase: Math.random() * Math.PI * 2,
+    driftSpeed: 0.18 + Math.random() * 0.25,
+    driftAmp: 6 + Math.random() * 12,
+    // Size pulsing — the gap opens and closes as branches shift
+    sizePulsePhase: Math.random() * Math.PI * 2,
+    sizePulseSpeed: 0.22 + Math.random() * 0.35,
+    sizePulseAmp: 0.10 + Math.random() * 0.16,
+    // Brightness — present glows, not bokeh balls and not barely-there.
+    baseAlpha: 0.14 + Math.random() * 0.20,
+    alphaPulse: 0.04 + Math.random() * 0.08,
     // Color
     r: color.r, g: color.g, b: color.b,
     // Slight vertical sway (branches don't just go horizontal)
@@ -1249,30 +1208,62 @@ function animate(time) {
   windStrength += (windTarget - windStrength) * 0.01;
 
   for (const p of patches) {
-    // Each patch sways sinusoidally along the wind direction
-    // The sway is: sin(time * speed + phase) * amplitude * windStrength
-    const sway = Math.sin(t * p.swaySpeed + p.swayPhase) * p.swayAmplitude * windStrength;
+    // Motion: slow sway along wind + faster wobble on top + perpendicular drift.
+    // Three different clocks give an irregular wandering path instead of a
+    // clean sinusoid.
+    const swayT = t * p.swaySpeed + p.swayPhase;
+    const sway = Math.sin(swayT) * p.swayAmplitude * windStrength;
+    const wobble = Math.sin(t * p.wobbleSpeed + p.wobblePhase) * p.wobbleAmp * windStrength;
+    const alongWind = sway + wobble;
+    const drift = Math.sin(t * p.driftSpeed + p.driftPhase) * p.driftAmp;
 
-    const dx = sway * windCos;
-    const dy = sway * windSin * p.verticalRatio;
+    // Perpendicular axis to wind — drift rides across it.
+    const perpX = -windSin;
+    const perpY =  windCos;
+
+    const dx = alongWind * windCos + drift * perpX;
+    const dy = alongWind * windSin * p.verticalRatio + drift * perpY;
 
     const x = p.homeX + dx;
     const y = p.homeY + dy;
 
-    // Brightness pulses with sway position — brighter at one extreme (gap opens)
-    const swayNorm = (Math.sin(t * p.swaySpeed + p.swayPhase) + 1) / 2; // 0 to 1
+    // Size pulse — the gap itself opens and closes.
+    const sizePulse = 1 + Math.sin(t * p.sizePulseSpeed + p.sizePulsePhase) * p.sizePulseAmp;
+    const R = p.radius * sizePulse;
+
+    // Brightness pulses with the sway — gap widens, more light gets through.
+    const swayNorm = (Math.sin(swayT) + 1) / 2;
     const alpha = p.baseAlpha + p.alphaPulse * swayNorm;
 
-    // Draw as soft radial gradient circle
-    const grad = ctx.createRadialGradient(x, y, 0, x, y, p.radius);
-    grad.addColorStop(0, `rgba(${p.r},${p.g},${p.b},${alpha})`);
-    grad.addColorStop(0.5, `rgba(${p.r},${p.g},${p.b},${alpha * 0.5})`);
-    grad.addColorStop(1, `rgba(${p.r},${p.g},${p.b},0)`);
+    // Shape as an ellipse that rotates and morphs. Rendered with a
+    // gaussian-style radial gradient — no polygon clip, no straight edges,
+    // no visible contour at any scale. The bright core holds briefly then
+    // fades gradually into transparency, so the boundary is a diffuse wash
+    // of light rather than a defined edge.
+    const rotation = p.ellipseRotation + t * p.ellipseRotationSpeed;
+    const aspect = p.aspectBase
+      + Math.sin(t * p.aspectMorphSpeed + p.aspectMorphPhase) * p.aspectMorphAmp;
 
+    // Reach is 1.55× nominal radius so the patch's visible body tracks R
+    // (previous 2× buried the nominal radius mid-fade). Plateau holds
+    // brightness through the inner half, then falls gradually to nothing.
+    const reach = R * 1.55;
+    const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, reach);
+    grad.addColorStop(0,    `rgba(${p.r},${p.g},${p.b},${alpha})`);
+    grad.addColorStop(0.30, `rgba(${p.r},${p.g},${p.b},${alpha * 0.88})`);
+    grad.addColorStop(0.60, `rgba(${p.r},${p.g},${p.b},${alpha * 0.42})`);
+    grad.addColorStop(0.88, `rgba(${p.r},${p.g},${p.b},${alpha * 0.08})`);
+    grad.addColorStop(1,    `rgba(${p.r},${p.g},${p.b},0)`);
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rotation);
+    ctx.scale(1, aspect);
     ctx.fillStyle = grad;
     ctx.beginPath();
-    ctx.arc(x, y, p.radius, 0, Math.PI * 2);
+    ctx.arc(0, 0, reach, 0, Math.PI * 2);
     ctx.fill();
+    ctx.restore();
   }
 
   requestAnimationFrame(animate);
@@ -1294,33 +1285,23 @@ function onScroll() {
     const scrollInWrapper = Math.max(0, window.scrollY - wrapperTop);
     const progress = Math.min(scrollInWrapper / runway, 1);
 
-    // Phase 1: Title holds (0–0.12), fades out (0.12–0.28)
-    const titleOpacity = progress < 0.12 ? 1
-      : progress > 0.28 ? 0
-      : 1 - (progress - 0.12) / 0.16;
+    // Title: holds briefly, fades as the zoom sets in.
+    const titleOpacity = progress < 0.08 ? 1
+      : progress > 0.38 ? 0
+      : 1 - (progress - 0.08) / 0.30;
     heroContent.style.opacity = titleOpacity;
-    heroContent.style.transform = `scale(${1 + progress * 0.3})`;
+    heroContent.style.transform = `scale(${1 + progress * 0.45})`;
 
-    // Phase 2: Hook fades in (0.22–0.38), holds (0.38–0.55), fades out (0.55–0.68)
-    const hookIn = progress < 0.22 ? 0
-      : progress > 0.38 ? 1
-      : (progress - 0.22) / 0.16;
-    const hookOut = progress < 0.55 ? 1
-      : progress > 0.68 ? 0
-      : 1 - (progress - 0.55) / 0.13;
-    heroHook.style.opacity = Math.min(hookIn, hookOut);
-
-    // Fireflies: visible through hook phase, fade during jack
-    const fireflyOpacity = progress < 0.55 ? 1
-      : progress > 0.72 ? 0
-      : 1 - (progress - 0.55) / 0.17;
+    // Fireflies fade out as the zoom takes over.
+    const fireflyOpacity = progress < 0.10 ? 1
+      : progress > 0.50 ? 0
+      : 1 - (progress - 0.10) / 0.40;
     heroFireflies.forEach(f => { f.style.opacity = fireflyOpacity; });
 
-    // Phase 3: Scroll-jack (0.65–1.0) — canvas scales and brightens into a wash
-    const jackProgress = progress < 0.65 ? 0 : (progress - 0.65) / 0.35;
-    const canvasScale = 1 + jackProgress * 0.8;
-    canvas.style.transform = `scale(${canvasScale})`;
-    canvas.style.filter = `brightness(${1 + jackProgress * 1.5})`;
+    // Zoom begins immediately — canvas scales through the whole runway.
+    // Only a mild warming, since the section that follows is also deep canopy.
+    canvas.style.transform = `scale(${1 + progress * 1.3})`;
+    canvas.style.filter = `brightness(${1 + progress * 0.35})`;
 
     ticking = false;
   });
