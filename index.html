@@ -885,26 +885,43 @@
     flex: 1;
   }
 
-  .individuals-teams-email {
-    margin-top: 3rem;
+  .individuals-teams-cta {
+    margin-top: 3.25rem;
     text-align: center;
-    font-family: 'Newsreader', serif;
-    font-size: 1rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ink-soft);
-    letter-spacing: 0.02em;
   }
 
-  .individuals-teams-email a {
+  .individuals-teams-invitation {
+    font-family: 'Newsreader', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+
+  /* Reuses .offering-cta for visual continuity with the offerings section above. */
+  .individuals-teams-button {
+    margin-top: 0;
+    padding: 0.85rem 2.4rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  .individuals-teams-linkedin {
+    margin-top: 1.75rem;
+  }
+
+  .individuals-teams-linkedin a {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
     color: var(--amber);
-    font-style: normal;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(168, 132, 48, 0.3);
+    border-bottom: 1px solid rgba(168, 132, 48, 0.35);
     transition: border-color 0.3s ease;
   }
 
-  .individuals-teams-email a:hover {
+  .individuals-teams-linkedin a:hover {
     border-bottom-color: var(--amber);
     text-decoration: none;
   }
@@ -936,7 +953,7 @@
     .individuals-grid { grid-template-columns: 1fr; }
     .individual-offering { padding: 1.8rem 1.5rem 1.5rem; }
     .individual-offering p { font-size: 0.93rem; }
-    .individuals-teams-email { margin-top: 2.5rem; }
+    .individuals-teams-cta { margin-top: 2.5rem; }
     .footer-transition { height: 14vh; }
   }
 
@@ -1097,16 +1114,20 @@
         <li>We need a place to design our own <span class="ember"><em>relationship with</em> AI</span>. The invention of a cognitive tool creates something that feels like a cognitive identity crisis: "Where do my skills fit, now? Do I fit anywhere? AI lets me do more than I could before, but now I'm not even sure what I <em>want</em> to want." And yet, it also feels like an opportunity to imagine bigger than we've ever been able to before.</li>
       </ol>
 
+      <p>AI can <em>amplify</em> your very human desires (instead of paving over them). It gives us the chance to reimagine and rebuild who we get to be, and how life and work get to feel.</p> 
+
       <blockquote class="about-pullquote">
-        <p>AI gives us the chance to reimagine and rebuild who we get to be, and how life and work get to feel.</p>
-        <p><em>hallelujah</em>.</p>
-        <p>But that's impossibly difficult to reckon with alone.</p>
+        <p>...<em>hallelujah</em></p>
       </blockquote>
 
-      <p>AI can <em>multiply</em> your human perspective instead of stealing it, but it's all knotted up inside of you, and you can't untangle a rope under tension. I've made The Wild Edge to give you the space to wonder hard enough and explore with enough adventure to find and put words to what you can do with AI that matters to you.</p>
-      <p>You get to do it with people who are doing the same, myself included. If we have to go through an identity crisis, and we get to discover where it takes us, let's do it together.</p>
+      <p>But your perspective is all knotted up inside of you, and you can't untangle a rope under tension. So, I want to give you the space to wonder hard enough and explore with enough adventure to find and put words to what you can do with AI that matters to you, and then set off to go do it.</p>
 
-      <blockquote class="about-pullquote">People need each other, these days.</blockquote>
+      <blockquote class="about-pullquote">
+        <p>That's just impossibly difficult to do alone.</p>
+      </blockquote>
+
+      <p>At The Wild Edge, you get to do it with people who are doing the same, myself included. If we have to go through an identity crisis, and we get to discover where it takes us, let's do it together. People need each other, these days.</p>
+
     </div>
   </div>
 </section>
@@ -1137,7 +1158,7 @@
       </div>
       <div class="offering-card" id="career-reinventors">
         <h3>Career Reinventors</h3>
-        <p class="offering-line">For people who left a career, lost a career, or are rethinking theirs. Facilitated peer coaching, like a 'Brain Trust', for folks going through the same thing, working through the stages of discovering and developing a new professional identity.</p>
+        <p class="offering-line">For people who left a career, lost a career, or are rethinking theirs. Facilitated peer coaching, like a 'Brain Trust', for folks going through the same thing, working through the stages of discovering and developing a new professional identity that suits who you are.</p>
         <div class="offering-vibe">
           <p class="offering-vibe-label">Format &amp; Vibe</p>
           <p class="offering-vibe-text">Virtual meetup, 1 hour. No interview prep, no resume strategies, no presentations. Conversation to help each other find our way.</p>
@@ -1172,7 +1193,7 @@
       </div>
       <div class="offering-card" id="teach-ai-values">
         <h3>Teach AI What Matters to You</h3>
-        <p class="offering-line">Self-knowledge now has a tactical benefit. AI that knows you can intuit what you want, but you've never had a reason to describe yourself before. It includes practical details like your job description, but also dimensions like your values, the way you think, your cognitive and emotional strengths, and your hangups. Seth has been building his own self-documentation for years, and this is where you'll use AI to build your own, to better empower your AI to work for you.</p>
+        <p class="offering-line">Self-knowledge now has a tactical benefit. AI can intuit what you want, if it knows you well, but you've never had a reason to describe yourself before. It includes practical details like your job description, but also dimensions like your values, the way you think, your cognitive and emotional strengths, and your hangups. Seth has been building his own self-documentation for years, and this is where you'll use AI to build your own, to better empower your AI to work for you.</p>
         <div class="offering-vibe">
           <p class="offering-vibe-label">Format &amp; Vibe</p>
           <p class="offering-vibe-text">Virtual meetup, 1 hour. Focused and facilitated, but not a structured workshop, so that we can spend time where it's needed.</p>
@@ -1197,30 +1218,32 @@
     <div class="individuals-grid">
       <div class="individual-offering" id="coaching">
         <h3>1-on-1 AI Coaching</h3>
-        <p>Let's build your personal AI thinking partner — your "external mind" — likely in Claude Code. (It's more do-able for non-technical folks than you think!) For AI to suit your way of working, you need to tell it how you think and what you most care about. So, you'll find that our time will cover both technical learning and self-discovery. You'll develop both strong AI capabilities and deeper self-knowledge.</p>
-        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
+        <p>Let's get you caught up. We can work on general AI know-how, and even build your personal AI thinking partner and assistant — your "external mind" that knows how you think and what you care about — in Claude Code. (It's more do-able than you think!) Our time will build your AI capabilities, but also your self-knowledge as we determine what you most want to do with a tool that can do anything.</p>
       </div>
 
       <div class="individual-offering" id="exec-advisory">
         <h3>Exec AI Advisory &amp; Coaching</h3>
         <p>Strategic and hands-on AI coaching for executives. The whole range in one relationship: organizational AI strategy, your own leadership through the transition, and building your personal AI infrastructure — the tools, the workflows, the thinking systems. I'll help you work through both the decisions you need to make and the capabilities you're striving to develop.</p>
-        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
       </div>
 
       <div class="individual-offering" id="team-advisory">
         <h3>AI Advisory for Your Team</h3>
-        <p>AI strategy and capability development for a team, in whatever ongoing format best fits. Facilitated group sense-making where collective intelligence surfaces what individuals working alone would miss, and where individuals inspire and motivate each others' progress.</p>
-        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
+        <p>AI strategy and capability development for a team. This may look like advisory conversations with leaders, or facilitated group conversations where individuals inspire, learn from, and motivate each other.</p>
       </div>
 
       <div class="individual-offering" id="product-strategy">
         <h3>AI Product Strategy Advisory</h3>
         <p>Ongoing strategic thought partnership for founders building AI products. Product direction, integration architecture, and identifying what the technology uniquely enables for your users. Retainer format — regular deep sessions driven by your own work between them.</p>
-        <a href="mailto:seth@thewildedge.ai" class="offering-cta">Let's talk</a>
       </div>
     </div>
 
-    <p class="individuals-teams-email">Write when you're ready — <a href="mailto:seth@thewildedge.ai">seth@thewildedge.ai</a></p>
+    <div class="individuals-teams-cta">
+      <p class="individuals-teams-invitation">When you're ready</p>
+      <a href="mailto:seth@thewildedge.ai" class="offering-cta individuals-teams-button">Let's talk</a>
+      <p class="individuals-teams-linkedin">
+        <a href="https://www.linkedin.com/in/sethwylie/details/experience/" target="_blank" rel="noopener">See my career experience on LinkedIn →</a>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1456,17 +1479,18 @@ function onScroll() {
     const scrollInWrapper = Math.max(0, window.scrollY - wrapperTop);
     const progress = Math.min(scrollInWrapper / runway, 1);
 
-    // Title: holds briefly, fades as the zoom sets in.
-    const titleOpacity = progress < 0.08 ? 1
-      : progress > 0.38 ? 0
-      : 1 - (progress - 0.08) / 0.30;
+    // Title: holds briefly, then fades gradually across the entire zoom —
+    // fully gone right as the zoom completes and the page begins to scroll past.
+    const titleOpacity = progress < 0.05 ? 1
+      : 1 - (progress - 0.05) / 0.95;
     heroContent.style.opacity = titleOpacity;
     heroContent.style.transform = `scale(${1 + progress * 0.45})`;
 
-    // Fireflies fade out as the zoom takes over.
-    const fireflyOpacity = progress < 0.10 ? 1
-      : progress > 0.50 ? 0
-      : 1 - (progress - 0.10) / 0.40;
+    // Fireflies linger alongside the title, fading slightly ahead so the final
+    // moment is pure zoom rather than a competing layer.
+    const fireflyOpacity = progress < 0.05 ? 1
+      : progress > 0.90 ? 0
+      : 1 - (progress - 0.05) / 0.85;
     heroFireflies.forEach(f => { f.style.opacity = fireflyOpacity; });
 
     // Zoom begins immediately — canvas scales through the whole runway.
