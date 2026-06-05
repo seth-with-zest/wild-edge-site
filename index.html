@@ -784,6 +784,206 @@
     /* Collapse the scroll-jacked hero into a normal-height section. */
     .hero-wrapper { height: auto; }
     .hero { position: relative; }
+    .testimonials-track { scroll-behavior: auto; }
+  }
+
+  /* ═══════════════════════════════════════
+     TESTIMONIALS — a held, luminous pause between the
+     meetups and the bespoke services. One voice today;
+     built as a scroll-snap carousel so more can join
+     without the lone quote ever reading as an empty
+     slider. The arrows and dots are summoned by JS only
+     when 2+ testimonials are present (see .is-carousel).
+     ═══════════════════════════════════════ */
+
+  .testimonials {
+    padding: 5rem 2rem 5.5rem;
+    margin-top: -1px;
+    background: var(--clearing);
+    color: var(--deep-canopy);
+  }
+
+  .testimonials-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .testimonials-header h2 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 400;
+    color: var(--deep-canopy);
+    letter-spacing: 0.02em;
+  }
+
+  .testimonials-stage {
+    position: relative;
+  }
+
+  /* The track is the scroll container. With a single slide there is
+     nothing to scroll and it reads as one centered quote. Drop in
+     another .testimonial and it becomes a snapping, swipeable carousel. */
+  .testimonials-track {
+    display: flex;
+    gap: 2.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* legacy Edge */
+  }
+  .testimonials-track::-webkit-scrollbar { display: none; }  /* WebKit */
+
+  .testimonial {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .testimonial-figure {
+    position: relative;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* The single eruption from the clean substrate: an oversized golden
+     quotation mark, glowing the way the numerals and ※ do in About. */
+  .testimonial-quote {
+    font-family: 'Newsreader', serif;
+    font-size: 1.18rem;
+    font-weight: 300;
+    line-height: 1.78;
+    color: var(--ink-deep);
+  }
+
+  .testimonial-quote::before {
+    content: "\201C";
+    display: block;
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    font-size: 3.8rem;
+    line-height: 1;
+    margin-bottom: -0.45rem;
+    color: var(--golden-glow);
+    text-shadow: 0 0 14px rgba(212, 168, 64, 0.5), 0 0 28px rgba(212, 168, 64, 0.28);
+    pointer-events: none;
+  }
+
+  .testimonial-quote p { margin-bottom: 1.1rem; }
+  .testimonial-quote p:last-child { margin-bottom: 0; }
+
+  /* Signature — the "--" replaced by the brand's golden seam: a short
+     threshold line, the name in serif amber, the role muted beneath. */
+  .testimonial-cite {
+    position: relative;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-style: normal;
+  }
+
+  .testimonial-cite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 52px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--golden-glow), rgba(212, 168, 64, 0.1));
+  }
+
+  .testimonial-name {
+    font-family: 'Newsreader', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: 0.01em;
+  }
+
+  .testimonial-role {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Carousel controls — rendered only when JS finds 2+ testimonials ── */
+
+  .testimonials-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background: var(--sunpool);
+    color: var(--deep-canopy);
+    border: 1px solid rgba(14, 26, 10, 0.1);
+    border-radius: 50%;
+    font-family: 'Newsreader', serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(14, 26, 10, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    z-index: 2;
+  }
+  .testimonials-arrow:hover { background: #fff; box-shadow: 0 6px 22px rgba(14, 26, 10, 0.14); }
+  .testimonials-arrow:disabled { opacity: 0.3; cursor: default; box-shadow: none; }
+  .testimonials-arrow--prev { left: -0.5rem; padding-right: 3px; }
+  .testimonials-arrow--next { right: -0.5rem; padding-left: 3px; }
+
+  /* Arrows need real gutter beside the text column to live in; below
+     that width, swipe + dots carry the carousel on their own. */
+  @media (min-width: 920px) {
+    .testimonials.is-carousel .testimonials-arrow { display: flex; }
+  }
+
+  .testimonials-dots {
+    display: none;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-top: 2.25rem;
+  }
+  .testimonials.is-carousel .testimonials-dots { display: flex; }
+
+  .testimonials-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(14, 26, 10, 0.18);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .testimonials-dot:hover { background: rgba(14, 26, 10, 0.32); }
+  .testimonials-dot.active {
+    background: var(--golden-glow);
+    box-shadow: 0 0 8px rgba(212, 168, 64, 0.55);
+    transform: scale(1.15);
+  }
+
+  @media (max-width: 720px) {
+    .testimonials { padding: 3.5rem 1.5rem 4rem; }
+    .testimonials-header { margin-bottom: 2.25rem; }
+    .testimonial-quote { font-size: 1.08rem; }
+    .testimonial-quote::before { font-size: 3.3rem; }
   }
 
   /* ═══════════════════════════════════════
@@ -1207,6 +1407,62 @@
 
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials" aria-label="In their words">
+  <div class="testimonials-inner reveal">
+    <div class="testimonials-header">
+      <h2>In their words</h2>
+    </div>
+    <div class="testimonials-stage">
+      <button class="testimonials-arrow testimonials-arrow--prev" type="button" aria-label="Previous testimonial">&lsaquo;</button>
+      <ol class="testimonials-track" id="testimonialsTrack">
+
+        <!-- ════════════════════════════════════════════════════════
+             TO ADD A TESTIMONIAL: copy one entire <li class="testimonial">
+             … </li> block below and edit the quote, name, and role.
+             Nothing else needs to change. With one testimonial this shows
+             as a single centered quote; with two or more, the carousel
+             arrows and dots activate automatically.
+             ════════════════════════════════════════════════════════ -->
+
+        <li class="testimonial">
+          <figure class="testimonial-figure">
+            <blockquote class="testimonial-quote">
+              <p>Before I found Seth, I knew AI existed. I just wasn't sure it was for me.</p>
+              <p>A few early conversations changed that. He made Claude feel approachable in a way nothing else had. I started experimenting, built out my Claude instance with skills, and figured out what was actually possible. That experimentation became the foundation of how I work and what I offer clients at ScalEfficient.</p>
+              <p>When I joined <em>Teach AI How to Think Like You</em>, things accelerated further. I went from using Claude for basic chat to running Claude Code to build a real app. I got more done in a weekend than I had in weeks of working the old way.</p>
+              <p>What makes Seth stand out is that he's genuine. He facilitates conversations so everyone walks away with a clear next step, and he goes out of his way to make sure quieter voices get heard. He's never tried to sell me on anything.</p>
+              <p>I've already referred several people to his groups, and I'll keep doing it.</p>
+            </blockquote>
+            <figcaption class="testimonial-cite">
+              <span class="testimonial-name">Carrie Mayfield</span>
+              <span class="testimonial-role">Founder, ScalEfficient Consulting</span>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="testimonial">
+          <figure class="testimonial-figure">
+            <blockquote class="testimonial-quote">
+              <p>I don't like sessions, I don't like packages. To be honest, broadly speaking, I don't really like structured meetings. I like to put my headphones in and grind and learn things through rapid trial and error and then emerge on the other side and see whose head is in a similar space as mine and wants to chat.</p>
+              <p>So it's completely against my nature to regularly attend and look forward to a monthly AI Zoom call.</p>
+              <p>But I do in fact look forward to our calls each month. And, while I enjoy all y'all's company, Seth, you are the orchestrator.</p>
+              <p>Seth, you somehow managed to get someone like myself to engage in this way and get so much value from a forum like this. Your value proposition is who you are and what you are capable of when it comes to connecting people, getting people to pause their Claude Code session, turn on their mic and camera, and say their piece to a group of like-minded folks.</p>
+            </blockquote>
+            <figcaption class="testimonial-cite">
+              <span class="testimonial-name">John Lemmon</span>
+              <span class="testimonial-role">Commercial Program Manager, Promega</span>
+            </figcaption>
+          </figure>
+        </li>
+
+      </ol>
+      <button class="testimonials-arrow testimonials-arrow--next" type="button" aria-label="Next testimonial">&rsaquo;</button>
+    </div>
+    <div class="testimonials-dots" id="testimonialsDots" aria-hidden="true"></div>
+  </div>
+</section>
+
 <!-- FOR INDIVIDUALS & TEAMS -->
 <div class="individuals-transition"></div>
 <section class="individuals-teams" aria-label="Hands-on with leaders, teams, and individuals">
@@ -1593,6 +1849,81 @@ if (prefersReducedMotion) {
   setTimeout(() => {
     if (!dismissed) pill.classList.add('visible');
   }, prefersReducedMotion ? 300 : 4000);
+})();
+
+// ═══════════════════════════════════════════════════════
+// TESTIMONIALS CAROUSEL
+//
+// Inert with a single testimonial: no controls render and
+// there is nothing to scroll, so it reads as one centered
+// quote. With two or more, arrows + dots activate and the
+// track becomes a snapping, swipeable carousel. Adding a
+// testimonial in the HTML is the only step required.
+// ═══════════════════════════════════════════════════════
+
+(function () {
+  const section = document.querySelector('.testimonials');
+  if (!section) return;
+  const track = document.getElementById('testimonialsTrack');
+  const slides = Array.from(track.querySelectorAll('.testimonial'));
+  if (slides.length < 2) return;  // one voice — leave it as a static quote
+
+  section.classList.add('is-carousel');
+
+  const prevBtn = section.querySelector('.testimonials-arrow--prev');
+  const nextBtn = section.querySelector('.testimonials-arrow--next');
+  const dotsWrap = document.getElementById('testimonialsDots');
+  dotsWrap.removeAttribute('aria-hidden');
+
+  const dots = slides.map((slide, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'testimonials-dot';
+    dot.setAttribute('aria-label', 'Show testimonial ' + (i + 1) + ' of ' + slides.length);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  let current = 0;
+
+  function goTo(i) {
+    const idx = Math.max(0, Math.min(i, slides.length - 1));
+    track.scrollTo({
+      left: slides[idx].offsetLeft - slides[0].offsetLeft,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  }
+
+  function nearestIndex() {
+    const x = track.scrollLeft + slides[0].offsetLeft;
+    let best = 0, bestDist = Infinity;
+    slides.forEach((s, i) => {
+      const d = Math.abs(s.offsetLeft - x);
+      if (d < bestDist) { bestDist = d; best = i; }
+    });
+    return best;
+  }
+
+  function sync() {
+    current = nearestIndex();
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  let raf = null;
+  track.addEventListener('scroll', () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => { sync(); raf = null; });
+  }, { passive: true });
+
+  window.addEventListener('resize', sync);
+
+  sync();
 })();
 
 // ═══════════════════════════════════════════════════════
