@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://thewildedge.ai/">
 <meta property="og:title" content="The Wild Edge">
 <meta property="og:description" content="Live community, guidance, hands-on exploration, and self-inquiry for finding your way at the overwhelming, exhilarating frontier of AI">
-<meta property="og:image" content="https://thewildedge.ai/og-image.jpg">
+<meta property="og:image" content="https://thewildedge.ai/og-image_web.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
 <meta property="og:image:alt" content="Golden-hour sunlight filtering through the canopy of an ancient forest — a path leading into the eaves.">
@@ -23,7 +23,7 @@
 <meta name="twitter:url" content="https://thewildedge.ai/">
 <meta name="twitter:title" content="The Wild Edge">
 <meta name="twitter:description" content="Live community, guidance, hands-on exploration, and self-inquiry for finding your way at the overwhelming, exhilarating frontier of AI">
-<meta name="twitter:image" content="https://thewildedge.ai/og-image.jpg">
+<meta name="twitter:image" content="https://thewildedge.ai/og-image_web.jpg">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -623,6 +623,12 @@
     font-weight: 400;
     color: var(--deep-canopy);
     letter-spacing: 0.02em;
+  }
+
+  /* Each line of the two-line heading (kicker + title) is a block span —
+     <p> isn't valid inside <h2>. */
+  .category-header h2 span {
+    display: block;
   }
 
   .category-meta {
@@ -1251,7 +1257,7 @@
     }
   }
 </style>
-<script src="https://t.contentsquare.net/uxa/79402bef154c7.js"></script>
+<script async src="https://t.contentsquare.net/uxa/79402bef154c7.js"></script>
 </head>
 <body>
 
@@ -1279,7 +1285,7 @@
 <section class="about" id="about" aria-label="About">
   <div class="about-inner reveal">
     <div class="about-who">
-      <img src="seth_stylized.png" alt="Seth Wylie" class="about-photo" width="240" height="240">
+      <img src="seth_stylized_web.jpg" alt="Seth Wylie" class="about-photo" width="240" height="240">
       <div class="about-who-text">
         <h2>Who's hosting?</h2>
         <p>I'm Seth. I'm creating The Wild Edge to be the place for people who feel eager and captivated about AI, or who feel disoriented or unsure because of the AI moment we're in ... or, most likely, are swimming in both at the same time.</p>
@@ -1340,8 +1346,8 @@
   <div class="offerings-category offerings-category--conversations reveal">
     <div class="category-header">
       <h2>
-        <p><em>Virtual Meetup Communities:</em></p>
-        <p>Conversations That Matter</p>
+        <span><em>Virtual Meetup Communities:</em></span>
+        <span>Conversations That Matter</span>
       </h2>
     </div>
     <div class="offerings-pair">
@@ -1375,8 +1381,8 @@
   <div class="offerings-category offerings-category--build reveal">
     <div class="category-header">
       <h2>
-        <p><em>Virtual Meetup Communities for Builders:</em></p>
-        <p>AI that Amplifies the Best of You</p>
+        <span><em>Virtual Meetup Communities for Builders:</em></span>
+        <span>AI that Amplifies the Best of You</span>
       </h2>
     </div>
     <div class="offerings-pair">
@@ -1452,6 +1458,19 @@
             <figcaption class="testimonial-cite">
               <span class="testimonial-name">John Lemmon</span>
               <span class="testimonial-role">Commercial Program Manager, Promega</span>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="testimonial">
+          <figure class="testimonial-figure">
+            <blockquote class="testimonial-quote">
+              <p>As one of Seth's first individual coaching clients, I can confirm that I am very pleased! After each of our 3 sessions, I felt unblocked and inspired with practical tips and frameworks to consider how I use AI. By the end of applying what I learned with Seth, I had developed a confidence that matched my curiosity and my only remaining blocker was the time to keep exploring and iterating on what I'm building for my personal AI system!</p>
+              <p>I also think Seth's approach is unique and differentiated from the many AI training approaches out there &mdash; most of which feel the same. He's helped me progress towards a true thinking partner that helps me better understand how I think and act, and thus can better partner with AI for the outcomes I'm pursuing.</p>
+            </blockquote>
+            <figcaption class="testimonial-cite">
+              <span class="testimonial-name">Danny Pancratz</span>
+              <span class="testimonial-role">Senior Director, CX Strategic Programs, Unqork</span>
             </figcaption>
           </figure>
         </li>
@@ -1552,11 +1571,14 @@ let runway = 0;
 function resize() {
   heroW = hero.clientWidth;
   heroH = hero.clientHeight;
+  // Cap at 2× — beyond that the soft gradients gain nothing visible and
+  // the per-frame fill cost grows with the square of the ratio.
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
   canvas.style.width = heroW + 'px';
   canvas.style.height = heroH + 'px';
-  canvas.width = heroW * window.devicePixelRatio;
-  canvas.height = heroH * window.devicePixelRatio;
-  ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+  canvas.width = heroW * dpr;
+  canvas.height = heroH * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   // Reposition patches for new size
   for (const p of patches) {
     p.homeX = p.normX * heroW;
@@ -1644,7 +1666,17 @@ let windChangeTimer = 0;
 resize();
 window.addEventListener('resize', resize);
 
+// Drawing pauses while the hero is scrolled out of view — patch motion is
+// driven by absolute time, so it resumes mid-sway with no visible jump.
+let heroVisible = true;
+let animating = false;
+
 function animate(time) {
+  if (!heroVisible) {
+    animating = false;
+    return;
+  }
+
   const t = time * 0.001; // seconds
 
   ctx.clearRect(0, 0, heroW, heroH);
@@ -1720,6 +1752,15 @@ function animate(time) {
 }
 
 if (!prefersReducedMotion) {
+  const heroObserver = new IntersectionObserver((entries) => {
+    heroVisible = entries[0].isIntersecting;
+    if (heroVisible && !animating) {
+      animating = true;
+      requestAnimationFrame(animate);
+    }
+  });
+  heroObserver.observe(hero);
+  animating = true;
   requestAnimationFrame(animate);
 }
 
