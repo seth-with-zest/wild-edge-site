@@ -85,6 +85,13 @@
   .toc .t { font-family:'Newsreader',serif; font-size:1.15rem; color:var(--honey); display:block; margin-bottom:0.2rem; }
   .toc .d { font-size:0.92rem; color:var(--mist); }
 
+  /* Skip-to-the-skill CTA — carries the site button's form (uppercase, tracked, 4px,
+     generous padding) but takes the page's golden accent so it pops on the dark header. */
+  .skip-to-skill { display:inline-block; margin:1.8rem 0 0; padding:0.7rem 2rem; background:var(--golden-glow); font-family:'Source Sans 3',sans-serif; font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; border-radius:4px; box-shadow:0 0 22px rgba(212,168,64,0.3); transition:background 0.3s ease, box-shadow 0.3s ease; }
+  .band--canopy a.skip-to-skill { color:var(--deep-canopy); border-bottom:none; }
+  .band--canopy a.skip-to-skill:hover { background:var(--honey); box-shadow:0 0 30px rgba(212,168,64,0.46); }
+  .skip-to-skill .arr { margin-left:0.5em; font-weight:400; }
+
   /* Mentality — crisp principles */
   .princ { display:grid; gap:1.2rem; margin:1.6rem 0 0; }
   .princ .one { padding-left:1.2rem; border-left:2px solid var(--golden-glow); }
@@ -127,6 +134,7 @@
     <p class="lede reveal">Ask a hard question and an answer shows up almost at once — fluent, reasonable, and <span class="glow">average</span>. It's the one most people would give. For everyday questions that's plenty. But the questions worth slowing down for are the ones where the easy answer is the wrong one — and it never feels wrong, which is exactly the problem. This is a method for getting past that first answer when it counts.</p>
     <p class="reveal">Trying harder doesn't help — going back over your own answer just runs the same thought again. What helps is coming at the question from genuinely different directions: working it out from scratch a few separate times, building the answer that argues the opposite, running it forward to see where it breaks. And each of those gets checked in a fresh context that hasn't seen the answer it's poking at — because nobody finds the holes in their own reasoning while they're still standing in it. What you get back isn't fast. It's an answer that's been pushed on from every side, with the parts it actually checked kept separate from the parts it's still guessing at.</p>
     <p class="reveal">Two parts, after a short word on why. First, the <strong>nine motions</strong> of thought the method runs — each a different way of coming at the question. Then the <strong>method itself</strong>: the complete skill, every phase and rule spelled out, in one block you can copy straight into a Claude Code session.</p>
+    <a class="skip-to-skill reveal" href="#method">Skip to the skill<span class="arr" aria-hidden="true">↓</span></a>
     <div class="toc reveal">
       <a href="#motions"><span class="t">Part 1 — The nine motions</span><span class="d">Nine distinct types of thinking, each blind to what the others catch. What each does, and the failure it counters.</span></a>
       <a href="#method"><span class="t">Part 2 — The whole method</span><span class="d">The complete skill — frame, diverge, attack, gate, synthesize, plus the mechanics — in one block to copy.</span></a>
