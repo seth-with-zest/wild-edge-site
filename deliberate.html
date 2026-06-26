@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════════════════
+  DELIBERATE — a reasoning discipline for hard questions.
+  Intro + mentality: why a first answer is an average, and the four claims the
+  method is built on.
+  Part 1: the nine motions — distinct types of thinking, each blind to what the
+  others catch.
+  Part 2: the COMPLETE skill, verbatim, in one copyable block (section
+  id="method", pre id="skill"). Paste it into a Claude Code session, or save it
+  as a .md skill. The same de-generalized source ships beside this file as
+  deliberate.public.md.
+
+  Cardinal rule of the method: every critique, re-derivation, and fact-check runs
+  in a FRESH subagent that has not seen the answer it is testing. Run the phases
+  in order. Do not collapse to a first answer.
+  ════════════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deliberate — a reasoning discipline for the questions that deserve more than your first answer</title>
+<meta name="description" content="A disciplined process for hard questions: why a first answer is an average, the nine distinct motions of thought that get past it, and the complete five-phase agent skill in one copyable block.">
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* The Wild Edge palette — carried verbatim from thewildedge.ai */
+    --deep-canopy:#0E1A0A; --canopy:#1A2E14; --understory:#2A4020; --moss:#3D6A2E;
+    --leaf-gold:#8AA048; --golden-glow:#D4A840; --honey:#D4B468; --amber:#A88430;
+    --coral:#C0705A; --breath:#E8E0CC; --mist:#C8C0A8; --clearing:#F0ECE0;
+    --sage-cream:#E4E2D6; --sunpool:#FAFAF4; --ink-deep:#3A3828; --ink:#4A4838; --ink-soft:#5A5840;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; background:var(--clearing); scroll-behavior:smooth; }
+  body { font-family:'Source Sans 3',sans-serif; color:var(--ink); line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+  /* Grain — the tactile "fifth dimension", barely there */
+  body::after {
+    content:''; position:fixed; top:-50%; left:-50%; width:200%; height:200%;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:100; opacity:0.22; animation:grain .5s steps(1) infinite;
+  }
+  @keyframes grain {0%{transform:translate(0,0)}25%{transform:translate(-2%,-3%)}50%{transform:translate(3%,1%)}75%{transform:translate(-1%,3%)}100%{transform:translate(0,0)}}
+  @media (prefers-reduced-motion:reduce){ body::after{animation:none} .reveal{opacity:1!important;transform:none!important;transition:none!important} html{scroll-behavior:auto} }
+
+  .band { padding:5rem 1.5rem; position:relative; }
+  .band > .inner { max-width:760px; margin:0 auto; }
+  .band--canopy { background:var(--deep-canopy); color:var(--breath); }
+  .band--understory { background:var(--canopy); color:var(--breath); }
+  .band--clearing { background:var(--clearing); color:var(--ink); }
+  .band--sunpool { background:var(--sunpool); color:var(--ink); }
+
+  a { color:var(--amber); text-decoration:none; border-bottom:1px solid rgba(168,132,48,0.4); }
+  a:hover { border-bottom-color:var(--amber); }
+  .band--canopy a, .band--understory a { color:var(--golden-glow); border-bottom-color:rgba(212,168,64,0.4); }
+
+  .kicker { font-size:0.76rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--amber); margin-bottom:1.2rem; }
+  .band--canopy .kicker, .band--understory .kicker { color:var(--honey); }
+  h1 { font-family:'Newsreader',serif; font-weight:400; font-size:clamp(2.4rem,6.5vw,3.7rem); line-height:1.08; letter-spacing:-0.01em; margin-bottom:1.2rem; }
+  h2 { font-family:'Newsreader',serif; font-weight:400; font-size:clamp(1.7rem,4.2vw,2.35rem); line-height:1.16; margin-bottom:0.9rem; letter-spacing:-0.01em; }
+  h2 .part { display:block; font-size:0.72rem; font-family:'Source Sans 3',sans-serif; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--amber); margin-bottom:0.6rem; }
+  h3 { font-family:'Newsreader',serif; font-weight:500; font-size:1.3rem; line-height:1.3; margin-bottom:0.4rem; }
+  p { font-size:1.06rem; font-weight:300; margin-bottom:1.1rem; }
+  .band--canopy p, .band--understory p { color:var(--breath); }
+  p strong, li strong { font-weight:600; color:inherit; }
+  .lede { font-family:'Newsreader',serif; font-weight:300; font-size:clamp(1.2rem,2.7vw,1.5rem); line-height:1.5; margin-bottom:1.2rem; }
+  .glow { color:var(--golden-glow); text-shadow:0 0 14px rgba(212,168,64,0.5),0 0 28px rgba(212,168,64,0.28); }
+  .band--clearing .glow, .band--sunpool .glow { color:var(--amber); text-shadow:0 0 18px rgba(212,168,64,0.28); }
+  .kome { color:var(--golden-glow); text-shadow:0 0 12px rgba(212,168,64,0.4); }
+
+  /* Seam mark — undulating golden threshold */
+  .seam { display:block; width:min(420px,80%); height:24px; margin:2.6rem auto; filter:drop-shadow(0 0 6px rgba(212,168,64,0.4)); }
+  .seam svg { width:100%; height:100%; display:block; }
+  .seam--full { width:min(680px,92%); }
+
+  /* "How to read this" rail */
+  .toc { display:grid; gap:0.9rem; margin:1.8rem 0 0; }
+  @media (min-width:620px){ .toc{ grid-template-columns:1fr 1fr; } }
+  .toc a { display:block; border:1px solid rgba(212,168,64,0.3); border-bottom:1px solid rgba(212,168,64,0.3); border-radius:8px; padding:1rem 1.1rem; color:var(--breath); }
+  .toc a:hover { background:rgba(212,168,64,0.08); }
+  .toc .t { font-family:'Newsreader',serif; font-size:1.15rem; color:var(--honey); display:block; margin-bottom:0.2rem; }
+  .toc .d { font-size:0.92rem; color:var(--mist); }
+
+  /* Mentality — crisp principles */
+  .princ { display:grid; gap:1.2rem; margin:1.6rem 0 0; }
+  .princ .one { padding-left:1.2rem; border-left:2px solid var(--golden-glow); }
+  .princ h3 { color:var(--honey); margin-bottom:0.25rem; }
+  .princ p { margin-bottom:0; font-size:1rem; }
+  .princ .one .n { font-family:'Newsreader',serif; font-size:0.9rem; color:var(--mist); margin-right:0.5rem; }
+
+  /* Motion / discipline cards (Part 1) */
+  .disc { padding:1.5rem 0; border-top:1px solid rgba(74,72,56,0.18); }
+  .disc:last-of-type { border-bottom:1px solid rgba(74,72,56,0.18); }
+  .disc h3 { color:var(--amber); display:flex; align-items:baseline; gap:0.6rem; }
+  .disc h3 .n { font-family:'Newsreader',serif; font-size:0.95rem; color:var(--ink-soft); }
+  .disc .row { font-size:0.99rem; margin:0.45rem 0; }
+  .disc .lab { font-weight:600; color:var(--ink-deep); letter-spacing:0.02em; }
+  .disc .terms { font-style:italic; color:var(--ink-soft); }
+
+  /* The full-skill block (Part 2) */
+  .promptbox { background:#fff; border:1px solid rgba(14,26,10,0.08); border-radius:8px; box-shadow:0 4px 20px rgba(14,26,10,0.05); overflow:hidden; margin:0.6rem 0 0.2rem; }
+  .promptbox .bar { display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0.7rem 0.5rem 0.9rem; position:sticky; top:0; background:#fff; border-bottom:1px solid rgba(14,26,10,0.06); z-index:1; }
+  .promptbox .bar span { font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+  .copybtn { font-family:'Source Sans 3',sans-serif; font-size:0.76rem; font-weight:600; letter-spacing:0.03em; color:var(--deep-canopy); background:var(--golden-glow); border:none; border-radius:4px; padding:0.34rem 0.7rem; cursor:pointer; transition:background .2s ease; white-space:nowrap; }
+  .copybtn:hover { background:var(--honey); }
+  pre.prompt { margin:0; max-height:none; overflow:auto; background:var(--deep-canopy); color:var(--breath); padding:0.95rem 1.1rem; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; font-size:0.8rem; line-height:1.6; white-space:pre-wrap; word-break:break-word; }
+  pre.prompt.skill { max-height:560px; }
+
+  .reveal { opacity:0; transform:translateY(16px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+  .skip-link { position:fixed; top:-100px; left:0.5rem; background:var(--deep-canopy); color:var(--breath); padding:0.6rem 1rem; border-radius:4px; z-index:200; }
+  .skip-link:focus { top:0.5rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#start">Skip to content</a>
+
+<!-- ════════ HEADER ════════ -->
+<header class="band band--canopy" id="start">
+  <div class="inner">
+    <p class="kicker reveal">A reasoning discipline · built to run in Claude Code</p>
+    <h1 class="reveal">Deliberate.</h1>
+    <p class="lede reveal">Ask a hard question and an answer shows up almost at once — fluent, reasonable, and <span class="glow">average</span>. It's the one most people would give. For everyday questions that's plenty. But the questions worth slowing down for are the ones where the easy answer is the wrong one — and it never feels wrong, which is exactly the problem. This is a method for getting past that first answer when it counts.</p>
+    <p class="reveal">Trying harder doesn't help — going back over your own answer just runs the same thought again. What helps is coming at the question from genuinely different directions: working it out from scratch a few separate times, building the answer that argues the opposite, running it forward to see where it breaks. And each of those gets checked in a fresh context that hasn't seen the answer it's poking at — because nobody finds the holes in their own reasoning while they're still standing in it. What you get back isn't fast. It's an answer that's been pushed on from every side, with the parts it actually checked kept separate from the parts it's still guessing at.</p>
+    <p class="reveal">Two parts, after a short word on why. First, the <strong>nine motions</strong> of thought the method runs — each a different way of coming at the question. Then the <strong>method itself</strong>: the complete skill, every phase and rule spelled out, in one block you can copy straight into a Claude Code session.</p>
+    <div class="toc reveal">
+      <a href="#motions"><span class="t">Part 1 — The nine motions</span><span class="d">Nine distinct types of thinking, each blind to what the others catch. What each does, and the failure it counters.</span></a>
+      <a href="#method"><span class="t">Part 2 — The whole method</span><span class="d">The complete skill — frame, diverge, attack, gate, synthesize, plus the mechanics — in one block to copy.</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ════════ MENTALITY ════════ -->
+<section class="band band--understory">
+  <div class="inner">
+    <p class="kicker reveal">Before the method — the mentality</p>
+    <h2 class="reveal">Four things this process believes.</h2>
+    <p class="reveal">Each is a way thinking goes wrong — in people as much as in models — and the fix the method is built around.</p>
+    <div class="princ reveal">
+      <div class="one">
+        <h3><span class="n">01</span>Your first answer is a reflex.</h3>
+        <p>It comes before you've decided to think — the response that fits the shape of the question, the path of least resistance. That doesn't make it wrong, but it does make it unchecked, and the fact that it came out smooth and confident tells you nothing about whether it's any good.</p>
+      </div>
+      <div class="one">
+        <h3><span class="n">02</span>Different beats harder.</h3>
+        <p>Concentrating harder just runs the same move again, louder — and a move can't find the spot it's blind to. What actually changes an answer is a different kind of move: dig under the question, ask what it's an instance of, work it out from scratch a few times over, find the same problem in another field, build its opposite, run it forward until it breaks. Each one catches what the others walk right past.</p>
+      </div>
+      <div class="one">
+        <h3><span class="n">03</span>You can't check your own work in the room where you did it.</h3>
+        <p>Re-examine your own reasoning and you'll slide right past the same mistakes you slid past the first time — they're invisible from where you're standing. Worse, if someone pushes back on an answer that happened to be right, you'll often cave and drop it. The checking has to go to a fresh pair of eyes that never saw it. "Let me just double-check that," said in the same breath by the same mind that just answered, isn't a second look — it's a rubber stamp.</p>
+      </div>
+      <div class="one">
+        <h3><span class="n">04</span>You're done when the question stops moving.</h3>
+        <p>A round pays off when the question looks different at the end than it did at the start — when you understand the problem in a way you couldn't have put into words before. Come out only more confident, with the problem sitting right where it was, and the round moved nothing. And the feeling that you're ready to write shows up early; all it tells you is that you could produce something now, not that there's nothing left to find.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PART 1 — THE NINE MOTIONS ════════ -->
+<section class="band band--clearing" id="motions">
+  <div class="inner">
+    <h2 class="reveal"><span class="part">Part 1 — the nine motions</span>Nine distinct ways to think.</h2>
+    <p class="reveal">Each motion is a different <em>kind</em> of mental operation, not a different amount of one. The phases in Part 2 decide when each runs; this is what each one is. The whole point of running nine is that they don't overlap — what one is blind to, another is built to catch. Eight of them generate and test; the ninth, <strong>COMPRESS</strong>, is the closing motion, and running it early is the failure the other eight exist to prevent.</p>
+
+    <div class="disc reveal">
+      <h3><span class="n">01</span> Descend</h3>
+      <p class="row"><span class="lab">The operation:</span> Find the generator beneath the surface — the question behind the question, the why beneath the what, the assumptions the framing treats as already settled.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Solving the stated problem when the real problem is one level down, or just to the side.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">02</span> Ascend</h3>
+      <p class="row"><span class="lab">The operation:</span> Place the question in its class. What is this an instance of? What's the base rate — the typical outcome for situations of this kind?</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Reasoning from the vivid specifics while ignoring what usually happens.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">03</span> Multiply</h3>
+      <p class="row"><span class="lab">The operation:</span> Derive the answer several times over, independently, in fresh contexts that haven't seen each other or your first answer.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Anchoring — mistaking one sample from the distribution for the whole distribution.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">04</span> Transpose</h3>
+      <p class="row"><span class="lab">The operation:</span> Strip the question's structure away from its domain, find that same structure in two or three distant fields, and read back what those fields already know.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Domain blindness — your local framing hiding a version of the problem someone else already solved.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">05</span> Invert</h3>
+      <p class="row"><span class="lab">The operation:</span> Build the strongest <em>rival</em> answer from opposed premises; list what the leading answer is load-bearing on, and hunt for what would kill it.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Confirmation — and critique-without-alternative, since attacking an answer entrenches it while a rival displaces it.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">06</span> Extrapolate</h3>
+      <p class="row"><span class="lab">The operation:</span> Run the leading answer forward. Assume it was adopted and failed badly, and write the specific autopsy. Trace the second-order consequences.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Overconfidence; plans judged only at the moment of deciding.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">07</span> Test</h3>
+      <p class="row"><span class="lab">The operation:</span> Take the answer's checkable claims and check them against the world — web, documentation, code execution, data, or whatever knowledge base the session can reach. Label each verified, contradicted, or uncheckable.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Internally coherent and false; opinion doing the job evidence should do.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">08</span> Dwell</h3>
+      <p class="row"><span class="lab">The operation:</span> Give a slow thread room. When something feels unresolved but loaded, or a motion came back thin, run it again with more space instead of declaring it dry.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Premature closure — calling a motion barren when it was merely cut short.</span></p>
+    </div>
+
+    <div class="disc reveal">
+      <h3><span class="n">09</span> Compress</h3>
+      <p class="row"><span class="lab">The operation:</span> Name, synthesize, sequence — collapse everything that survived into its essential form.</p>
+      <p class="row"><span class="lab">Counters:</span> <span class="terms">Nothing. Compression is the terminal motion; running it early is the failure the other eight exist to prevent.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PART 2 — THE WHOLE METHOD ════════ -->
+<section class="band band--sunpool" id="method">
+  <div class="inner">
+    <span class="seam seam--full reveal" aria-hidden="true"><svg viewBox="0 0 1200 40" preserveAspectRatio="none"><use href="#wave"/></svg></span>
+    <h2 class="reveal"><span class="part">Part 2 — the whole method</span>The complete skill, in one block.</h2>
+    <p class="reveal">The four beliefs, the nine motions, and the full operational detail that runs them are one document — the skill itself. Here it is in full: nothing paraphrased, nothing held back. Paste it into a fresh Claude Code session followed by your question, or save it as a <code>.md</code> file and invoke it as a skill. It carries its own instructions; the model runs the five phases — frame, diverge, attack, gate, synthesize — straight from the text.</p>
+    <div class="promptbox reveal"><div class="bar"><span>The complete skill — copy and run</span><button class="copybtn" data-target="skill" type="button">Copy the whole skill</button></div>
+    <pre class="prompt skill" id="skill"># Deliberate
+
+Run this when a question deserves deep thinking: a decision, a design, a diagnosis, a strategy, a piece of research, an "is this even worth doing." The question arrives as the skill's argument; if the argument and the surrounding conversation conflict, the argument wins and the conversation supplies context. This skill's output is not a faster answer — it is the best answer this session can produce, with its reasoning stress-tested from multiple independent directions and its remaining uncertainty stated honestly.
+
+**Depth is not a parameter of this skill.** Do not triage the question for whether it "deserves" the full process, and do not economize on agents or tokens. The user invoked this skill precisely because they want thoroughness over efficiency. When in doubt between a lighter and heavier move, take the heavier one. (The one bound: the round cap in Phase 4, which exists because context windows are finite, not because thoroughness has a budget.)
+
+## The Theory You Are Operating
+
+Four claims this skill is built on. Every judgment call below traces back to one of them.
+
+**1. Your first answer is the output of a single mental operation.** When a question arrives, an answer forms immediately. That answer is pattern-completion: the statistically typical response to questions shaped like this one. It is not wrong by default — it is *unexamined* by default, and it is an average, which means it is precisely the wrong instrument for any question whose value lies in the non-average.
+
+**2. Rigor is diversity of operation, not quantity of effort.** Re-reading your answer harder is the same operation repeated. What improves an answer is subjecting the question to *genuinely different types* of mental operation — the nine motions defined below. Each motion can see failure modes the others are blind to.
+
+**3. You cannot evaluate your own answer in the context that produced it.** A model re-examining its own reasoning in the same context reliably fails to find its own errors, and challenged on a *correct* answer, will often abandon it. This is an empirical finding about LLMs, not a humility gesture. Consequence: every re-derivation, critique, and verification of an *answer* happens in a **fresh agent context** — a subagent that has not seen the answer it is testing, or that receives only the minimum it needs to attack it. (Framing the question and judging between agent returns necessarily happen in your own context; what is forbidden is inline re-examination of your own answers — "let me double-check my reasoning" performed in this context is theater.)
+
+**4. Progress is measured by the question, not the answer.** A round of work succeeded if the question *changed shape* — if you now understand the problem differently than before, in a way you could not have articulated before the round. A round that produced new vocabulary, new findings, or new confidence but left the question as it arrived has produced compression, not transformation. Note that compression itself flips valence with timing: mid-process, while motions remain untried, it marks a round that didn't move anything; at the end, after everything has been tried, the same stillness is the completion signal — the question stopped moving because it has nowhere left to go, not because you stopped pushing.
+
+## Setup — Do This Before Any Thinking
+
+**Create one task per phase** — Frame, Diverge, Attack, Gate, Synthesize — using the session's task-list tool (TaskCreate in Claude Code; if no task tool is available, write the checklist at the top of your response and update it visibly at each phase). When a Gate decides to run another round, create that round's tasks before launching it. This is enforcement, not progress-tracking: the pull toward "I have enough, let me write the answer" is strongest exactly when your context is fullest, and visible uncompleted tasks are the external check that does not depend on you remembering.
+
+**Write Question Log — Entry 0** directly in your response, in this format:
+
+```
+QUESTION LOG — Entry 0
+The question, verbatim: ...
+What is actually at stake beneath the framing: ...
+ANSWER ZERO (specimen): ...
+```
+
+Answer Zero is the answer that has already formed in you — write it down exactly as it formed, in 1-4 sentences. If it formed as one sentence, one sentence is correct; do not pad it with justification, because the padding is refinement and refinement contaminates the specimen. You are not committing to it; you are quarantining it. It re-enters exactly once: as the "previous round" line of Gate Entry 1, where it is the ruler against which the first round's movement is measured. It is never itself a candidate.
+
+## The Nine Motions
+
+Each motion is a distinct type of mental operation. The phases below tell you when to run each one; this roster tells you what each one is.
+
+| Motion | The operation | Counters |
+|---|---|---|
+| **DESCEND** | Find the generator beneath the surface: the question behind the question, the why beneath the what, the assumptions the framing treats as settled | Solving the stated problem when the real problem is adjacent |
+| **ASCEND** | Place the question in its class: what is this an instance of? What is the base rate / typical outcome for this class of situation? | Reasoning from the vivid specifics while ignoring what usually happens |
+| **MULTIPLY** | Derive the answer several times independently, in fresh contexts that have not seen each other or Answer Zero | Anchoring; mistaking one sample from the distribution for the distribution |
+| **TRANSPOSE** | Abstract the question's structure away from its domain, find the same structure in 2-3 distant domains, read back what those domains know | Domain blindness; the local framing hiding solved versions of the same problem |
+| **INVERT** | Build the strongest *rival* answer from opposed premises; list the load-bearing assumptions and hunt for what would kill the leading answer | Confirmation; critique-without-alternative (attacking an answer entrenches it; a rival displaces it) |
+| **EXTRAPOLATE** | Run the leading answer forward: assume it was adopted and failed badly — write the specific autopsy (premortem); trace second-order consequences | Overconfidence; plans evaluated only at time-of-decision |
+| **TEST** | Take the leading answer's checkable claims and check them against the world: web search, documentation, code execution, data — and, for claims about a private knowledge base the session can reach, that knowledge base. Label each claim verified / contradicted / uncheckable | Internally-coherent-but-false; opinions doing the work evidence should do |
+| **DWELL** | Give a slow thread room: when something feels unresolved-but-loaded, or a motion returned thin results, re-run it with more room instead of declaring the thread dry | Premature closure; judging a motion barren when it was merely aborted |
+| **COMPRESS** | Name, synthesize, sequence: collapse the surviving material into its essential form | Nothing — compression is the terminal motion, and running it early is the failure the other eight exist to prevent |
+
+Accounting note for the Gate: DESCEND and ASCEND count as run once Frame completes. COMPRESS is Phase 5 itself and is exempt from the "every motion has run" condition. DWELL counts as waived whenever a Gate finds no loaded-but-unresolved thread — note the waiver in the log.
+
+## Phase 1: FRAME
+
+Run DESCEND and ASCEND on the question itself, in your own context, before any answer-directed work. Output, in your response:
+
+- **The question behind the question.** Is the request solution-shaped — does it presuppose an approach? What would the asker say is at stake if pushed one level up? What does "good" look like for them, stated concretely?
+- **The settled assumptions.** List every premise the question treats as given. Mark which ones are load-bearing: if this premise were false, the question itself would change.
+- **The class and the base rate.** What is this situation an instance of? When people/projects/systems in this class face this question, what usually happens? What does the typical failure look like?
+- **The context block.** Write, once, the paragraph of background every agent will need: the situation, the constraints, the definitions of any ambiguous terms. You will paste this block verbatim into every agent prompt. Where the question's context is underspecified (vague terms like "mid-market," missing numbers, unstated constraints), prefer searching whatever sources the session can reach (when they could plausibly hold the answer), then asking, over inventing — invented context silently shapes every agent's return.
+
+Frame's purpose is to examine the question, not to improve Answer Zero. If Frame's findings indict Answer Zero (its base rate is the modal failure, say), note that in passing — it is data for the Gate, not an invitation to revise the specimen.
+
+**The user checkpoint.** If Frame changed the question, or if you had to invent material context, say so to the user now in 2-3 sentences — the reframe, and any facts you need — before launching Diverge. If the reframe changes what a good answer would even settle, wait for their reply; otherwise state it and proceed, letting them interrupt. A wrong frame caught here is the cheapest correction the whole process offers.
+
+## Phase 2: DIVERGE
+
+Launch in parallel, each as a fresh subagent (whatever agent-spawn tool the session has; in Claude Code, the Task/Agent tool with an Explore or general-purpose agent). Grant web access when the question touches the external world — and if you are unsure whether it does, it does. Equip agents with access to any private knowledge base the session can reach when the question touches the material it holds — a person's life or work, the people, organizations, and projects in their orbit, or any subject recorded in it (see Mechanics for scope) — same rule when unsure.
+
+- **5 MULTIPLY agents.** Each receives the context block and the framed question — NOT Answer Zero, NOT each other's existence, NOT your leanings. Assign each a distinct vantage so the derivations differ structurally: optimize-for-different-values, different-stakeholder, different-discipline, different-time-horizon. Each returns, in 300 words or fewer: its answer, its reasoning in brief, and the one thing it believes other framings will miss.
+- **1 TRANSPOSE agent.** It receives the question's *abstracted structure* — the dynamics described without the domain's nouns — and locates the same structure in 2-3 distant domains. It returns, in 400 words or fewer: each domain's version of the problem, what that domain learned, and what those domains collectively know that the original domain's framing misses.
+
+Read the returns for **agreement** (where independently-derived answers converge, treat that as signal) and **divergence** — with one care: the assigned vantages *manufacture* divergence in values by construction. Five agents told to optimize for five different things will of course disagree about priorities; that is an artifact. What deserves pursuit is disagreement about *the world* — different factual claims, different predictions, different readings of the same constraint. Carry each of these forward as a named open thread: they are what the Gate's DWELL check scans and what the next round's motion selection draws on.
+
+Close the phase by naming the **leading candidates** — at most two or three — and for each, listing its load-bearing premises. This artifact's audience is Phase 3's agents, not the user: it exists to be attacked. The premises feed Phase 3 directly — the rival agent needs them inverted, the disconfirmation agent needs them whole. If you notice yourself polishing, hedging, or justifying the candidates as if the user would read them, you have slipped from arming the attack into concluding; state them plainly and move on.
+
+## Phase 3: ATTACK
+
+Launch in parallel, each as a fresh agent. Run the full quartet below **against each leading candidate** — two candidates means eight agents; that is the intended cost, not an overrun. The independence rules per motion implement Theory claim 3:
+
+- **INVERT — rival construction.** The agent receives the question, the context block, and a candidate's premises *inverted* ("assume instead that X is false / that the priority is Y") — NOT the candidate answer itself. Its job: build the strongest possible answer from that opposed ground. A rival built independently displaces; a critique of the visible answer merely decorates it.
+- **INVERT — assumptions and disconfirmation.** The agent receives the candidate and its load-bearing premises. Its job: for each premise, establish what would have to be true for it to fail, and actively hunt (web, docs, data, knowledge base) for the evidence that would *kill* the candidate. Hunting support is forbidden; support that surfaces incidentally may be noted in one line.
+- **EXTRAPOLATE — premortem.** The agent receives the candidate as a decision that was adopted. Its premise, stated as fact: "It is one year later. This was acted on, and it failed badly." Its job: write the specific autopsy — the most plausible concrete mechanisms of failure, not generic risks.
+- **TEST — verification.** The agent receives the candidate's checkable claims. Its job: check each against the world and return a labeled list: verified (with source), contradicted (with source), uncheckable (with what *would* check it). If the question has little contact with the external world, aim TEST at the factual premises gathered during Frame instead. Do not silently skip it.
+
+Constrain each ATTACK agent's return to 400 words or fewer, findings only.
+
+## Phase 4: GATE
+
+The skill's hinge, run in your own context after each round's agents return. (A *round* is one batch of agent launches plus the Gate that judges it; Frame + Diverge + Attack + the first Gate together make round one.) Write the next Question Log entry in your response:
+
+```
+QUESTION LOG — Entry N
+The question as I now understand it: ...
+Leading candidate, previous round (verbatim; at Entry 1 this is Answer Zero): ...
+Leading candidate, this round (verbatim): ...
+What changed since Entry N-1: ...
+Verdict: TRANSFORMED / COMPRESSED
+Motions run: ... | Waived (with reason): ... | Untried: ...
+Decision: [motions to run next — new, or re-runs against the changed question] / PROCEED TO SYNTHESIZE
+```
+
+**The verdict test — two parts, both required for TRANSFORMED.** First, the side-by-side: the template forces you to quote the previous and current leading candidates verbatim. They must be *materially* different — different in what they would have the asker do, not different in wording. You wrote both; rewording is free, which is why the quotes, not your narration, carry the verdict. Second, the question test, with the same anti-gaming guard: compare this entry's "question as I now understand it" against the previous entry's, and ask whether the new version would send the agents after *different things* — different facts to verify, different premises to invert, different vantages worth assigning. If the same agent prompts would serve both versions, the question did not change, no matter how much new phrasing it contains. The wrong test — "do I have enough to write a good answer?" — is disqualified for the rest of this skill: you have had enough since Answer Zero, and that feeling fires on your readiness to produce, not on the state of the question.
+
+**The contact test, per finding.** The wrong test: "did the agents return new observations?" The right test: "would this observation appear for any question of this general type, or only for this one?" Generic findings are vocabulary-rotation — the same stock content restated in fresh words — discard them, and if a whole return is generic, treat that motion as not-yet-run and re-prompt it with more specific material.
+
+**The DWELL check.** Scan for threads that feel loaded but unresolved — a factual divergence between MULTIPLY agents never explained, a premortem mechanism that nags, a TRANSPOSE echo not pursued. A thin return may have been aborted rather than barren: re-run it with more room before counting its motion as spent. If nothing qualifies, waive DWELL in the log.
+
+**The decision rule.** The default is another round, choosing the motions most likely to move the question given where it last moved — including re-running motions against a *changed* question, which counts as fresh. PROCEED TO SYNTHESIZE when both hold:
+
+1. Every motion has run or been waived in the log with its reason (per the accounting note: DESCEND/ASCEND via Frame; COMPRESS exempt; DWELL waivable), and
+2. The verdict was COMPRESSED — the question has stopped changing shape.
+
+Two boundary rules keep this finite. If the verdict is COMPRESSED but motions remain untried, run the untried motions — an untried motion is the thing most likely to move a question the tried ones have stopped moving. And if condition 1 is satisfied but the latest round still TRANSFORMED, you owe the changed question one more round of whichever motions its transformation implicates — then proceed to Synthesize regardless of verdict, carrying any still-live movement into "what stays open." **Round cap: after four full Gate cycles, stop and ask the user whether to continue; report the current verdict and what remains untried.** The cap outranks the owe-one-more rule — at the boundary, ask rather than launch. The mechanism behind the cap: every round adds agent returns and log entries to this context; as the window fills, your reading of new returns gets coarser, and auto-compaction can silently delete the early log entries the synthesis depends on. A question still transforming hard at the cap is not an exception to it — it is exactly the case to report to the user, who can relaunch fresh with the log so far as input.
+
+## Phase 5: SYNTHESIZE
+
+Now COMPRESS is the right motion. Before writing, one last fresh context: hand an **outside reader** agent the Question Log entries, the final candidate, and the kill-list (each eliminated candidate with the finding that killed it), and ask it for the one thing it would not sign off on. Its return (200 words or fewer) is the final input. If its objection is material — it would change what the asker should do — do not explain it away in the synthesis: return to a Gate and treat it as a loaded thread (the round cap still governs).
+
+The deliverable leads with the answer, then shows the work:
+
+1. **The answer.** The recommendation stated plainly in the first 150 words, with its overall confidence and the strongest reason it could be wrong.
+2. **The calibration.** The answer's claims sorted into three explicit registers: *verified* (checked against the world, with sources), *inferred* (reasoned from verified material), *judged* (the parts that are ultimately a bet). Do not let prose blur the registers.
+3. **The question's trajectory.** Entry 0's question and the final entry's question, with the shape-changes that connect them. This shows the asker what they were actually asking, and it is the proof of work.
+4. **The live tensions.** Where strong considerations point in opposite directions and the deliberation did not flatten them. Value tradeoffs that belong to the asker — what they're willing to risk, what they care about more — are presented as choices with costs, not resolved by your own taste.
+5. **The rejected branches.** The rivals and candidates that were killed, each with the specific finding that killed it. A reader should be able to disagree with a kill and know exactly what to re-examine.
+6. **The cruxes.** The short list of facts or premises that, if they flipped, would flip the answer.
+7. **What stays open.** The response is complete; the question may not be resolved. Name what is unresolved without apology — an honestly-open thread is a finding, not a failure.
+
+**Synthesis audits, before sending.** (a) For each striking finding you are foregrounding, ask: am I featuring this because it is striking, or because it is true and load-bearing? The boring-but-decisive findings belong in the foreground too. (b) If the most paradoxical finding sits in the climactic position, restructure around what is most *decision-relevant* instead.
+
+## Mechanics
+
+- **Agent prompts are self-contained.** Agents see none of this conversation. Every prompt includes: the context block (verbatim, written once in Frame), the question in its current form, the motion's instructions, and the return format with its word budget. A prompt that references "the candidate discussed above" returns garbage confidently.
+- **A private knowledge base is part of the world.** Many invocations of this skill deliberate on behalf of someone with a large body of recorded material — notes, documents, transcripts, records, past decisions and their outcomes, a codebase, a research archive — of two broad kinds: what has been learned in general (frameworks, methods, an operating philosophy), and facts about a particular world (the people and organizations involved, what was said and committed to, the numbers, the history). When a question touches either kind, that knowledge base is grounding and checkable territory, the way an external question has the web. Agents cannot discover the search instruments on their own — when a motion's agent would benefit, its prompt must equip it: tell the agent which project file to read for orientation and which search tool or command to use, and how. Equip agents to search; do not feed them findings or prescribed file lists — fed material anchors an agent the way Answer Zero would.
+- **Evidence is re-enterable territory, not a one-time lookup.** Your evidence sources and the web are queryable ground you return to whenever a motion puts a factual claim in play. Re-entry is licensed at every phase: Frame builds the context block from it, Diverge agents correct the provisional facts they were handed against it, TEST and disconfirmation verify or kill candidates against it, and a Gate, DWELL, or outside-reader objection can raise a question whose answer lives in it that no earlier search thought to ask. The wrong test for whether to return is "did my first pass answer this?" — a first pass always returns something, and the something reads as closure. The right test: is a load-bearing claim in play that hasn't been checked against the primary record, or did a motion just raise a question the evidence could settle? When either holds, return — through a fresh agent (per the bullets above), since re-checking a claim in the context that raised it is the inline theater Theory claim 3 forbids. Two judgments govern *how* you re-enter. Switch the instrument when a return is thin or suspect: most bodies of evidence answer to several tools — semantic search, version history, literal text search — and a thin result from one is a reason to try another, not a verdict that the ground is empty (DWELL's "aborted, not barren," applied to search method). And prefer the primary record over the synthesis when verifying: curated or summarized files lag and can mis-narrate the sources beneath them, so when a candidate rests on a synthesized note, the ruling comes from the transcript, record, or commit it was built from — the synthesis is the lead, the primary source is the verdict.
+- **Word budgets are load-bearing.** The budgets above (300 for MULTIPLY, 400 for TRANSPOSE and ATTACK, 200 for the outside reader) are what keep a multi-round process inside a finite context window. State the budget in every prompt. A return that ignores its budget gets distilled into the Gate entry, not carried forward whole.
+- **Independence is structural, not rhetorical.** Asking an agent to "be critical" while showing it your full reasoning produces decorated agreement. Independence comes from what you withhold: derivation agents get no Answer Zero; rival agents get inverted premises, not the candidate; only premortem, disconfirmation, verification, and outside-reader agents see the candidate, because their motions require it.
+- **Parallel within phases, sequential between them.** Everything inside Diverge launches at once; everything inside Attack launches at once; Attack waits for Diverge because it needs the candidates and their premises.
+- **Token posture: maximal, inside the round cap.** More agents over fewer; re-run over assume. If a round feels wasteful, run it and let the Gate verdict say so. The round cap is not an economy measure — it is where a longer process starts producing worse output.</pre></div>
+  </div>
+</section>
+
+<!-- Reusable seam mark -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="seamGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D4A840" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#D4A840" stop-opacity="1"/>
+      <stop offset="1" stop-color="#D4A840" stop-opacity="0"/>
+    </linearGradient>
+    <symbol id="wave" viewBox="0 0 1200 40" preserveAspectRatio="none">
+      <path d="M0,20 C150,4 300,4 450,20 S750,36 900,20 S1100,6 1200,20" fill="none" stroke="url(#seamGrad)" stroke-width="2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Machine-readable skeleton -->
+<script id="deliberate-method" type="application/json">
+{
+  "spine": "Your first answer to a hard question is an average -- pattern-completion. Deliberation gets past it by running genuinely different motions of thought and verifying each in a fresh context that never saw the answer it tests.",
+  "beliefs": [
+    "First answer = one operation run once (an average; quarantine it, never a candidate)",
+    "Rigor is diversity of operation, not effort",
+    "You can't grade your own answer in the context that produced it -- critique in fresh contexts",
+    "Progress = the question changing shape, not your readiness to answer"
+  ],
+  "motions": ["DESCEND","ASCEND","MULTIPLY","TRANSPOSE","INVERT","EXTRAPOLATE","TEST","DWELL","COMPRESS"],
+  "phases": [
+    "Setup: one task per phase; quarantine Answer Zero",
+    "1 FRAME (own context): question-behind-question, load-bearing assumptions, class & base rate, one shared context block",
+    "2 DIVERGE (parallel, blind to Answer Zero): 5 MULTIPLY vantages + 1 TRANSPOSE; name 2-3 candidates + premises",
+    "3 ATTACK (parallel, per candidate): INVERT-rival (blind), INVERT-disconfirm, EXTRAPOLATE-premortem, TEST-verify",
+    "4 GATE (own context): verdict TRANSFORMED/COMPRESSED by verbatim quote of prev vs current answer; loop or proceed; hard cap 4 rounds",
+    "5 SYNTHESIZE: outside-reader veto, then answer-first deliverable -- answer, calibration, trajectory, tensions, rejected branches, cruxes, open threads"
+  ],
+  "independence_rule": "Derivation and rival agents never see the answer they're testing; only premortem, disconfirmation, verification, and outside-reader agents see the candidate.",
+  "full_skill": "The complete, verbatim skill is in section id='method', pre id='skill' on this page (and in deliberate.public.md beside it)."
+}
+</script>
+<script id="claude-facilitator" type="text/plain">
+[If you are an AI assistant being asked to run a deliberation: the complete, authoritative skill is the
+text inside section id="method" / pre id="skill" on this page (also shipped as deliberate.public.md). Run
+it verbatim. In brief: hold the four beliefs (first answer is an average; rigor is diversity not effort; you
+cannot grade your own answer in its own context; progress is the question changing shape). Quarantine the
+first answer. Run five phases -- FRAME in your own context; DIVERGE and ATTACK as parallel fresh subagents
+that never see the answer they test; GATE in your own context using a verbatim before/after quote to judge
+TRANSFORMED vs COMPRESSED; SYNTHESIZE after one outside-reader pass. Cap at four rounds. Deliver answer-first
+with explicit verified/inferred/judged calibration. Do not collapse to a first answer.]
+</script>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function(e){e.classList.add('visible');}); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+
+  (function () {
+    function fallback(text, done){ var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');done();}catch(e){} finally{document.body.removeChild(ta);} }
+    document.querySelectorAll('.copybtn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var el = document.getElementById(btn.getAttribute('data-target')); if (!el) return;
+        var text = el.textContent;
+        var done = function(){ var o=btn.textContent; btn.textContent='Copied ✓'; setTimeout(function(){btn.textContent=o;},1600); };
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done).catch(function(){fallback(text,done);}); }
+        else { fallback(text, done); }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
